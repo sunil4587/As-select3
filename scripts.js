@@ -579,23 +579,42 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function fixSelect3() {
+    // Apply high z-index to all select3 dropdowns
     $('.select3-dropdown').css('z-index', '99999');
     
-    $('.demo-card, .card, .form-group').css('overflow', 'visible');
+    // Ensure all containers allow overflow
+    $('.demo-card, .card, .form-group, .glass-card, .hero-demo-container').css('overflow', 'visible');
     
+    // Position containers relatively
     $('.select3-container').css('position', 'relative');
     
+    // Set absolute positioning for dropdowns
     $('.select3-dropdown').css({
       'position': 'absolute',
       'width': '100%'
     });
     
-    $('.select3-container').closest('.demo-card').css({
+    // Prevent transform animations on cards with select3
+    $('.select3-container').closest('.demo-card, .glass-card').css({
       'transform': 'none',
       'transition': 'box-shadow 0.3s'
     });
     
-    $('.demo-card:has(.select3-container)').hover(
+    // Fix hero demo specifically - use the same approach as the demo cards
+    $('#hero-demo-select').closest('.glass-card').css({
+      'overflow': 'visible',
+      'position': 'relative',
+      'z-index': '50'
+    });
+    
+    // Fix any hero-demo-select dropdown positioning
+    $('#hero-demo-select').next('.select3-container').css({
+      'position': 'relative',
+      'z-index': '99990'
+    });
+    
+    // Fix hover effects
+    $('.demo-card:has(.select3-container), .glass-card:has(.select3-container)').hover(
       function() {
         $(this).css('box-shadow', 'var(--shadow-lg)');
       },
@@ -619,12 +638,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
   fixSelect3();
   
+  // Run twice with a delay to ensure it works after everything is rendered
   setTimeout(fixSelect3, 500);
   
   document.addEventListener('click', function(e) {
     if (e.target.closest('.select3-trigger') || 
         e.target.closest('.select3-option')) {
       e.preventDefault();
+      
+      // Re-run the fix when interacting with dropdowns
+      setTimeout(fixSelect3, 10);
     }
   }, true);
   

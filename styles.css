@@ -13,13 +13,6 @@
   --text-secondary: #4A5568;
   --text-muted: #718096;
   
-  /* Light mode specific colors */
-  --border-color: #e1e5e9;
-  --border-hover: #c1c8cd;
-  --card-bg: #ffffff;
-  --code-bg: #f6f8fa;
-  --accent-bg: rgba(74, 144, 226, 0.1);
-  
   /* Gradients */
   --primary-gradient: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
   --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -48,23 +41,16 @@
 
 /* Dark theme variables */
 [data-bs-theme="dark"] {
-  --background-color: #0d1117;
-  --surface-color: #161b22;
-  --text-primary: #f0f6fc;
-  --text-secondary: #c9d1d9;
-  --text-muted: #8b949e;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.7);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.8);
-  
-  /* Dark mode specific colors */
-  --border-color: #30363d;
-  --border-hover: #525862;
-  --card-bg: #21262d;
-  --code-bg: #161b22;
-  --accent-bg: rgba(56, 139, 253, 0.1);
+  --background-color: #1A202C;
+  --surface-color: #2D3748;
+  --text-primary: #F7FAFC;
+  --text-secondary: #E2E8F0;
+  --text-muted: #A0AEC0;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== GLOBAL STYLES ===== */
@@ -126,177 +112,8 @@ body {
 }
 
 [data-bs-theme="dark"] .glass-nav {
-  background: rgba(13, 17, 23, 0.8);
-  border-bottom: 1px solid var(--border-color);
-}
-
-[data-bs-theme="dark"] .navbar-brand {
-  color: var(--text-primary) !important;
-}
-
-[data-bs-theme="dark"] .nav-link {
-  color: var(--text-secondary) !important;
-}
-
-[data-bs-theme="dark"] .nav-link:hover,
-[data-bs-theme="dark"] .nav-link:focus {
-  color: var(--text-primary) !important;
-}
-
-[data-bs-theme="dark"] .btn-outline-primary {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-}
-
-[data-bs-theme="dark"] .btn-outline-primary:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
-}
-
-[data-bs-theme="dark"] .btn-primary {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
-}
-
-[data-bs-theme="dark"] .theme-toggle {
-  color: var(--text-secondary) !important;
-}
-
-[data-bs-theme="dark"] .theme-toggle:hover {
-  color: var(--text-primary) !important;
-}
-
-/* Dark mode for cards and surfaces */
-[data-bs-theme="dark"] .glass-card,
-[data-bs-theme="dark"] .feature-card,
-[data-bs-theme="dark"] .demo-card,
-[data-bs-theme="dark"] .use-case-card,
-[data-bs-theme="dark"] .install-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .glass-card:hover,
-[data-bs-theme="dark"] .feature-card:hover,
-[data-bs-theme="dark"] .demo-card:hover,
-[data-bs-theme="dark"] .use-case-card:hover {
-  border-color: var(--border-hover);
-}
-
-/* Dark mode for text elements */
-[data-bs-theme="dark"] .section-subtitle,
-[data-bs-theme="dark"] .text-muted {
-  color: var(--text-secondary) !important;
-}
-
-[data-bs-theme="dark"] .hero-subtitle {
-  color: var(--text-secondary);
-}
-
-/* Dark mode for code blocks */
-[data-bs-theme="dark"] .code-block {
-  background: var(--code-bg);
-  border: 1px solid var(--border-color);
-}
-
-[data-bs-theme="dark"] .code-block pre,
-[data-bs-theme="dark"] .code-block code {
-  background: transparent;
-  color: var(--text-primary);
-}
-
-/* Dark mode for demo elements */
-[data-bs-theme="dark"] .mock-select,
-[data-bs-theme="dark"] .mock-select-demo {
-  background: var(--code-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .selected-tag,
-[data-bs-theme="dark"] .demo-feature-tag {
-  background: var(--accent-bg);
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-}
-
-[data-bs-theme="dark"] .search-placeholder,
-[data-bs-theme="dark"] .search-input {
-  color: var(--text-muted);
-}
-
-/* Dark mode for tabs */
-[data-bs-theme="dark"] .nav-tabs {
-  border-bottom: 1px solid var(--border-color);
-}
-
-[data-bs-theme="dark"] .nav-tabs .nav-link {
-  color: var(--text-secondary);
-  border: 1px solid transparent;
-}
-
-[data-bs-theme="dark"] .nav-tabs .nav-link:hover,
-[data-bs-theme="dark"] .nav-tabs .nav-link:focus {
-  border-color: var(--border-color);
-  color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .nav-tabs .nav-link.active {
-  color: var(--text-primary);
-  background-color: var(--card-bg);
-  border-color: var(--border-color) var(--border-color) var(--card-bg);
-}
-
-/* Dark mode for alerts */
-[data-bs-theme="dark"] .alert-success {
-  background-color: rgba(72, 187, 120, 0.1);
-  border-color: rgba(72, 187, 120, 0.2);
-  color: #68d391;
-}
-
-/* Dark mode for badges and pills */
-[data-bs-theme="dark"] .section-badge,
-[data-bs-theme="dark"] .feature-badge,
-[data-bs-theme="dark"] .feature-pill {
-  background: var(--accent-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
-
-/* Dark mode for form elements */
-[data-bs-theme="dark"] .form-control {
-  background-color: var(--code-bg);
-  border-color: var(--border-color);
-  color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .form-control:focus {
-  background-color: var(--code-bg);
-  border-color: var(--primary-color);
-  color: var(--text-primary);
-  box-shadow: 0 0 0 0.25rem rgba(74, 144, 226, 0.25);
-}
-
-[data-bs-theme="dark"] .form-control::placeholder {
-  color: var(--text-muted);
-}
-
-/* Dark mode for footer */
-[data-bs-theme="dark"] .footer-section {
-  background: var(--surface-color);
-  border-top: 1px solid var(--border-color);
-  color: var(--text-primary);
-}
-
-[data-bs-theme="dark"] .footer-section a {
-  color: var(--text-secondary);
-}
-
-[data-bs-theme="dark"] .footer-section a:hover {
-  color: var(--text-primary);
+  background: rgba(26, 32, 44, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar-brand {
@@ -508,6 +325,8 @@ body {
 /* Hero Demo */
 .hero-demo-container {
   width: 100%;
+  position: relative;
+  z-index: 50;
 }
 
 .glass-card {
@@ -515,8 +334,9 @@ body {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--border-radius);
-  overflow: hidden;
+  overflow: visible; /* Changed from hidden to visible for dropdowns */
   box-shadow: var(--shadow-xl);
+  position: relative;
 }
 
 .demo-header {
@@ -762,7 +582,7 @@ body {
   background: var(--surface-color);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
-  overflow: visible; /* Changed from hidden to visible to allow dropdowns to extend outside */
+  overflow: visible;
   transition: var(--transition);
 }
 
@@ -1137,26 +957,6 @@ body {
   color: white;
 }
 
-/* ===== ADDITIONAL DARK MODE STYLES ===== */
-[data-bs-theme="dark"] .glass-effect {
-  background: rgba(33, 38, 45, 0.8);
-  border: 1px solid var(--border-color);
-}
-
-/* Dark mode scrollbar */
-[data-bs-theme="dark"] ::-webkit-scrollbar-track {
-  background: var(--surface-color);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-}
-
-[data-bs-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-color);
-}
-
-/* ===== RESPONSIVE UTILITIES ===== */
 @media (max-width: 768px) {
   .hero-content {
     padding: 2rem 0;
@@ -1173,22 +973,4 @@ body {
   .feature-card {
     padding: 1.5rem;
   }
-}
-
-/* ===== SELECT3 FIXES ===== */
-
-/* Fix parent containers */
-.card,
-.demo-card,
-.feature-card,
-.use-case-card,
-.demo-card-content,
-.card-body,
-.form-group {
-  overflow: visible !important;
-}
-
-/* Prevent scroll issues */
-html, body {
-  scroll-behavior: auto !important;
 }
