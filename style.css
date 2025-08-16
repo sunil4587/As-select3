@@ -172,11 +172,13 @@
     padding: 1.125rem;
     border-bottom: 1px solid rgba(var(--bs-border-color-rgb), 0.1);
     background: rgba(var(--bs-light-rgb), 0.5);
+    position: relative;
 }
 
 .multi-select-search input {
     width: 100%;
     padding: 0.625rem 0.875rem;
+    padding-right: 2.5rem; /* More room for the X icon */
     border: 1px solid rgba(var(--bs-border-color-rgb), 0.3);
     border-radius: 0.5rem;
     font-size: 0.875rem;
@@ -193,7 +195,39 @@
 }
 
 .multi-select-search input::placeholder {
-    color: rgba(var(--bs-secondary-color-rgb), 0.7);
+    opacity: 0.6;
+    color: var(--bs-secondary-color);
+}
+
+.multi-select-search-clear {
+    position: absolute;
+    right: 1.5rem; /* Position it at the end of input */
+    top: 50%;
+    transform: translateY(-50%); /* Perfect vertical centering */
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: var(--bs-secondary-color);
+    flex-shrink: 0;
+    font-size: 1rem; /* Larger X icon */
+    z-index: 5;
+    font-weight: bold;
+}
+
+.multi-select-search-clear:hover {
+    opacity: 1 !important;
+    color: var(--bs-danger-color);
+}
+
+/* Use a more specific selector to ensure it only shows with input */
+.multi-select-search input:focus:not(:placeholder-shown) ~ .multi-select-search-clear,
+.multi-select-search input:not(:placeholder-shown) ~ .multi-select-search-clear {
+    opacity: 0.7;
 }
 
 .multi-select-options {

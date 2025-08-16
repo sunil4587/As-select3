@@ -121,10 +121,17 @@
         createSearchBox() {
             const $searchContainer = $('<div class="multi-select-search"></div>');
             
+            // Create search input wrapped in a container for positioning
+            const $inputWrapper = $('<div class="position-relative w-100"></div>');
             this.$searchInput = $('<input type="text" class="form-control form-control-sm" role="searchbox" aria-label="Search options">')
                 .attr('placeholder', this.options.searchPlaceholder);
             
-            $searchContainer.append(this.$searchInput);
+            // Add clear search icon - simple X icon at the end of input
+            const $searchClearBtn = $('<i class="bi bi-x multi-select-search-clear" aria-label="Clear search"></i>');
+            
+            // Append in the correct order for proper positioning
+            $inputWrapper.append(this.$searchInput).append($searchClearBtn);
+            $searchContainer.append($inputWrapper);
             this.$dropdown.append($searchContainer);
         }
         
@@ -213,6 +220,17 @@
                 console.log('Remove tag clicked - removing tag with value:', value);
                 if (value) {
                     this.removeTag(value);
+                }
+                return false; // Ensure no other handlers are triggered
+            });
+            
+            // Delegated event for search clear icon
+            this.$container.on('click', '.multi-select-search-clear', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                console.log('Search clear icon clicked');
+                if (this.$searchInput) {
+                    this.$searchInput.val('').trigger('input').focus();
                 }
                 return false; // Ensure no other handlers are triggered
             });
@@ -423,6 +441,8 @@
         search(query) {
             const $options = this.$optionsContainer.find('.multi-select-option').not('.multi-select-no-results, .multi-select-loading');
             let hasVisibleOptions = false;
+            
+            // We don't need to manually toggle clear icon visibility anymore - CSS handles it
             
             $options.each((index, option) => {
                 const $option = $(option);
