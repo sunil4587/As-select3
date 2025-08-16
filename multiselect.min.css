@@ -149,6 +149,7 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color .15s;
+  justify-content: space-between;
 }
 
 .multi-select-option:hover,
@@ -161,8 +162,51 @@
   font-weight: 500;
 }
 
+.multi-select-option-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.multi-select-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.multi-select-option-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .multi-select-option-text {
-  margin-left: 0.5rem;
+  margin-left: 0rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multi-select-option .form-check-input {
+  margin: 0;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.5);
+}
+
+.multi-select-option .form-check-input:checked {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
 }
 
 .multi-select-no-results,
@@ -215,6 +259,26 @@
   margin: 0.125rem 0;
 }
 
+.multi-select-tag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  margin-right: -0.25rem;
+}
+
+.multi-select-tag-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .multi-select-tag-text {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -249,10 +313,31 @@
   width: 100%;
 }
 
+.multi-select-single-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.multi-select-single-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .multi-select-single-value {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .multi-select-clear {

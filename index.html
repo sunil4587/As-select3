@@ -162,6 +162,26 @@
                                     </div>
                                     <div class="form-text">Options can be added/removed dynamically.</div>
                                 </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="iconOptions" class="form-label">Options with Icons & Images</label>
+                                    <div class="multi-select-container">
+                                        <select id="iconOptions" name="iconOptions" multiple class="d-none">
+                                            <!-- Populated with JavaScript -->
+                                        </select>
+                                    </div>
+                                    <div class="form-text">Options can include icons and profile images.</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="profileOptions" class="form-label">Team Members with Profile Pictures</label>
+                                    <div class="multi-select-container">
+                                        <select id="profileOptions" name="profileOptions" multiple class="d-none">
+                                            <!-- Populated with JavaScript -->
+                                        </select>
+                                    </div>
+                                    <div class="form-text">Dynamic profile pictures that change on each refresh.</div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -296,6 +316,42 @@
             multiSelectInstances.set('remoteSelect', remoteSelect);
             multiSelectInstances.set('customPlaceholder', customSelect);
             multiSelectInstances.set('dynamicOptions', dynamicSelect);
+            
+            // Initialize icon options example
+            const iconOptionsSelect = $('#iconOptions').multiSelect()[0]._multiSelect;
+            multiSelectInstances.set('iconOptions', iconOptionsSelect);
+            
+            // Populate with icon options
+            iconOptionsSelect.populateOptions([
+                { value: 'user1', text: 'John Smith', icon: 'bi bi-person-circle' },
+                { value: 'user2', text: 'Sarah Johnson', icon: 'bi bi-person-fill' },
+                { value: 'html', text: 'HTML', icon: 'bi bi-filetype-html' },
+                { value: 'css', text: 'CSS', icon: 'bi bi-filetype-css' },
+                { value: 'js', text: 'JavaScript', icon: 'bi bi-filetype-js' },
+                { value: 'github', text: 'GitHub', icon: 'bi bi-github' }
+            ]);
+            
+            // Initialize profile options with dynamic avatar images
+            const profileOptionsSelect = $('#profileOptions').multiSelect({
+                placeholder: 'Select team members...',
+                selectAllText: 'Select All Members',
+                clearAllText: 'Clear Selection'
+            })[0]._multiSelect;
+            multiSelectInstances.set('profileOptions', profileOptionsSelect);
+            
+            // Populate with profile options using dynamic avatars
+            profileOptionsSelect.populateOptions([
+                { value: 'emma', text: 'Emma Watson', icon: 'https://avatar.iran.liara.run/public/girl?id=1', selected: true },
+                { value: 'john', text: 'John Doe', icon: 'https://avatar.iran.liara.run/public/boy?id=2' },
+                { value: 'sarah', text: 'Sarah Connor', icon: 'https://avatar.iran.liara.run/public/girl?id=3' },
+                { value: 'mike', text: 'Mike Johnson', icon: 'https://avatar.iran.liara.run/public/boy?id=4' },
+                { value: 'lisa', text: 'Lisa Anderson', icon: 'https://avatar.iran.liara.run/public/girl?id=5' },
+                { value: 'alex', text: 'Alex Thompson', icon: 'https://avatar.iran.liara.run/public/boy?id=6' },
+                { value: 'maria', text: 'Maria Garcia', icon: 'https://avatar.iran.liara.run/public/girl?id=7' },
+                { value: 'david', text: 'David Wilson', icon: 'https://avatar.iran.liara.run/public/boy?id=8' },
+                { value: 'anna', text: 'Anna Martinez', icon: 'https://avatar.iran.liara.run/public/girl?id=9' },
+                { value: 'james', text: 'James Brown', icon: 'https://avatar.iran.liara.run/public/boy?id=10' }
+            ]);
         }
         
         function setupEventListeners() {

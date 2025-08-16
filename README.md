@@ -128,14 +128,33 @@ $('#mySelect').on('multiselect:change', function(e, data) {
 The component uses Bootstrap CSS variables, making it compatible with Bootstrap themes and dark mode. 
 Custom styling can be added by targeting the component's CSS classes.
 
-## 🔍 Remote Data Loading
+## �️ Icon/Image Support
+
+You can add icons or images to your options:
+
+```javascript
+$('#mySelect').multiSelect({
+    // Your other options...
+});
+
+// Populate with icons/images
+$('#mySelect').data('multiSelect').populateOptions([
+    { value: "1", text: "Option with Icon", icon: "bi bi-star-fill" },
+    { value: "2", text: "Option with Image", icon: "https://example.com/image.png" },
+    { value: "3", text: "Regular Option" }
+]);
+```
+
+The icons/images will appear in both dropdown options and selected tags.
+
+## �🔍 Remote Data Loading
 
 ```javascript
 $('#mySelect').multiSelect({
     remote: async function(query) {
         const response = await fetch(`/api/search?q=${query}`);
         return await response.json();
-        // Should return: [{ value: "1", text: "Option 1" }, ...]
+        // Should return: [{ value: "1", text: "Option 1", icon: "bi bi-person" }, ...]
     }
 });
 ```
