@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSelect Library - Example</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- MultiSelect CSS -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 mb-3">MultiSelect Library</h1>
+                    <p class="lead text-muted">A powerful, flexible multi-select component for Bootstrap 5</p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <span class="badge bg-primary">Bootstrap 5</span>
+                        <span class="badge bg-success">Accessible</span>
+                        <span class="badge bg-info">Keyboard Navigation</span>
+                        <span class="badge bg-warning text-dark">Remote Data</span>
+                    </div>
+                </div>
+                
+                <!-- Basic Examples -->
+                <div class="card mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="card-title mb-0">
+                            <i class="bi bi-ui-checks me-2"></i>Basic Examples
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="basicForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="countries" class="form-label">Countries (Multiple)</label>
+                                    <div class="multi-select-container">
+                                        <select id="countries" name="countries" multiple class="d-none" required>
+                                            <option value="us">United States</option>
+                                            <option value="uk">United Kingdom</option>
+                                            <option value="ca">Canada</option>
+                                            <option value="au">Australia</option>
+                                            <option value="de">Germany</option>
+                                            <option value="fr">France</option>
+                                            <option value="jp">Japan</option>
+                                            <option value="in">India</option>
+                                            <option value="br">Brazil</option>
+                                            <option value="mx">Mexico</option>
+                                        </select>
+                                    </div>
+                                    <div class="invalid-feedback">Please select at least one country.</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="skills" class="form-label">Programming Skills</label>
+                                    <div class="multi-select-container">
+                                        <select id="skills" name="skills" multiple class="d-none">
+                                            <option value="javascript" selected>JavaScript</option>
+                                            <option value="python">Python</option>
+                                            <option value="java">Java</option>
+                                            <option value="csharp">C#</option>
+                                            <option value="php" selected>PHP</option>
+                                            <option value="react">React</option>
+                                            <option value="angular">Angular</option>
+                                            <option value="vue">Vue.js</option>
+                                            <option value="nodejs">Node.js</option>
+                                            <option value="sql">SQL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="priority" class="form-label">Priority Level (Single)</label>
+                                    <div class="multi-select-container">
+                                        <select id="priority" name="priority" class="d-none">
+                                            <option value="">Choose priority...</option>
+                                            <option value="low">Low Priority</option>
+                                            <option value="medium" selected>Medium Priority</option>
+                                            <option value="high">High Priority</option>
+                                            <option value="urgent">Urgent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="categories" class="form-label">Categories (No Search)</label>
+                                    <div class="multi-select-container">
+                                        <select id="categories" name="categories" multiple class="d-none" data-search="false">
+                                            <option value="tech">Technology</option>
+                                            <option value="health">Healthcare</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="education">Education</option>
+                                            <option value="retail">Retail</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Advanced Examples -->
+                <div class="card mb-5">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="card-title mb-0">
+                            <i class="bi bi-gear me-2"></i>Advanced Features
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="advancedForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="maxSelect" class="form-label">Max 3 Selections</label>
+                                    <div class="multi-select-container">
+                                        <select id="maxSelect" name="maxSelect" multiple class="d-none">
+                                            <option value="option1">Option 1</option>
+                                            <option value="option2">Option 2</option>
+                                            <option value="option3">Option 3</option>
+                                            <option value="option4">Option 4</option>
+                                            <option value="option5">Option 5</option>
+                                            <option value="option6">Option 6</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-text">You can select a maximum of 3 options.</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="remoteSelect" class="form-label">Remote Data Loading</label>
+                                    <div class="multi-select-container">
+                                        <select id="remoteSelect" name="remoteSelect" multiple class="d-none">
+                                            <!-- Options loaded dynamically -->
+                                        </select>
+                                    </div>
+                                    <div class="form-text">Type to search and load data dynamically.</div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="customPlaceholder" class="form-label">Custom Styling</label>
+                                    <div class="multi-select-container">
+                                        <select id="customPlaceholder" name="customPlaceholder" multiple class="d-none">
+                                            <option value="red">Red</option>
+                                            <option value="green">Green</option>
+                                            <option value="blue">Blue</option>
+                                            <option value="yellow">Yellow</option>
+                                            <option value="purple">Purple</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-4">
+                                    <label for="dynamicOptions" class="form-label">Dynamic Options</label>
+                                    <div class="multi-select-container">
+                                        <select id="dynamicOptions" name="dynamicOptions" multiple class="d-none">
+                                            <option value="initial1">Initial Option 1</option>
+                                            <option value="initial2">Initial Option 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-text">Options can be added/removed dynamically.</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Control Buttons -->
+                <div class="card mb-5">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="card-title mb-0">
+                            <i class="bi bi-toggles me-2"></i>Controls & API Demo
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <button type="button" class="btn btn-primary" onclick="toggleTheme()">
+                                <i class="bi bi-palette"></i> Toggle Dark Mode
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetAll()">
+                                <i class="bi bi-arrow-clockwise"></i> Reset All
+                            </button>
+                            <button type="button" class="btn btn-info" onclick="loadServerData()">
+                                <i class="bi bi-cloud-download"></i> Load Server Data
+                            </button>
+                            <button type="button" class="btn btn-success" onclick="addDynamicOption()">
+                                <i class="bi bi-plus-circle"></i> Add Option
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="removeDynamicOption()">
+                                <i class="bi bi-dash-circle"></i> Remove Option
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" onclick="getValues()">
+                                <i class="bi bi-list-check"></i> Get Values
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="setValues()">
+                                <i class="bi bi-pencil-square"></i> Set Values
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-light border" id="apiResults">
+                            <h6 class="alert-heading">API Results</h6>
+                            <p class="mb-0">Click the buttons above to test the API methods.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Display -->
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="card-title mb-0">
+                            <i class="bi bi-list-ul me-2"></i>Selected Values
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="results">
+                            <p class="text-muted">Make some selections above to see the results here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- MultiSelect JS -->
+    <script src="script.js"></script>
+    
+    <!-- Demo Script -->
+    <script>
+        let multiSelectInstances = new Map();
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMultiSelects();
+            setupEventListeners();
+            updateResults();
+        });
+        
+        function initializeMultiSelects() {
+            // Basic multi-selects
+            const countriesSelect = new MultiSelect('#countries');
+            const skillsSelect = new MultiSelect('#skills');
+            const prioritySelect = new MultiSelect('#priority');
+            const categoriesSelect = new MultiSelect('#categories');
+            
+            // Advanced multi-selects
+            const maxSelect = new MultiSelect('#maxSelect', {
+                maxSelection: 3,
+                selectAll: true,
+                clearAll: true
+            });
+            
+            const remoteSelect = new MultiSelect('#remoteSelect', {
+                remote: async function(query) {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    
+                    const mockData = [
+                        { value: 'item1', text: `Search Result 1 for "${query}"` },
+                        { value: 'item2', text: `Search Result 2 for "${query}"` },
+                        { value: 'item3', text: `Search Result 3 for "${query}"` },
+                        { value: 'item4', text: `Search Result 4 for "${query}"` },
+                        { value: 'item5', text: `Search Result 5 for "${query}"` }
+                    ];
+                    
+                    return query ? mockData : [
+                        { value: 'default1', text: 'Default Option 1' },
+                        { value: 'default2', text: 'Default Option 2' },
+                        { value: 'default3', text: 'Default Option 3' }
+                    ];
+                }
+            });
+            
+            const customSelect = new MultiSelect('#customPlaceholder', {
+                placeholder: 'Pick your favorite colors...',
+                noResultsText: 'No colors found',
+                selectAllText: 'All Colors',
+                clearAllText: 'Clear Colors'
+            });
+            
+            const dynamicSelect = new MultiSelect('#dynamicOptions');
+            
+            // Store instances for later use
+            multiSelectInstances.set('countries', countriesSelect);
+            multiSelectInstances.set('skills', skillsSelect);
+            multiSelectInstances.set('priority', prioritySelect);
+            multiSelectInstances.set('categories', categoriesSelect);
+            multiSelectInstances.set('maxSelect', maxSelect);
+            multiSelectInstances.set('remoteSelect', remoteSelect);
+            multiSelectInstances.set('customPlaceholder', customSelect);
+            multiSelectInstances.set('dynamicOptions', dynamicSelect);
+        }
+        
+        function setupEventListeners() {
+            // Listen to all multi-select change events
+            multiSelectInstances.forEach((instance, key) => {
+                instance.element.addEventListener('change', updateResults);
+                
+                // Listen to custom events for demo
+                instance.element.addEventListener('multiselect:maxselection', (e) => {
+                    showAlert(`Maximum ${e.detail.maxSelection} selections allowed!`, 'warning');
+                });
+                
+                instance.element.addEventListener('multiselect:open', () => {
+                    console.log(`${key} dropdown opened`);
+                });
+                
+                instance.element.addEventListener('multiselect:close', () => {
+                    console.log(`${key} dropdown closed`);
+                });
+            });
+        }
+        
+        function updateResults() {
+            const results = document.getElementById('results');
+            let html = '<div class="row">';
+            
+            multiSelectInstances.forEach((instance, key) => {
+                const value = instance.getValue();
+                const label = document.querySelector(`label[for="${key}"]`)?.textContent || key;
+                
+                html += `<div class="col-md-6 mb-3">`;
+                html += `<h6>${label}:</h6>`;
+                
+                if (instance.isMultiple) {
+                    if (Array.isArray(value) && value.length > 0) {
+                        const options = value.map(v => {
+                            const option = instance.element.querySelector(`option[value="${v}"]`);
+                            return option ? option.text : v;
+                        });
+                        html += options.map(text => `<span class="badge bg-primary me-1 mb-1">${text}</span>`).join('');
+                    } else {
+                        html += '<span class="text-muted fst-italic">None selected</span>';
+                    }
+                } else {
+                    if (value) {
+                        const option = instance.element.querySelector(`option[value="${value}"]`);
+                        const text = option ? option.text : value;
+                        html += `<span class="badge bg-success">${text}</span>`;
+                    } else {
+                        html += '<span class="text-muted fst-italic">None selected</span>';
+                    }
+                }
+                
+                html += `</div>`;
+            });
+            
+            html += '</div>';
+            results.innerHTML = html;
+        }
+        
+        // Control Functions
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', newTheme);
+            
+            updateApiResults(`Theme switched to ${newTheme} mode`);
+        }
+        
+        function resetAll() {
+            multiSelectInstances.forEach(instance => {
+                instance.reset();
+            });
+            updateResults();
+            updateApiResults('All multi-selects have been reset to their initial state');
+        }
+        
+        async function loadServerData() {
+            const instance = multiSelectInstances.get('countries');
+            if (instance) {
+                // Simulate server data
+                const mockServerData = [
+                    { value: 'server1', text: 'Server Option 1', selected: true },
+                    { value: 'server2', text: 'Server Option 2' },
+                    { value: 'server3', text: 'Server Option 3' },
+                    { value: 'server4', text: 'Server Option 4' },
+                    { value: 'server5', text: 'Server Option 5' }
+                ];
+                
+                instance.populateOptions(mockServerData);
+                updateResults();
+                updateApiResults('Server data loaded successfully into Countries select');
+            }
+        }
+        
+        function addDynamicOption() {
+            const instance = multiSelectInstances.get('dynamicOptions');
+            if (instance) {
+                const timestamp = Date.now();
+                const newOption = {
+                    value: `dynamic_${timestamp}`,
+                    text: `Dynamic Option ${timestamp}`,
+                    selected: false
+                };
+                
+                instance.addOption(newOption);
+                updateResults();
+                updateApiResults(`Added new option: ${newOption.text}`);
+            }
+        }
+        
+        function removeDynamicOption() {
+            const instance = multiSelectInstances.get('dynamicOptions');
+            if (instance && instance.element.options.length > 0) {
+                const lastOption = instance.element.options[instance.element.options.length - 1];
+                const optionText = lastOption.text;
+                
+                instance.removeOption(lastOption.value);
+                updateResults();
+                updateApiResults(`Removed option: ${optionText}`);
+            } else {
+                updateApiResults('No options to remove', 'warning');
+            }
+        }
+        
+        function getValues() {
+            let results = '<h6>Current Values:</h6><ul>';
+            
+            multiSelectInstances.forEach((instance, key) => {
+                const value = instance.getValue();
+                const label = document.querySelector(`label[for="${key}"]`)?.textContent || key;
+                results += `<li><strong>${label}:</strong> ${JSON.stringify(value)}</li>`;
+            });
+            
+            results += '</ul>';
+            updateApiResults(results);
+        }
+        
+        function setValues() {
+            // Set some demo values
+            const countriesInstance = multiSelectInstances.get('countries');
+            const skillsInstance = multiSelectInstances.get('skills');
+            const priorityInstance = multiSelectInstances.get('priority');
+            
+            if (countriesInstance) {
+                countriesInstance.setValue(['us', 'ca', 'uk']);
+            }
+            
+            if (skillsInstance) {
+                skillsInstance.setValue(['javascript', 'react', 'nodejs']);
+            }
+            
+            if (priorityInstance) {
+                priorityInstance.setValue('high');
+            }
+            
+            updateResults();
+            updateApiResults('Demo values have been set programmatically');
+        }
+        
+        function updateApiResults(message, type = 'info') {
+            const resultsDiv = document.getElementById('apiResults');
+            const alertClass = type === 'warning' ? 'alert-warning' : 
+                             type === 'error' ? 'alert-danger' : 
+                             type === 'success' ? 'alert-success' : 'alert-info';
+            
+            resultsDiv.className = `alert ${alertClass} border`;
+            resultsDiv.innerHTML = `
+                <h6 class="alert-heading">API Results</h6>
+                <div>${message}</div>
+                <small class="text-muted">${new Date().toLocaleTimeString()}</small>
+            `;
+        }
+        
+        function showAlert(message, type = 'info') {
+            // Create toast notification
+            const toastHtml = `
+                <div class="toast align-items-center text-white bg-${type === 'warning' ? 'warning' : 'primary'} border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            // Add toast container if it doesn't exist
+            let toastContainer = document.querySelector('.toast-container');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+                document.body.appendChild(toastContainer);
+            }
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toast = toastContainer.lastElementChild;
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            // Remove from DOM after hiding
+            toast.addEventListener('hidden.bs.toast', () => {
+                toast.remove();
+            });
+        }
+        
+        // Form validation demo
+        document.getElementById('basicForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            multiSelectInstances.forEach(instance => {
+                if (!instance.validate()) {
+                    isValid = false;
+                }
+            });
+            
+            if (isValid) {
+                showAlert('Form validation passed!', 'success');
+                updateApiResults('Form submitted successfully with validation');
+            } else {
+                showAlert('Please fix the validation errors', 'warning');
+                updateApiResults('Form validation failed', 'error');
+            }
+        });
+        
+        // Auto-save demo (optional)
+        let autoSaveTimeout;
+        multiSelectInstances.forEach(instance => {
+            instance.element.addEventListener('change', () => {
+                clearTimeout(autoSaveTimeout);
+                autoSaveTimeout = setTimeout(() => {
+                    // Simulate auto-save
+                    console.log('Auto-saving form data...');
+                    updateApiResults('Form data auto-saved', 'success');
+                }, 2000);
+            });
+        });
+        
+        // Keyboard shortcuts demo
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + R to reset all
+            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                e.preventDefault();
+                resetAll();
+            }
+            
+            // Ctrl/Cmd + T to toggle theme
+            if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+        
+        // Performance monitoring (optional)
+        if (typeof performance !== 'undefined' && performance.mark) {
+            performance.mark('multiselect-init-start');
+            
+            window.addEventListener('load', () => {
+                performance.mark('multiselect-init-end');
+                performance.measure('multiselect-init', 'multiselect-init-start', 'multiselect-init-end');
+                
+                const measure = performance.getEntriesByName('multiselect-init')[0];
+                console.log(`MultiSelect initialization took ${measure.duration.toFixed(2)}ms`);
+            });
+        }
+    </script>
+    
+    <style>
+        /* Additional demo styles */
+        .card-header {
+            font-weight: 600;
+        }
+        
+        .badge {
+            font-size: 0.8em;
+        }
+        
+        .form-text {
+            font-size: 0.875em;
+        }
+        
+        .toast-container {
+            z-index: 2000;
+        }
+        
+        /* Custom animations */
+        .multi-select-container {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Loading state */
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .d-flex.flex-wrap.gap-2 .btn {
+                flex: 1;
+                min-width: 120px;
+            }
+        }
+    </style>
+</body>
+</html>
