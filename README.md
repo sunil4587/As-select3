@@ -1,6 +1,6 @@
-# MultiSelect Library v2.0.0
+# MultiSelect v2.1.0
 
-A powerful, flexible multi-select component for Bootstrap 5 with jQuery 3.3+ integration.
+A lightweight, optimized multi-select component for Bootstrap 5 with jQuery 3.3+ integration.
 
 ## ✨ Features
 

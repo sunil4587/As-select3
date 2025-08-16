@@ -1,28 +1,13 @@
 /**
- * MultiSelect Library - JavaScript
- * A powerful, flexible multi-select component for Bootstrap 5
- * Version: 2.0.0
+ * MultiSelect - A powerful, flexible multi-select component for Bootstrap 5
+ * Version: 2.1.0
  * 
- * Features:
- * - Single and multiple selection modes
- * - Search/filter functionality
- * - Remote data loading
- * - Keyboard navigation
- * - Accessibility support
- * - Customizable styling
- * - Form validation support
- * - jQuery 3.3+ optimized
+ * Features: Single/multiple selection, search, remote data, keyboard navigation,
+ * accessibility, validation support
  * 
- * Dependencies:
- * - jQuery 3.3+
- * - Bootstrap 5.3+ (for icons and styling variables)
+ * Dependencies: jQuery 3.3+, Bootstrap 5.3+ 
  * 
- * Usage:
- * $('#mySelect').multiSelect({
- *   searchable: true,
- *   selectAll: true,
- *   maxSelection: 5
- * });
+ * Usage: $('#select').multiSelect({ searchable: true, selectAll: true });
  */
 
 (function($) {
@@ -31,15 +16,12 @@
     class MultiSelect {
         constructor(element, options = {}) {
             this.$element = $(element);
-            if (this.$element.length === 0) {
-                throw new Error(`MultiSelect: Element "${element}" not found`);
-            }
+            if (this.$element.length === 0) throw new Error(`MultiSelect: Element "${element}" not found`);
             
             this.element = this.$element[0];
             this.$container = this.$element.closest('.multi-select-container');
             
             if (this.$container.length === 0) {
-                // Create container if it doesn't exist
                 this.$container = $('<div class="multi-select-container"></div>');
                 this.$element.parent().insertBefore(this.$container);
                 this.$container.append(this.$element);
@@ -120,16 +102,13 @@
         
         createSearchBox() {
             const $searchContainer = $('<div class="multi-select-search"></div>');
-            
-            // Create search input wrapped in a container for positioning
             const $inputWrapper = $('<div class="position-relative w-100"></div>');
+            
             this.$searchInput = $('<input type="text" class="form-control form-control-sm" role="searchbox" aria-label="Search options">')
                 .attr('placeholder', this.options.searchPlaceholder);
             
-            // Add clear search icon - simple X icon at the end of input
             const $searchClearBtn = $('<i class="bi bi-x multi-select-search-clear" aria-label="Clear search"></i>');
             
-            // Append in the correct order for proper positioning
             $inputWrapper.append(this.$searchInput).append($searchClearBtn);
             $searchContainer.append($inputWrapper);
             this.$dropdown.append($searchContainer);
@@ -206,9 +185,8 @@
             this.$container.on('click', '.multi-select-clear', (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                console.log('Clear icon clicked - clearing single selection');
                 this.clearSingleSelection();
-                return false; // Ensure no other handlers are triggered
+                return false;
             });
 
             // Delegated event for multi-select tag remove icon
@@ -217,22 +195,20 @@
                 e.preventDefault();
                 const $tag = $(e.target).closest('.multi-select-tag');
                 const value = $tag.data('value');
-                console.log('Remove tag clicked - removing tag with value:', value);
                 if (value) {
                     this.removeTag(value);
                 }
-                return false; // Ensure no other handlers are triggered
+                return false;
             });
             
             // Delegated event for search clear icon
             this.$container.on('click', '.multi-select-search-clear', (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                console.log('Search clear icon clicked');
                 if (this.$searchInput) {
                     this.$searchInput.val('').trigger('input').focus();
                 }
-                return false; // Ensure no other handlers are triggered
+                return false;
             });
             
             this.$trigger.on('keydown', (e) => {
@@ -442,8 +418,6 @@
             const $options = this.$optionsContainer.find('.multi-select-option').not('.multi-select-no-results, .multi-select-loading');
             let hasVisibleOptions = false;
             
-            // We don't need to manually toggle clear icon visibility anymore - CSS handles it
-            
             $options.each((index, option) => {
                 const $option = $(option);
                 const text = $option.text().toLowerCase();
@@ -466,8 +440,8 @@
                 const results = await this.options.remote(query);
                 this.populateOptions(results);
             } catch (error) {
-                console.error('MultiSelect remote search error:', error);
                 this.showNoResults();
+                this.$element.trigger('multiselect:error', { error });
             } finally {
                 this.hideLoading();
             }
@@ -477,9 +451,9 @@
             this.isLoading = true;
             this.hideNoResults();
             
-            let $loadingElement = this.$optionsContainer.find('.multi-select-loading');
-            if ($loadingElement.length === 0) {
-                $loadingElement = $(`<div class="multi-select-loading"><div class="spinner"></div>${this.options.loadingText}</div>`);
+            const loadingSelector = '.multi-select-loading';
+            if (!this.$optionsContainer.find(loadingSelector).length) {
+                const $loadingElement = $(`<div class="${loadingSelector.substring(1)}"><div class="spinner"></div>${this.options.loadingText}</div>`);
                 this.$optionsContainer.append($loadingElement);
             }
         }
@@ -490,12 +464,14 @@
         }
         
         toggleNoResults(show) {
-            let $noResultsMsg = this.$optionsContainer.find('.multi-select-no-results');
+            const noResultsSelector = '.multi-select-no-results';
+            const $noResultsMsg = this.$optionsContainer.find(noResultsSelector);
             
-            if (show && $noResultsMsg.length === 0) {
-                $noResultsMsg = $(`<div class="multi-select-no-results"><i class="bi bi-search me-2"></i>${this.options.noResultsText}</div>`);
-                this.$optionsContainer.append($noResultsMsg);
-            } else if (!show && $noResultsMsg.length > 0) {
+            if (show && !$noResultsMsg.length) {
+                this.$optionsContainer.append(
+                    $(`<div class="${noResultsSelector.substring(1)}"><i class="bi bi-search me-2"></i>${this.options.noResultsText}</div>`)
+                );
+            } else if (!show && $noResultsMsg.length) {
                 $noResultsMsg.remove();
             }
         }
@@ -677,9 +653,8 @@
                 
                 this.$element.trigger('multiselect:dataloaded', { data: data });
             } catch (error) {
-                console.error('Error loading data:', error);
                 this.showNoResults();
-                this.$element.trigger('multiselect:dataerror', { error: error });
+                this.$element.trigger('multiselect:dataerror', { error });
             } finally {
                 this.hideLoading();
             }
@@ -721,25 +696,15 @@
         
         createTag(text, value) {
             const $tag = $('<span class="multi-select-tag" data-value="' + value + '"></span>');
-            
             const $tagText = $('<span class="multi-select-tag-text"></span>').text(text).attr('title', text);
-            
-            // Don't add click handler here - use the delegated handler in bindEvents instead
             const $removeBtn = $('<i class="bi bi-x multi-select-tag-remove" aria-label="Remove ' + text + '"></i>');
             
-            $tag.append($tagText).append($removeBtn);
-            
-            return $tag;
+            return $tag.append($tagText).append($removeBtn);
         }
         
         removeTag(value) {
-            console.log('removeTag called with value:', value);
             const $option = this.$element.find(`option[value="${value}"]`);
             const $optionElement = this.$optionsContainer.find(`[data-value="${value}"]`);
-            
-            // Ensure proper element selections
-            console.log('Found option:', $option.length > 0);
-            console.log('Found option element:', $optionElement.length > 0);
             
             if ($option.length) {
                 $option.prop('selected', false);
@@ -756,24 +721,17 @@
                     $optionElement.removeClass('selected').attr('aria-selected', 'false');
                 }
                 
-                // Force UI update
                 this.updateSelection();
                 this.$element.trigger('change').trigger('multiselect:tagremoved', { value: value });
             }
         }
         
         clearSingleSelection() {
-            console.log('clearSingleSelection called');
-            // Clear the single selected value
             this.selectedValue = null;
             this.$element.find('option').prop('selected', false);
             this.$optionsContainer.find('.multi-select-option').removeClass('selected').attr('aria-selected', 'false');
-            
-            // Force UI update
             this.updateSelection();
             this.$element.trigger('change').trigger('multiselect:cleared');
-            
-            console.log('Selection cleared');
         }
         
         clearSelection() {
@@ -915,18 +873,13 @@
     
     // Auto-initialization
     MultiSelect.autoInit = function(selector = '.multi-select-container select') {
-        const $elements = $(selector);
-        const instances = [];
-        
-        $elements.each(function() {
-            if (!this._multiSelect) {
-                const instance = new MultiSelect(this);
-                this._multiSelect = instance;
-                instances.push(instance);
-            }
-        });
-        
-        return instances;
+        return $(selector).filter(function() {
+            return !this._multiSelect;
+        }).map(function() {
+            const instance = new MultiSelect(this);
+            this._multiSelect = instance;
+            return instance;
+        }).get();
     };
     
     // Expose to global scope
