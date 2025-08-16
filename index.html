@@ -1,681 +1,953 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select3 Library - Example</title>
+    <title>Select - Modern JavaScript Select Library</title>
+    <meta name="description" content="The most advanced select library for modern web applications. Lightweight, accessible, and developer-friendly with stunning animations and powerful features.">
+    <meta name="keywords" content="javascript, select, dropdown, multi-select, search, accessibility, modern, library">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Select - Modern JavaScript Select Library">
+    <meta property="og:description" content="Revolutionary select components with stunning animations and modern design.">
+    <meta property="og:type" content="website">
     
     <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
-    <!-- Select3 CSS -->
-    <link href="select3.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="text-center mb-5">
-                    <h1 class="display-4 mb-3">Select3 Library</h1>
-                    <p class="lead text-muted">A powerful, flexible multi-select component for Bootstrap 5</p>
-                    <div class="d-flex justify-content-center gap-2">
-                        <span class="badge bg-primary">Bootstrap 5</span>
-                        <span class="badge bg-success">Accessible</span>
-                        <span class="badge bg-info">Keyboard Navigation</span>
-                        <span class="badge bg-warning text-dark">Remote Data</span>
-                    </div>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
+                <span class="fw-bold fs-3 gradient-text">Select</span>
+                <span class="badge bg-primary ms-2">v3.0</span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto ms-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#installation">Install</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#use-cases">Use Cases</a>
+                    </li>
+                </ul>
                 
-                <!-- Basic Examples -->
-                <div class="card mb-5">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="card-title mb-0">
-                            <i class="bi bi-ui-checks me-2"></i>Basic Examples
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form id="basicForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label for="countries" class="form-label">Countries (Multiple)</label>
-                                    <div class="select3-container">
-                                        <select id="countries" name="countries" multiple class="d-none" required>
-                                            <option value="us">United States</option>
-                                            <option value="uk">United Kingdom</option>
-                                            <option value="ca">Canada</option>
-                                            <option value="au">Australia</option>
-                                            <option value="de">Germany</option>
-                                            <option value="fr">France</option>
-                                            <option value="jp">Japan</option>
-                                            <option value="in">India</option>
-                                            <option value="br">Brazil</option>
-                                            <option value="mx">Mexico</option>
-                                        </select>
-                                    </div>
-                                    <div class="invalid-feedback">Please select at least one country.</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="skills" class="form-label">Programming Skills</label>
-                                    <div class="select3-container">
-                                        <select id="skills" name="skills" multiple class="d-none">
-                                            <option value="javascript" selected>JavaScript</option>
-                                            <option value="python">Python</option>
-                                            <option value="java">Java</option>
-                                            <option value="csharp">C#</option>
-                                            <option value="php" selected>PHP</option>
-                                            <option value="react">React</option>
-                                            <option value="angular">Angular</option>
-                                            <option value="vue">Vue.js</option>
-                                            <option value="nodejs">Node.js</option>
-                                            <option value="sql">SQL</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="priority" class="form-label">Priority Level (Single)</label>
-                                    <div class="select3-container">
-                                        <select id="priority" name="priority" class="d-none">
-                                            <option value="">Choose priority...</option>
-                                            <option value="low">Low Priority</option>
-                                            <option value="medium" selected>Medium Priority</option>
-                                            <option value="high">High Priority</option>
-                                            <option value="urgent">Urgent</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="categories" class="form-label">Categories (No Search)</label>
-                                    <div class="select3-container">
-                                        <select id="categories" name="categories" multiple class="d-none" data-search="false">
-                                            <option value="tech">Technology</option>
-                                            <option value="health">Healthcare</option>
-                                            <option value="finance">Finance</option>
-                                            <option value="education">Education</option>
-                                            <option value="retail">Retail</option>
-                                        </select>
-                                    </div>
-                                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-link p-0 theme-toggle" title="Toggle theme">
+                        <i class="bi bi-moon-stars-fill fs-5" id="theme-icon"></i>
+                    </button>
+                    <a href="https://github.com/yourusername/select" class="btn btn-outline-primary" target="_blank">
+                        <i class="bi bi-github me-2"></i>
+                        GitHub
+                    </a>
+                    <button class="btn btn-primary get-started-btn">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="floating-element" style="--delay: 0s; --size: 40px; left: 15%;"></div>
+            <div class="floating-element" style="--delay: 2s; --size: 60px; left: 75%;"></div>
+            <div class="floating-element" style="--delay: 4s; --size: 30px; left: 55%;"></div>
+            <div class="floating-element" style="--delay: 6s; --size: 50px; left: 25%;"></div>
+            <div class="floating-element" style="--delay: 8s; --size: 35px; left: 85%;"></div>
+        </div>
+        
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <!-- Status Badge -->
+                        <div class="mb-4">
+                            <div class="feature-badge">
+                                <i class="bi bi-lightning-charge-fill me-2"></i>
+                                Now Available - Select v3.0
                             </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <!-- Advanced Examples -->
-                <div class="card mb-5">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="card-title mb-0">
-                            <i class="bi bi-gear me-2"></i>Advanced Features
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form id="advancedForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label for="maxSelect" class="form-label">Max 3 Selections</label>
-                                    <div class="select3-container">
-                                        <select id="maxSelect" name="maxSelect" multiple class="d-none">
-                                            <option value="option1">Option 1</option>
-                                            <option value="option2">Option 2</option>
-                                            <option value="option3">Option 3</option>
-                                            <option value="option4">Option 4</option>
-                                            <option value="option5">Option 5</option>
-                                            <option value="option6">Option 6</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-text">You can select a maximum of 3 options.</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="remoteSelect" class="form-label">Remote Data Loading</label>
-                                    <div class="select3-container">
-                                        <select id="remoteSelect" name="remoteSelect" multiple class="d-none">
-                                            <!-- Options loaded dynamically -->
-                                        </select>
-                                    </div>
-                                    <div class="form-text">Type to search and load data dynamically.</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="customPlaceholder" class="form-label">Custom Styling</label>
-                                    <div class="select3-container">
-                                        <select id="customPlaceholder" name="customPlaceholder" multiple class="d-none">
-                                            <option value="red">Red</option>
-                                            <option value="green">Green</option>
-                                            <option value="blue">Blue</option>
-                                            <option value="yellow">Yellow</option>
-                                            <option value="purple">Purple</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="dynamicOptions" class="form-label">Dynamic Options</label>
-                                    <div class="select3-container">
-                                        <select id="dynamicOptions" name="dynamicOptions" multiple class="d-none">
-                                            <option value="initial1">Initial Option 1</option>
-                                            <option value="initial2">Initial Option 2</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-text">Options can be added/removed dynamically.</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="iconOptions" class="form-label">Options with Icons & Images</label>
-                                    <div class="select3-container">
-                                        <select id="iconOptions" name="iconOptions" multiple class="d-none">
-                                            <!-- Populated with JavaScript -->
-                                        </select>
-                                    </div>
-                                    <div class="form-text">Options can include icons and profile images.</div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-4">
-                                    <label for="profileOptions" class="form-label">Team Members with Profile Pictures</label>
-                                    <div class="select3-container">
-                                        <select id="profileOptions" name="profileOptions" multiple class="d-none">
-                                            <!-- Populated with JavaScript -->
-                                        </select>
-                                    </div>
-                                    <div class="form-text">Dynamic profile pictures that change on each refresh.</div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <!-- Control Buttons -->
-                <div class="card mb-5">
-                    <div class="card-header bg-warning text-dark">
-                        <h4 class="card-title mb-0">
-                            <i class="bi bi-toggles me-2"></i>Controls & API Demo
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex flex-wrap gap-2 mb-4">
-                            <button type="button" class="btn btn-primary" onclick="toggleTheme()">
-                                <i class="bi bi-palette"></i> Toggle Dark Mode
-                            </button>
-                            <button type="button" class="btn btn-secondary" onclick="resetAll()">
-                                <i class="bi bi-arrow-clockwise"></i> Reset All
-                            </button>
-                            <button type="button" class="btn btn-info" onclick="loadServerData()">
-                                <i class="bi bi-cloud-download"></i> Load Server Data
-                            </button>
-                            <button type="button" class="btn btn-success" onclick="addDynamicOption()">
-                                <i class="bi bi-plus-circle"></i> Add Option
-                            </button>
-                            <button type="button" class="btn btn-danger" onclick="removeDynamicOption()">
-                                <i class="bi bi-dash-circle"></i> Remove Option
-                            </button>
-                            <button type="button" class="btn btn-outline-primary" onclick="getValues()">
-                                <i class="bi bi-list-check"></i> Get Values
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary" onclick="setValues()">
-                                <i class="bi bi-pencil-square"></i> Set Values
-                            </button>
                         </div>
                         
-                        <div class="alert alert-light border" id="apiResults">
-                            <h6 class="alert-heading">API Results</h6>
-                            <p class="mb-0">Click the buttons above to test the API methods.</p>
+                        <!-- Main Title -->
+                        <h1 class="hero-title mb-4">
+                            The Future of
+                            <span class="title-highlight d-block">
+                                Select Components
+                            </span>
+                        </h1>
+                        
+                        <!-- Subtitle -->
+                        <p class="hero-subtitle mb-4">
+                            Revolutionary design meets cutting-edge functionality. Select transforms 
+                            ordinary dropdowns into extraordinary user experiences with stunning animations, 
+                            perfect accessibility, and intuitive interactions.
+                        </p>
+                        
+                        <!-- Feature Pills -->
+                        <div class="feature-pills mb-5">
+                            <div class="feature-pill">
+                                <div class="pill-dot bg-success"></div>
+                                <span>Lightweight</span>
+                            </div>
+                            <div class="feature-pill">
+                                <div class="pill-dot bg-warning"></div>
+                                <span>Accessible</span>
+                            </div>
+                            <div class="feature-pill">
+                                <div class="pill-dot bg-info"></div>
+                                <span>Modern Design</span>
+                            </div>
+                            <div class="feature-pill">
+                                <div class="pill-dot bg-primary"></div>
+                                <span>Developer Friendly</span>
+                            </div>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="hero-actions mb-5">
+                            <button class="btn btn-hero-primary me-3">
+                                <i class="bi bi-play-circle-fill me-2"></i>
+                                Try Interactive Demo
+                            </button>
+                            <button class="btn btn-hero-secondary">
+                                <i class="bi bi-github me-2"></i>
+                                View on GitHub
+                            </button>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-number">4.9★</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-number">12KB</div>
+                                <div class="stat-label">Min Size</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Results Display -->
-                <div class="card">
-                    <div class="card-header bg-info text-white">
-                        <h4 class="card-title mb-0">
-                            <i class="bi bi-list-ul me-2"></i>Selected Values
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="results">
-                            <p class="text-muted">Make some selections above to see the results here.</p>
+                <div class="col-lg-6">
+                    <div class="hero-demo-container">
+                        <div class="hero-demo glass-card">
+                            <div class="demo-header">
+                                <div class="demo-controls">
+                                    <div class="demo-dot red"></div>
+                                    <div class="demo-dot yellow"></div>
+                                    <div class="demo-dot green"></div>
+                                </div>
+                                <div class="demo-title">
+                                    <i class="bi bi-lightning-charge me-2"></i>
+                                    Live Interactive Demo
+                                </div>
+                                <div class="pulse-dot"></div>
+                            </div>
+                            
+                            <div class="demo-content">
+                                <div class="demo-label mb-3">Choose Your Favorite Frameworks:</div>
+                                <div class="mock-select">
+                                    <div class="selected-items">
+                                        <span class="selected-tag">⚛️ React</span>
+                                        <span class="selected-tag">💚 Vue.js</span>
+                                        <span class="selected-tag">🅰️ Angular</span>
+                                    </div>
+                                    <div class="search-placeholder">Type to search for more frameworks...</div>
+                                </div>
+                                
+                                <div class="demo-info mt-3">
+                                    <div class="info-item">
+                                        <i class="bi bi-check-circle-fill text-success me-1"></i>
+                                        <small>Keyboard navigation enabled</small>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="bi bi-search me-1 text-info"></i>
+                                        <small>Type to search instantly</small>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- jQuery 3.3+ -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Select3 JS -->
-    <script src="select3.min.js"></script>
-    
-    <!-- Demo Script -->
-    <script>
-        let select3Instances = new Map();
-        
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeSelect3s();
-            setupEventListeners();
-            updateResults();
-        });
-        
-        function initializeSelect3s() {
-            // Basic select3s
-            const countriesSelect = $('#countries').select3()[0]._select3;
-            const skillsSelect = $('#skills').select3()[0]._select3;
-            const prioritySelect = $('#priority').select3()[0]._select3;
-            const categoriesSelect = $('#categories').select3()[0]._select3;
+    <!-- Trust Section -->
+    <section id="trust" class="trust-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h4 class="fw-bold mb-3">
+                    Trusted By More Than <span class="text-primary">+10,000</span> Developers
+                </h4>
+                <p class="text-muted">Works seamlessly with all modern JavaScript frameworks and libraries</p>
+            </div>
             
-            // Advanced select3s
-            const maxSelect = $('#maxSelect').select3({
-                maxSelection: 3,
-                selectAll: true,
-                clearAll: true
-            })[0]._select3;
-            
-            const remoteSelect = $('#remoteSelect').select3({
-                remote: async function(query) {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    
-                    const mockData = [
-                        { value: 'item1', text: `Search Result 1 for "${query}"` },
-                        { value: 'item2', text: `Search Result 2 for "${query}"` },
-                        { value: 'item3', text: `Search Result 3 for "${query}"` },
-                        { value: 'item4', text: `Search Result 4 for "${query}"` },
-                        { value: 'item5', text: `Search Result 5 for "${query}"` }
-                    ];
-                    
-                    return query ? mockData : [
-                        { value: 'default1', text: 'Default Option 1' },
-                        { value: 'default2', text: 'Default Option 2' },
-                        { value: 'default3', text: 'Default Option 3' }
-                    ];
-                }
-            })[0]._select3;
-            
-            const customSelect = $('#customPlaceholder').select3({
-                placeholder: 'Pick your favorite colors...',
-                noResultsText: 'No colors found',
-                selectAllText: 'All Colors',
-                clearAllText: 'Clear Colors'
-            })[0]._select3;
-            
-            const dynamicSelect = $('#dynamicOptions').select3()[0]._select3;
-            
-            // Store instances for later use
-            select3Instances.set('countries', countriesSelect);
-            select3Instances.set('skills', skillsSelect);
-            select3Instances.set('priority', prioritySelect);
-            select3Instances.set('categories', categoriesSelect);
-            select3Instances.set('maxSelect', maxSelect);
-            select3Instances.set('remoteSelect', remoteSelect);
-            select3Instances.set('customPlaceholder', customSelect);
-            select3Instances.set('dynamicOptions', dynamicSelect);
-            
-            // Initialize icon options example
-            const iconOptionsSelect = $('#iconOptions').select3()[0]._select3;
-            select3Instances.set('iconOptions', iconOptionsSelect);
-            
-            // Populate with icon options
-            iconOptionsSelect.populateOptions([
-                { value: 'user1', text: 'John Smith', icon: 'bi bi-person-circle' },
-                { value: 'user2', text: 'Sarah Johnson', icon: 'bi bi-person-fill' },
-                { value: 'html', text: 'HTML', icon: 'bi bi-filetype-html' },
-                { value: 'css', text: 'CSS', icon: 'bi bi-filetype-css' },
-                { value: 'js', text: 'JavaScript', icon: 'bi bi-filetype-js' },
-                { value: 'github', text: 'GitHub', icon: 'bi bi-github' }
-            ]);
-            
-            // Initialize profile options with dynamic avatar images
-            const profileOptionsSelect = $('#profileOptions').select3({
-                placeholder: 'Select team members...',
-                selectAllText: 'Select All Members',
-                clearAllText: 'Clear Selection'
-            })[0]._select3;
-            select3Instances.set('profileOptions', profileOptionsSelect);
-            
-            // Populate with profile options using dynamic avatars
-            profileOptionsSelect.populateOptions([
-                { value: 'emma', text: 'Emma Watson', icon: 'https://avatar.iran.liara.run/public/girl?id=1', selected: true },
-                { value: 'john', text: 'John Doe', icon: 'https://avatar.iran.liara.run/public/boy?id=2' },
-                { value: 'sarah', text: 'Sarah Connor', icon: 'https://avatar.iran.liara.run/public/girl?id=3' },
-                { value: 'mike', text: 'Mike Johnson', icon: 'https://avatar.iran.liara.run/public/boy?id=4' },
-                { value: 'lisa', text: 'Lisa Anderson', icon: 'https://avatar.iran.liara.run/public/girl?id=5' },
-                { value: 'alex', text: 'Alex Thompson', icon: 'https://avatar.iran.liara.run/public/boy?id=6' },
-                { value: 'maria', text: 'Maria Garcia', icon: 'https://avatar.iran.liara.run/public/girl?id=7' },
-                { value: 'david', text: 'David Wilson', icon: 'https://avatar.iran.liara.run/public/boy?id=8' },
-                { value: 'anna', text: 'Anna Martinez', icon: 'https://avatar.iran.liara.run/public/girl?id=9' },
-                { value: 'james', text: 'James Brown', icon: 'https://avatar.iran.liara.run/public/boy?id=10' }
-            ]);
-        }
-        
-        function setupEventListeners() {
-            // Listen to all select3 change events
-            select3Instances.forEach((instance, key) => {
-                instance.element.addEventListener('change', updateResults);
-                
-                // Listen to custom events for demo
-                instance.element.addEventListener('select3:maxselection', (e) => {
-                    showAlert(`Maximum ${e.detail.maxSelection} selections allowed!`, 'warning');
-                });
-                
-                instance.element.addEventListener('select3:open', () => {
-                    console.log(`${key} dropdown opened`);
-                });
-                
-                instance.element.addEventListener('select3:close', () => {
-                    console.log(`${key} dropdown closed`);
-                });
-            });
-        }
-        
-        function updateResults() {
-            const results = document.getElementById('results');
-            let html = '<div class="row">';
-            
-            select3Instances.forEach((instance, key) => {
-                const value = instance.getValue();
-                const label = document.querySelector(`label[for="${key}"]`)?.textContent || key;
-                
-                html += `<div class="col-md-6 mb-3">`;
-                html += `<h6>${label}:</h6>`;
-                
-                if (instance.isMultiple) {
-                    if (Array.isArray(value) && value.length > 0) {
-                        const options = value.map(v => {
-                            const option = instance.element.querySelector(`option[value="${v}"]`);
-                            return option ? option.text : v;
-                        });
-                        html += options.map(text => `<span class="badge bg-primary me-1 mb-1">${text}</span>`).join('');
-                    } else {
-                        html += '<span class="text-muted fst-italic">None selected</span>';
-                    }
-                } else {
-                    if (value) {
-                        const option = instance.element.querySelector(`option[value="${value}"]`);
-                        const text = option ? option.text : value;
-                        html += `<span class="badge bg-success">${text}</span>`;
-                    } else {
-                        html += '<span class="text-muted fst-italic">None selected</span>';
-                    }
-                }
-                
-                html += `</div>`;
-            });
-            
-            html += '</div>';
-            results.innerHTML = html;
-        }
-        
-        // Control Functions
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-bs-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-bs-theme', newTheme);
-            
-            updateApiResults(`Theme switched to ${newTheme} mode`);
-        }
-        
-        function resetAll() {
-            select3Instances.forEach(instance => {
-                instance.reset();
-            });
-            updateResults();
-            updateApiResults('All select3s have been reset to their initial state');
-        }
-        
-        async function loadServerData() {
-            const instance = select3Instances.get('countries');
-            if (instance) {
-                // Simulate server data
-                const mockServerData = [
-                    { value: 'server1', text: 'Server Option 1', selected: true },
-                    { value: 'server2', text: 'Server Option 2' },
-                    { value: 'server3', text: 'Server Option 3' },
-                    { value: 'server4', text: 'Server Option 4' },
-                    { value: 'server5', text: 'Server Option 5' }
-                ];
-                
-                instance.populateOptions(mockServerData);
-                updateResults();
-                updateApiResults('Server data loaded successfully into Countries select');
-            }
-        }
-        
-        function addDynamicOption() {
-            const instance = select3Instances.get('dynamicOptions');
-            if (instance) {
-                const timestamp = Date.now();
-                const newOption = {
-                    value: `dynamic_${timestamp}`,
-                    text: `Dynamic Option ${timestamp}`,
-                    selected: false
-                };
-                
-                instance.addOption(newOption);
-                updateResults();
-                updateApiResults(`Added new option: ${newOption.text}`);
-            }
-        }
-        
-        function removeDynamicOption() {
-            const instance = select3Instances.get('dynamicOptions');
-            if (instance && instance.element.options.length > 0) {
-                const lastOption = instance.element.options[instance.element.options.length - 1];
-                const optionText = lastOption.text;
-                
-                instance.removeOption(lastOption.value);
-                updateResults();
-                updateApiResults(`Removed option: ${optionText}`);
-            } else {
-                updateApiResults('No options to remove', 'warning');
-            }
-        }
-        
-        function getValues() {
-            let results = '<h6>Current Values:</h6><ul>';
-            
-            select3Instances.forEach((instance, key) => {
-                const value = instance.getValue();
-                const label = document.querySelector(`label[for="${key}"]`)?.textContent || key;
-                results += `<li><strong>${label}:</strong> ${JSON.stringify(value)}</li>`;
-            });
-            
-            results += '</ul>';
-            updateApiResults(results);
-        }
-        
-        function setValues() {
-            // Set some demo values
-            const countriesInstance = select3Instances.get('countries');
-            const skillsInstance = select3Instances.get('skills');
-            const priorityInstance = select3Instances.get('priority');
-            
-            if (countriesInstance) {
-                countriesInstance.setValue(['us', 'ca', 'uk']);
-            }
-            
-            if (skillsInstance) {
-                skillsInstance.setValue(['javascript', 'react', 'nodejs']);
-            }
-            
-            if (priorityInstance) {
-                priorityInstance.setValue('high');
-            }
-            
-            updateResults();
-            updateApiResults('Demo values have been set programmatically');
-        }
-        
-        function updateApiResults(message, type = 'info') {
-            const resultsDiv = document.getElementById('apiResults');
-            const alertClass = type === 'warning' ? 'alert-warning' : 
-                             type === 'error' ? 'alert-danger' : 
-                             type === 'success' ? 'alert-success' : 'alert-info';
-            
-            resultsDiv.className = `alert ${alertClass} border`;
-            resultsDiv.innerHTML = `
-                <h6 class="alert-heading">API Results</h6>
-                <div>${message}</div>
-                <small class="text-muted">${new Date().toLocaleTimeString()}</small>
-            `;
-        }
-        
-        function showAlert(message, type = 'info') {
-            // Create toast notification
-            const toastHtml = `
-                <div class="toast align-items-center text-white bg-${type === 'warning' ? 'warning' : 'primary'} border-0" role="alert">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            ${message}
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            <div class="row g-3 justify-content-center align-items-center">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">⚛️</span>
+                        <span class="framework-name">React</span>
                     </div>
                 </div>
-            `;
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">💚</span>
+                        <span class="framework-name">Vue.js</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">🅰️</span>
+                        <span class="framework-name">Angular</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">🧡</span>
+                        <span class="framework-name">Svelte</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">▲</span>
+                        <span class="framework-name">Next.js</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="trust-logo">
+                        <span class="framework-icon">💚</span>
+                        <span class="framework-name">Nuxt.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 text-center">
+                <div class="col-md-4">
+                    <h5 class="text-primary fw-bold">50K+</h5>
+                    <p class="text-muted small">Weekly Downloads</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-success fw-bold">2.1K</h5>
+                    <p class="text-muted small">GitHub Stars</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-warning fw-bold">99.9%</h5>
+                    <p class="text-muted small">Uptime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-badge mb-3">
+                    ⭐ Why Developers Choose Select
+                </div>
+                <h2 class="section-title mb-4">Built for the Modern Web</h2>
+                <p class="section-subtitle">
+                    Every feature designed with performance, accessibility, and developer experience in mind. 
+                    Create beautiful, functional select components in minutes, not hours.
+                </p>
+            </div>
             
-            // Add toast container if it doesn't exist
-            let toastContainer = document.querySelector('.toast-container');
-            if (!toastContainer) {
-                toastContainer = document.createElement('div');
-                toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
-                document.body.appendChild(toastContainer);
-            }
-            
-            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
-            const toast = toastContainer.lastElementChild;
-            const bsToast = new bootstrap.Toast(toast);
-            bsToast.show();
-            
-            // Remove from DOM after hiding
-            toast.addEventListener('hidden.bs.toast', () => {
-                toast.remove();
-            });
-        }
-        
-        // Form validation demo
-        document.getElementById('basicForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            select3Instances.forEach(instance => {
-                if (!instance.validate()) {
-                    isValid = false;
-                }
-            });
-            
-            if (isValid) {
-                showAlert('Form validation passed!', 'success');
-                updateApiResults('Form submitted successfully with validation');
-            } else {
-                showAlert('Please fix the validation errors', 'warning');
-                updateApiResults('Form validation failed', 'error');
-            }
-        });
-        
-        // Auto-save demo (optional)
-        let autoSaveTimeout;
-        select3Instances.forEach(instance => {
-            instance.element.addEventListener('change', () => {
-                clearTimeout(autoSaveTimeout);
-                autoSaveTimeout = setTimeout(() => {
-                    // Simulate auto-save
-                    console.log('Auto-saving form data...');
-                    updateApiResults('Form data auto-saved', 'success');
-                }, 2000);
-            });
-        });
-        
-        // Keyboard shortcuts demo
-        document.addEventListener('keydown', function(e) {
-            // Ctrl/Cmd + R to reset all
-            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
-                e.preventDefault();
-                resetAll();
-            }
-            
-            // Ctrl/Cmd + T to toggle theme
-            if ((e.ctrlKey || e.metaKey) && e.key === 't') {
-                e.preventDefault();
-                toggleTheme();
-            }
-        });
-        
-        // Performance monitoring (optional)
-        if (typeof performance !== 'undefined' && performance.mark) {
-            performance.mark('select3-init-start');
-            
-            window.addEventListener('load', () => {
-                performance.mark('select3-init-end');
-                performance.measure('select3-init', 'select3-init-start', 'select3-init-end');
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-1">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Instant Search</h5>
+                        <p class="text-muted mb-3">
+                            Lightning-fast search with debounced input, fuzzy matching, and keyboard navigation. 
+                            Find options instantly as you type.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Fuzzy Search</span>
+                            <span class="feature-tag">Keyboard Nav</span>
+                            <span class="feature-tag">Debounced</span>
+                        </div>
+                    </div>
+                </div>
                 
-                const measure = performance.getEntriesByName('select3-init')[0];
-                console.log(`Select3 initialization took ${measure.duration.toFixed(2)}ms`);
-            });
-        }
-    </script>
-    
-    <style>
-        /* Additional demo styles */
-        .card-header {
-            font-weight: 600;
-        }
-        
-        .badge {
-            font-size: 0.8em;
-        }
-        
-        .form-text {
-            font-size: 0.875em;
-        }
-        
-        .toast-container {
-            z-index: 2000;
-        }
-        
-        /* Custom animations */
-        .select3-container {
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Loading state */
-        .loading {
-            position: relative;
-            pointer-events: none;
-        }
-        
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-        
-        /* Responsive improvements */
-        @media (max-width: 768px) {
-            .d-flex.flex-wrap.gap-2 .btn {
-                flex: 1;
-                min-width: 120px;
-            }
-        }
-    </style>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-2">
+                            <i class="bi bi-check2-all"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Multi-Select Power</h5>
+                        <p class="text-muted mb-3">
+                            Advanced multi-selection with select all, clear all, and maximum selection limits. 
+                            Perfect for complex forms.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Select All</span>
+                            <span class="feature-tag">Limits</span>
+                            <span class="feature-tag">Bulk Actions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-3">
+                            <i class="bi bi-universal-access"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Accessibility First</h5>
+                        <p class="text-muted mb-3">
+                            WCAG 2.1 AA compliant with full screen reader support, ARIA labels, and high contrast modes.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">WCAG 2.1</span>
+                            <span class="feature-tag">Screen Readers</span>
+                            <span class="feature-tag">ARIA</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-4">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Lightning Fast</h5>
+                        <p class="text-muted mb-3">
+                            Optimized performance with virtual scrolling, lazy loading, and minimal DOM manipulation.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Virtual Scroll</span>
+                            <span class="feature-tag">Lazy Load</span>
+                            <span class="feature-tag">Optimized</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-5">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Developer Friendly</h5>
+                        <p class="text-muted mb-3">
+                            Simple API, TypeScript support, comprehensive documentation, and extensive customization options.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">TypeScript</span>
+                            <span class="feature-tag">Simple API</span>
+                            <span class="feature-tag">Docs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon gradient-6">
+                            <i class="bi bi-palette-fill"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-3">Modern Design</h5>
+                        <p class="text-muted mb-3">
+                            Beautiful default styling with CSS variables, dark mode support, and easy theming capabilities.
+                        </p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">CSS Variables</span>
+                            <span class="feature-tag">Dark Mode</span>
+                            <span class="feature-tag">Theming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="installation-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-badge mb-3">
+                    📦 Quick Setup
+                </div>
+                <h2 class="section-title mb-4">Get Started in Seconds</h2>
+                <p class="section-subtitle">
+                    Choose your preferred installation method and start building amazing select components
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="install-card">
+                        <ul class="nav nav-tabs" id="installTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="npm-tab" data-bs-toggle="tab" data-bs-target="#npm" type="button" role="tab">
+                                    <i class="bi bi-box-seam me-2"></i>
+                                    NPM / Yarn
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="cdn-tab" data-bs-toggle="tab" data-bs-target="#cdn" type="button" role="tab">
+                                    <i class="bi bi-cloud-download me-2"></i>
+                                    CDN
+                                </button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="installTabsContent">
+                            <div class="tab-pane fade show active" id="npm" role="tabpanel">
+                                <div class="p-4">
+                                    <h6 class="fw-semibold mb-3">Install via Package Manager</h6>
+                                    
+                                    <div class="mb-4">
+                                        <p class="text-muted small mb-2">Using npm:</p>
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="npm install select-library">
+                                                <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-bash">npm install select-library</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <p class="text-muted small mb-2">Using yarn:</p>
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="yarn add select-library">
+                                                <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-bash">yarn add select-library</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="cdn" role="tabpanel">
+                                <div class="p-4">
+                                    <h6 class="fw-semibold mb-3">Include via CDN</h6>
+                                    
+                                    <div class="mb-4">
+                                        <p class="text-muted small mb-2">Add these tags to your HTML:</p>
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css">
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"></script>'>
+                                                <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;!-- CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css"&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"&gt;&lt;/script&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Basic Usage -->
+                    <div class="install-card mt-4">
+                        <div class="p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-code-slash text-primary me-2"></i>
+                                <h6 class="fw-semibold mb-0">Basic Usage</h6>
+                            </div>
+                            
+                            <p class="text-muted small mb-3">Initialize Select on any HTML select element:</p>
+                            
+                            <div class="code-block">
+                                <button class="copy-btn" data-clipboard-text="import Select from 'select-library';
+import 'select-library/dist/select.css';
+
+// Basic usage
+const mySelect = new Select('#my-select', {
+  searchable: true,
+  multiple: true,
+  placeholder: 'Choose options...'
+});
+
+// With options
+const advancedSelect = new Select('#advanced-select', {
+  searchable: true,
+  multiple: true,
+  maxSelections: 5,
+  closeOnSelect: false,
+  searchPlaceholder: 'Type to search...'
+});">
+                                    <i class="bi bi-clipboard"></i>
+                                </button>
+                                <pre><code class="language-javascript">import Select from 'select-library';
+import 'select-library/dist/select.css';
+
+// Basic usage
+const mySelect = new Select('#my-select', {
+  searchable: true,
+  multiple: true,
+  placeholder: 'Choose options...'
+});
+
+// With options
+const advancedSelect = new Select('#advanced-select', {
+  searchable: true,
+  multiple: true,
+  maxSelections: 5,
+  closeOnSelect: false,
+  searchPlaceholder: 'Type to search...'
+});</code></pre>
+                            </div>
+                            
+                            <div class="alert alert-success mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-check-circle-fill me-2"></i>
+                                    <span class="small fw-medium">
+                                        That's it! Your select component is now enhanced with search, multi-select, and modern styling.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-badge mb-3">
+                    🚀 Interactive Examples
+                </div>
+                <h2 class="section-title mb-4">See Select in Action</h2>
+                <p class="section-subtitle">
+                    Explore different configurations and discover what makes Select special
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <div class="demo-icon">
+                                <i class="bi bi-globe"></i>
+                            </div>
+                            <div class="demo-title">
+                                <h5 class="mb-1">Multi-Select with Search</h5>
+                                <p class="text-muted small mb-0">Country selector with instant search</p>
+                            </div>
+                            <div class="demo-status">
+                                <div class="status-dot active"></div>
+                                <span class="small">Interactive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card-content">
+                            <div class="mock-select-demo">
+                                <div class="selected-items">
+                                    <span class="selected-tag">🇺🇸 United States</span>
+                                    <span class="selected-tag">🇬🇧 United Kingdom</span>
+                                </div>
+                                <div class="search-input">Search countries...</div>
+                            </div>
+                            
+                            <div class="demo-features">
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-search"></i> Searchable
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-check-all"></i> Select All
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-x-circle"></i> Clear All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <div class="demo-icon">
+                                <i class="bi bi-flag-fill"></i>
+                            </div>
+                            <div class="demo-title">
+                                <h5 class="mb-1">Priority Selector</h5>
+                                <p class="text-muted small mb-0">Single select with custom styling</p>
+                            </div>
+                            <div class="demo-status">
+                                <div class="status-dot active"></div>
+                                <span class="small">Interactive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card-content">
+                            <div class="mock-select-demo single">
+                                <div class="selected-single">🟠 High Priority</div>
+                            </div>
+                            
+                            <div class="demo-features">
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-palette"></i> Custom Icons
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-hand-index"></i> Single Select
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-speedometer2"></i> Fast Loading
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <div class="demo-icon">
+                                <i class="bi bi-code-square"></i>
+                            </div>
+                            <div class="demo-title">
+                                <h5 class="mb-1">Skills Selector</h5>
+                                <p class="text-muted small mb-0">Limited selection with validation</p>
+                            </div>
+                            <div class="demo-status">
+                                <div class="status-dot warning"></div>
+                                <span class="small">Max 3</span>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card-content">
+                            <div class="mock-select-demo">
+                                <div class="selected-items">
+                                    <span class="selected-tag">💛 JavaScript</span>
+                                    <span class="selected-tag">⚛️ React</span>
+                                    <span class="selected-tag">💙 TypeScript</span>
+                                </div>
+                                <div class="max-reached">Maximum 3 selections reached</div>
+                            </div>
+                            
+                            <div class="demo-features">
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-shield-check"></i> Max Limit
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-exclamation-triangle"></i> Validation
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-bell"></i> Notifications
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="demo-card">
+                        <div class="demo-card-header">
+                            <div class="demo-icon">
+                                <i class="bi bi-cloud-arrow-down-fill"></i>
+                            </div>
+                            <div class="demo-title">
+                                <h5 class="mb-1">Remote Data Loading</h5>
+                                <p class="text-muted small mb-0">Dynamic content from API</p>
+                            </div>
+                            <div class="demo-status">
+                                <div class="status-dot loading"></div>
+                                <span class="small">Dynamic</span>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card-content">
+                            <div class="mock-select-demo">
+                                <div class="loading-state">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    Loading repositories...
+                                </div>
+                            </div>
+                            
+                            <div class="demo-features">
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-arrow-repeat"></i> Async Loading
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-funnel"></i> Debounced Search
+                                </span>
+                                <span class="demo-feature-tag">
+                                    <i class="bi bi-arrow-clockwise"></i> Auto Retry
+                                </span>
+                            </div>
+                            
+                            <div class="demo-hint">
+                                <i class="bi bi-lightbulb text-warning me-2"></i>
+                                <small>Type to search GitHub repositories</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="use-cases-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-badge mb-3">
+                    💼 Real-World Applications
+                </div>
+                <h2 class="section-title mb-4">Perfect for Every Project</h2>
+                <p class="section-subtitle">
+                    From simple forms to complex dashboards, Select adapts to your needs
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">
+                            <i class="bi bi-ui-checks"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-2">Forms & Surveys</h5>
+                        <p class="text-muted small">
+                            Perfect for contact forms, registration pages, and user surveys with multiple choice questions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-2">Admin Dashboards</h5>
+                        <p class="text-muted small">
+                            Ideal for admin panels, data filtering, and user management interfaces with complex selections.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">
+                            <i class="bi bi-cart-check"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-2">E-commerce Filters</h5>
+                        <p class="text-muted small">
+                            Great for product filtering, category selection, and shopping cart options in online stores.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h5 class="fw-semibold mb-2">Team Management</h5>
+                        <p class="text-muted small">
+                            Perfect for assigning team members, selecting permissions, and managing user roles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="support-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="support-card">
+                        <div class="support-icon mb-4">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3">Support Open Source</h3>
+                        <p class="text-muted mb-4">
+                            Select is free and open source. If you find it useful, consider supporting the project 
+                            to help us maintain and improve it for everyone.
+                        </p>
+                        
+                        <div class="support-buttons">
+                            <a href="#" class="btn btn-primary btn-lg me-3">
+                                <i class="bi bi-cup-hot-fill me-2"></i>
+                                Buy Me a Coffee
+                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-lg">
+                                <i class="bi bi-github me-2"></i>
+                                Sponsor on GitHub
+                            </a>
+                        </div>
+                        
+                        <div class="support-stats mt-4">
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="fw-bold text-primary">127</div>
+                                    <div class="small text-muted">Contributors</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="fw-bold text-success">$2,340</div>
+                                    <div class="small text-muted">Raised</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="fw-bold text-warning">45</div>
+                                    <div class="small text-muted">Sponsors</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand mb-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
+                            <span class="fw-bold fs-3">Select</span>
+                            <span class="badge bg-primary ms-2">v3.0</span>
+                        </div>
+                        <p class="text-muted">
+                            The most advanced select library for modern web applications. 
+                            Built with performance, accessibility, and developer experience in mind.
+                        </p>
+                    </div>
+                    
+                    <div class="footer-stats">
+                        <div class="d-flex gap-4">
+                            <div class="text-center">
+                                <i class="bi bi-download text-primary"></i>
+                                <div class="small text-muted">50K+ Downloads</div>
+                            </div>
+                            <div class="text-center">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <div class="small text-muted">4.9/5 Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-semibold mb-3">Documentation</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#features" class="text-muted text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#installation" class="text-muted text-decoration-none">Installation</a></li>
+                        <li class="mb-2"><a href="#demo" class="text-muted text-decoration-none">Examples</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">API Reference</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-semibold mb-3">Resources</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">GitHub</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Changelog</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Issues</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discussions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-semibold mb-3">Community</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discord</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Twitter</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Stack Overflow</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-3">
+                    <h6 class="fw-semibold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">MIT License</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Use</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted small mb-0">
+                        © 2025 Select. Released under the <a href="#" class="text-decoration-none">MIT License</a>.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-links text-md-end">
+                        <a href="#" class="social-link me-3" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" class="social-link me-3" aria-label="Twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link me-3" aria-label="Discord">
+                            <i class="bi bi-discord"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
