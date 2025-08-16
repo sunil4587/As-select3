@@ -16,6 +16,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     
+    <!-- Select3 Library -->
+    <link href="lib/select3.min.css" rel="stylesheet">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -183,14 +186,15 @@
                             
                             <div class="demo-content">
                                 <div class="demo-label mb-3">Choose Your Favorite Frameworks:</div>
-                                <div class="mock-select">
-                                    <div class="selected-items">
-                                        <span class="selected-tag">⚛️ React</span>
-                                        <span class="selected-tag">💚 Vue.js</span>
-                                        <span class="selected-tag">🅰️ Angular</span>
-                                    </div>
-                                    <div class="search-placeholder">Type to search for more frameworks...</div>
-                                </div>
+                                <select id="hero-demo-select" class="form-select" multiple>
+                                    <option value="react" selected data-icon="⚛️">React</option>
+                                    <option value="vue" selected data-icon="💚">Vue.js</option>
+                                    <option value="angular" selected data-icon="🅰️">Angular</option>
+                                    <option value="svelte" data-icon="🟠">Svelte</option>
+                                    <option value="next" data-icon="⚫">Next.js</option>
+                                    <option value="nuxt" data-icon="🟢">Nuxt.js</option>
+                                    <option value="gatsby" data-icon="🟣">Gatsby</option>
+                                </select>
                                 
                                 <div class="demo-info mt-3">
                                     <div class="info-item">
@@ -487,59 +491,191 @@
                         <div class="p-4">
                             <div class="d-flex align-items-center mb-3">
                                 <i class="bi bi-code-slash text-primary me-2"></i>
-                                <h6 class="fw-semibold mb-0">Basic Usage</h6>
+                                <h6 class="fw-semibold mb-0">Quick Start Guide</h6>
                             </div>
                             
-                            <p class="text-muted small mb-3">Initialize Select on any HTML select element:</p>
-                            
-                            <div class="code-block">
-                                <button class="copy-btn" data-clipboard-text="import Select from 'select-library';
-import 'select-library/dist/select.css';
-
-// Basic usage
-const mySelect = new Select('#my-select', {
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h6 class="fw-semibold mb-3">1. HTML Structure</h6>
+                                    <div class="code-block mb-4">
+                                        <button class="copy-btn" data-clipboard-text='<select id="my-select" multiple>
+  <option value="1">Option 1</option>
+  <option value="2">Option 2</option>
+  <option value="3" selected>Option 3</option>
+</select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                        <pre><code class="language-html">&lt;select id="my-select" multiple&gt;
+  &lt;option value="1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="3" selected&gt;Option 3&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                    </div>
+                                    
+                                    <h6 class="fw-semibold mb-3">2. Initialize Select3</h6>
+                                    <div class="code-block">
+                                        <button class="copy-btn" data-clipboard-text="$('#my-select').select3({
   searchable: true,
-  multiple: true,
-  placeholder: 'Choose options...'
-});
-
-// With options
-const advancedSelect = new Select('#advanced-select', {
-  searchable: true,
-  multiple: true,
-  maxSelections: 5,
-  closeOnSelect: false,
+  placeholder: 'Choose options...',
   searchPlaceholder: 'Type to search...'
 });">
-                                    <i class="bi bi-clipboard"></i>
-                                </button>
-                                <pre><code class="language-javascript">import Select from 'select-library';
-import 'select-library/dist/select.css';
-
-// Basic usage
-const mySelect = new Select('#my-select', {
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                        <pre><code class="language-javascript">$('#my-select').select3({
   searchable: true,
-  multiple: true,
-  placeholder: 'Choose options...'
-});
-
-// With options
-const advancedSelect = new Select('#advanced-select', {
-  searchable: true,
-  multiple: true,
-  maxSelections: 5,
-  closeOnSelect: false,
+  placeholder: 'Choose options...',
   searchPlaceholder: 'Type to search...'
 });</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <h6 class="fw-semibold mb-3">3. Advanced Configuration</h6>
+                                    <div class="code-block mb-4">
+                                        <button class="copy-btn" data-clipboard-text="$('#advanced-select').select3({
+  // Search and filtering
+  searchable: true,
+  searchPlaceholder: 'Search options...',
+  
+  // Multi-selection features
+  selectAll: true,
+  clearAll: true,
+  maxSelection: 5,
+  
+  // Remote data loading
+  remote: async function(query) {
+    const response = await fetch(`/api/search?q=${query}`);
+    return response.json();
+  },
+  
+  // Styling options
+  placeholder: 'Select items...',
+  noResultsText: 'No matches found',
+  loadingText: 'Loading...'
+});">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                        <pre><code class="language-javascript">$('#advanced-select').select3({
+  // Search and filtering
+  searchable: true,
+  searchPlaceholder: 'Search options...',
+  
+  // Multi-selection features
+  selectAll: true,
+  clearAll: true,
+  maxSelection: 5,
+  
+  // Remote data loading
+  remote: async function(query) {
+    const response = await fetch(`/api/search?q=${query}`);
+    return response.json();
+  },
+  
+  // Styling options
+  placeholder: 'Select items...',
+  noResultsText: 'No matches found',
+  loadingText: 'Loading...'
+});</code></pre>
+                                    </div>
+                                    
+                                    <h6 class="fw-semibold mb-3">4. Event Handling</h6>
+                                    <div class="code-block">
+                                        <button class="copy-btn" data-clipboard-text="$('#my-select').on('select3:change', function(e) {
+  console.log('Selection changed:', e.detail.value);
+}).on('select3:open', function() {
+  console.log('Dropdown opened');
+}).on('select3:close', function() {
+  console.log('Dropdown closed');
+});">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                        <pre><code class="language-javascript">$('#my-select').on('select3:change', function(e) {
+  console.log('Selection changed:', e.detail.value);
+}).on('select3:open', function() {
+  console.log('Dropdown opened');
+}).on('select3:close', function() {
+  console.log('Dropdown closed');
+});</code></pre>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="alert alert-success mt-3">
+                            <div class="alert alert-info mt-4">
                                 <div class="d-flex align-items-center">
-                                    <i class="bi bi-check-circle-fill me-2"></i>
-                                    <span class="small fw-medium">
-                                        That's it! Your select component is now enhanced with search, multi-select, and modern styling.
-                                    </span>
+                                    <i class="bi bi-info-circle-fill me-2"></i>
+                                    <div>
+                                        <strong>Pro Tip:</strong> 
+                                        Use <code>data-icon</code> attributes on option elements to add custom icons. 
+                                        Support for emoji, CSS classes, and image URLs.
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Configuration Options -->
+                    <div class="install-card mt-4">
+                        <div class="p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-gear text-primary me-2"></i>
+                                <h6 class="fw-semibold mb-0">Configuration Options</h6>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Option</th>
+                                            <th>Type</th>
+                                            <th>Default</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>searchable</code></td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Enable search functionality</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>placeholder</code></td>
+                                            <td>string</td>
+                                            <td>"Choose an option..."</td>
+                                            <td>Placeholder text when nothing is selected</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>maxSelection</code></td>
+                                            <td>number</td>
+                                            <td>null</td>
+                                            <td>Maximum number of selections allowed</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>selectAll</code></td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Show "Select All" button for multi-select</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>clearAll</code></td>
+                                            <td>boolean</td>
+                                            <td>false</td>
+                                            <td>Show "Clear All" button</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>remote</code></td>
+                                            <td>function</td>
+                                            <td>null</td>
+                                            <td>Function for loading remote data</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>searchDelay</code></td>
+                                            <td>number</td>
+                                            <td>300</td>
+                                            <td>Delay in ms before triggering search</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -553,11 +689,11 @@ const advancedSelect = new Select('#advanced-select', {
         <div class="container">
             <div class="text-center mb-5">
                 <div class="section-badge mb-3">
-                    🚀 Interactive Examples
+                    🚀 Try It Live
                 </div>
-                <h2 class="section-title mb-4">See Select in Action</h2>
+                <h2 class="section-title mb-4">Interactive Select3 Demos</h2>
                 <p class="section-subtitle">
-                    Explore different configurations and discover what makes Select special
+                    Experience Select3 in action! These are fully functional demos showcasing different configurations and use cases.
                 </p>
             </div>
             
@@ -579,12 +715,20 @@ const advancedSelect = new Select('#advanced-select', {
                         </div>
                         
                         <div class="demo-card-content">
-                            <div class="mock-select-demo">
-                                <div class="selected-items">
-                                    <span class="selected-tag">🇺🇸 United States</span>
-                                    <span class="selected-tag">🇬🇧 United Kingdom</span>
-                                </div>
-                                <div class="search-input">Search countries...</div>
+                            <div class="mb-3">
+                                <label for="country-select" class="form-label">Choose Countries:</label>
+                                <select id="country-select" class="form-select" multiple>
+                                    <option value="us" selected data-icon="🇺🇸">United States</option>
+                                    <option value="uk" selected data-icon="🇬🇧">United Kingdom</option>
+                                    <option value="ca" data-icon="🇨🇦">Canada</option>
+                                    <option value="de" data-icon="🇩🇪">Germany</option>
+                                    <option value="fr" data-icon="🇫🇷">France</option>
+                                    <option value="jp" data-icon="🇯🇵">Japan</option>
+                                    <option value="au" data-icon="🇦🇺">Australia</option>
+                                    <option value="in" data-icon="🇮🇳">India</option>
+                                    <option value="br" data-icon="🇧🇷">Brazil</option>
+                                    <option value="cn" data-icon="🇨🇳">China</option>
+                                </select>
                             </div>
                             
                             <div class="demo-features">
@@ -619,8 +763,16 @@ const advancedSelect = new Select('#advanced-select', {
                         </div>
                         
                         <div class="demo-card-content">
-                            <div class="mock-select-demo single">
-                                <div class="selected-single">🟠 High Priority</div>
+                            <div class="mb-3">
+                                <label for="priority-select" class="form-label">Set Priority:</label>
+                                <select id="priority-select" class="form-select">
+                                    <option value="">Select Priority</option>
+                                    <option value="low" data-icon="🟢">Low Priority</option>
+                                    <option value="medium" data-icon="🟡">Medium Priority</option>
+                                    <option value="high" data-icon="🟠" selected>High Priority</option>
+                                    <option value="urgent" data-icon="🔴">Urgent</option>
+                                    <option value="critical" data-icon="⚫">Critical</option>
+                                </select>
                             </div>
                             
                             <div class="demo-features">
@@ -655,13 +807,24 @@ const advancedSelect = new Select('#advanced-select', {
                         </div>
                         
                         <div class="demo-card-content">
-                            <div class="mock-select-demo">
-                                <div class="selected-items">
-                                    <span class="selected-tag">💛 JavaScript</span>
-                                    <span class="selected-tag">⚛️ React</span>
-                                    <span class="selected-tag">💙 TypeScript</span>
-                                </div>
-                                <div class="max-reached">Maximum 3 selections reached</div>
+                            <div class="mb-3">
+                                <label for="skills-select" class="form-label">Select Skills (Max 3):</label>
+                                <select id="skills-select" class="form-select" multiple>
+                                    <option value="js" selected data-icon="💛">JavaScript</option>
+                                    <option value="react" selected data-icon="⚛️">React</option>
+                                    <option value="ts" selected data-icon="💙">TypeScript</option>
+                                    <option value="vue" data-icon="💚">Vue.js</option>
+                                    <option value="angular" data-icon="🅰️">Angular</option>
+                                    <option value="node" data-icon="💚">Node.js</option>
+                                    <option value="python" data-icon="🐍">Python</option>
+                                    <option value="java" data-icon="☕">Java</option>
+                                    <option value="php" data-icon="🐘">PHP</option>
+                                    <option value="css" data-icon="🎨">CSS</option>
+                                </select>
+                            </div>
+                            <div id="skills-warning" class="alert alert-warning d-none">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                Maximum 3 selections reached
                             </div>
                             
                             <div class="demo-features">
@@ -696,11 +859,11 @@ const advancedSelect = new Select('#advanced-select', {
                         </div>
                         
                         <div class="demo-card-content">
-                            <div class="mock-select-demo">
-                                <div class="loading-state">
-                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
-                                    Loading repositories...
-                                </div>
+                            <div class="mb-3">
+                                <label for="repo-select" class="form-label">Search GitHub Repositories:</label>
+                                <select id="repo-select" class="form-select">
+                                    <option value="">Type to search repositories...</option>
+                                </select>
                             </div>
                             
                             <div class="demo-features">
@@ -943,7 +1106,9 @@ const advancedSelect = new Select('#advanced-select', {
     <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/select3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
