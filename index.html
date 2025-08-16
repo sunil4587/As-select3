@@ -223,6 +223,9 @@
         </div>
     </div>
 
+    <!-- jQuery 3.3+ -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     
@@ -242,19 +245,19 @@
         
         function initializeMultiSelects() {
             // Basic multi-selects
-            const countriesSelect = new MultiSelect('#countries');
-            const skillsSelect = new MultiSelect('#skills');
-            const prioritySelect = new MultiSelect('#priority');
-            const categoriesSelect = new MultiSelect('#categories');
+            const countriesSelect = $('#countries').multiSelect()[0]._multiSelect;
+            const skillsSelect = $('#skills').multiSelect()[0]._multiSelect;
+            const prioritySelect = $('#priority').multiSelect()[0]._multiSelect;
+            const categoriesSelect = $('#categories').multiSelect()[0]._multiSelect;
             
             // Advanced multi-selects
-            const maxSelect = new MultiSelect('#maxSelect', {
+            const maxSelect = $('#maxSelect').multiSelect({
                 maxSelection: 3,
                 selectAll: true,
                 clearAll: true
-            });
+            })[0]._multiSelect;
             
-            const remoteSelect = new MultiSelect('#remoteSelect', {
+            const remoteSelect = $('#remoteSelect').multiSelect({
                 remote: async function(query) {
                     // Simulate API call
                     await new Promise(resolve => setTimeout(resolve, 500));
@@ -273,16 +276,16 @@
                         { value: 'default3', text: 'Default Option 3' }
                     ];
                 }
-            });
+            })[0]._multiSelect;
             
-            const customSelect = new MultiSelect('#customPlaceholder', {
+            const customSelect = $('#customPlaceholder').multiSelect({
                 placeholder: 'Pick your favorite colors...',
                 noResultsText: 'No colors found',
                 selectAllText: 'All Colors',
                 clearAllText: 'Clear Colors'
-            });
+            })[0]._multiSelect;
             
-            const dynamicSelect = new MultiSelect('#dynamicOptions');
+            const dynamicSelect = $('#dynamicOptions').multiSelect()[0]._multiSelect;
             
             // Store instances for later use
             multiSelectInstances.set('countries', countriesSelect);
