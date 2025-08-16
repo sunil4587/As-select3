@@ -133,6 +133,38 @@ class SelectLandingPage {
         }
       });
     });
+    
+    // Add clipboard functionality for new demo tabs - needs to be delayed to ensure DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const tabsWithCopy = ['basicSelectTabs', 'multiSelectTabs', 'maxSelectTabs'];
+        
+        tabsWithCopy.forEach(tabId => {
+          const tabElement = document.getElementById(tabId);
+          if (tabElement) {
+            const tabButtons = tabElement.querySelectorAll('[data-bs-toggle="tab"]');
+            
+            tabButtons.forEach(btn => {
+              btn.addEventListener('shown.bs.tab', (e) => {
+                const targetPanel = document.querySelector(e.target.getAttribute('data-bs-target'));
+                if (targetPanel) {
+                  const copyBtn = targetPanel.querySelector('.copy-btn');
+                  if (copyBtn) {
+                    // Reinitialize copy functionality for the newly shown tab
+                    copyBtn.addEventListener('click', () => {
+                      const text = copyBtn.getAttribute('data-clipboard-text');
+                      if (text) {
+                        this.copyToClipboard(text, copyBtn);
+                      }
+                    });
+                  }
+                }
+              });
+            });
+          }
+        });
+      }, 500);
+    });
   }
 
   async copyToClipboard(text, button) {
@@ -401,6 +433,11 @@ class SelectLandingPage {
       
       this.initializeSelectComponents();
       this.enhanceSelect3Icons();
+      
+      // Initialize Syntax Highlighting for code blocks
+      if (typeof Prism !== 'undefined') {
+        Prism.highlightAll();
+      }
     }, 100);
   }
   
@@ -418,6 +455,168 @@ class SelectLandingPage {
   }
   
   initializeSelectComponents() {
+    // Initialize the new demos in the installation section
+    if ($('#basic-demo-select').length) {
+      try {
+        $('#basic-demo-select').select3({
+          placeholder: 'Select an option',
+          searchable: false
+        });
+      } catch (err) {
+      }
+    }
+    
+    if ($('#multi-demo-select').length) {
+      try {
+        $('#multi-demo-select').select3({
+          placeholder: 'Select programming languages',
+          searchable: true,
+          searchPlaceholder: 'Search languages...',
+          selectAll: true,
+          clearAll: true
+        });
+      } catch (err) {
+      }
+    }
+    
+    if ($('#max-demo-select').length) {
+      try {
+        $('#max-demo-select').select3({
+          placeholder: 'Select up to 3 skills',
+          searchable: true,
+          searchPlaceholder: 'Find skills...',
+          maxSelection: 3
+        });
+        
+        $('#max-demo-select').on('select3:maxselection', function(e) {
+          $('#max-selection-warning').removeClass('d-none');
+          setTimeout(() => {
+            $('#max-selection-warning').addClass('d-none');
+          }, 3000);
+        });
+      } catch (err) {
+      }
+    }
+    
+    // Initialize the new profile images demo
+    if ($('#profile-demo-select').length) {
+      try {
+        $('#profile-demo-select').select3({
+          placeholder: 'Select team members',
+          imageWidth: 36,
+          imageHeight: 36,
+          imageBorderRadius: '50%',
+          imagePosition: 'left',
+          searchable: true
+        });
+      } catch (err) {
+      }
+    }
+    
+    // Initialize the remote data fetching demo
+    if ($('#remote-demo-select').length) {
+      try {
+        $('#remote-demo-select').select3({
+          placeholder: 'Search for random users...',
+          searchable: true,
+          ajax: {
+            url: function(params) {
+              // Build URL with query parameters
+              let url = 'https://randomuser.me/api/?results=10';
+              url += '&inc=name,picture,location,email,login';
+              url += '&nat=us,gb,fr,au,ca';
+              
+              // Use search term as seed if provided for consistent results
+              if (params.term) {
+                url += '&seed=' + encodeURIComponent(params.term);
+              }
+              
+              return url;
+            },
+            dataType: 'json',
+            delay: 250,
+            cache: false,
+            processResults: function(data) {
+              return {
+                results: data.results.map(function(user) {
+                  const fullName = user.name.first + ' ' + user.name.last;
+                  return {
+                    id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
+                    text: fullName,
+                    html: '<div class="d-flex align-items-center gap-2">' +
+                          '<img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%">' +
+                          '<div>' +
+                          '<div class="fw-semibold">' + fullName + '</div>' +
+                          '<div class="small text-muted">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>' +
+                          '</div>' +
+                          '<div class="ms-auto small text-muted">' + 
+                          '<i class="bi bi-envelope me-1"></i>' + 
+                          user.email +
+                          '</div>' +
+                          '</div>'
+                  };
+                })
+              };
+            },
+            error: function(xhr, status, error) {
+              console.error('RandomUser API Error:', status, error);
+              // Display a helpful message in the dropdown
+              $('#remote-demo-select').html('<option value="">API Error - Try again later</option>');
+              
+              // Add a visible error message for the user
+              if (!$('#randomuser-api-error').length) {
+                $('<div id="randomuser-api-error" class="alert alert-danger mt-2" role="alert">' +
+                  '<i class="bi bi-exclamation-triangle-fill me-2"></i>' +
+                  'Error fetching data from RandomUser API. Please try again later.' +
+                  '</div>').insertAfter('#remote-demo-select');
+                
+                // Auto-hide after 5 seconds
+                setTimeout(function() {
+                  $('#randomuser-api-error').fadeOut(function() { $(this).remove(); });
+                }, 5000);
+              }
+            }
+          }
+        });
+        
+        // Add helpful message
+        if (!$('#remote-demo-select').next('.mt-2.small.text-muted').length) {
+          $('<div class="mt-2 small text-muted">' +
+            '<i class="bi bi-info-circle me-1"></i>' +
+            'Click to load random users from RandomUser API. Try multiple times to see different users.' +
+            '</div>').insertAfter('#remote-demo-select');
+        }
+      } catch (err) {
+        console.error('Error initializing remote select:', err);
+      }
+    }
+    
+    // Initialize the custom theme demo
+    if ($('#custom-demo-select').length) {
+      try {
+        $('#custom-demo-select').select3({
+          placeholder: 'How are you feeling today?',
+          searchable: true,
+          theme: 'custom-purple'
+        });
+      } catch (err) {
+      }
+    }
+    
+    if ($('#custom-demo-select-multi').length) {
+      try {
+        $('#custom-demo-select-multi').select3({
+          placeholder: 'Select your activities',
+          searchable: true,
+          selectAll: true,
+          clearAll: true,
+          theme: 'custom-purple'
+        });
+      } catch (err) {
+      }
+    }
+    
+    // Original demos
     if ($('#hero-demo-select').length) {
       try {
         $('#hero-demo-select').select3({

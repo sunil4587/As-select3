@@ -736,6 +736,134 @@ body {
   background: var(--accent-color);
 }
 
+/* ===== DEMO TABS ===== */
+.demo-tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+  padding: 0.5rem 1rem 0;
+  background-color: rgba(74, 144, 226, 0.05);
+}
+
+[data-bs-theme="dark"] .demo-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.demo-tabs .nav-link {
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.demo-tabs .nav-link:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+[data-bs-theme="dark"] .demo-tabs .nav-link:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(74, 144, 226, 0.15);
+}
+
+.demo-tabs .nav-link.active {
+  color: var(--primary-color);
+  background-color: var(--surface-color);
+  border-color: rgba(0, 0, 0, 0.1);
+  border-bottom-color: transparent;
+}
+
+[data-bs-theme="dark"] .demo-tabs .nav-link.active {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: transparent;
+}
+
+.demo-tabs .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--surface-color);
+}
+
+.demo-tab-content {
+  padding: 1.5rem;
+}
+
+.demo-preview {
+  padding: 1.5rem;
+  background-color: var(--background-color);
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] .demo-preview {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.code-block {
+  position: relative;
+  margin: 0;
+}
+
+.code-block pre {
+  margin: 0;
+  border-radius: 0.25rem;
+  background-color: #f6f8fa;
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="dark"] .code-block pre {
+  background-color: #161b22;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.code-block code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.875rem;
+  color: #24292e;
+}
+
+[data-bs-theme="dark"] .code-block code {
+  color: #e1e4e8;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--surface-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 1;
+  color: var(--text-secondary);
+}
+
+[data-bs-theme="dark"] .copy-btn {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.copy-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
 /* ===== DEMO SECTION ===== */
 .demo-section {
   background: var(--surface-color);
@@ -1233,4 +1361,76 @@ body {
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
+}
+
+/* ===== CUSTOM SELECT THEMES ===== */
+/* Custom Purple Theme for Select3 */
+.select3-container.custom-purple .select3-dropdown {
+  border-color: #8A2BE2;
+  box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+}
+
+.select3-container.custom-purple .select3-selection {
+  border-color: #8A2BE2;
+  background: linear-gradient(to right, rgba(138, 43, 226, 0.05), rgba(138, 43, 226, 0.1));
+}
+
+.select3-container.custom-purple .select3-selection:hover {
+  border-color: #9370DB;
+}
+
+.select3-container.custom-purple.select3-focus .select3-selection {
+  border-color: #8A2BE2;
+  box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+}
+
+/* Customize the selected items */
+.select3-container.custom-purple .select3-tag {
+  background-color: #8A2BE2;
+  border-color: #8A2BE2;
+  color: #fff;
+}
+
+.select3-container.custom-purple .select3-tag:hover {
+  background-color: #9370DB;
+}
+
+/* Customize the dropdown items */
+.select3-container.custom-purple .select3-option:hover,
+.select3-container.custom-purple .select3-option.select3-option-highlighted {
+  background-color: rgba(138, 43, 226, 0.1);
+}
+
+.select3-container.custom-purple .select3-option.select3-option-selected {
+  background-color: rgba(138, 43, 226, 0.2);
+  color: #8A2BE2;
+}
+
+/* Customize action buttons */
+.select3-container.custom-purple .select3-actions .select3-select-all,
+.select3-container.custom-purple .select3-actions .select3-clear-all {
+  color: #8A2BE2;
+}
+
+.select3-container.custom-purple .select3-actions .select3-select-all:hover,
+.select3-container.custom-purple .select3-actions .select3-clear-all:hover {
+  text-decoration: none;
+  color: #9370DB;
+}
+
+/* Ensure consistent width for all demo cards */
+.demo-card {
+  width: 100%;
+}
+
+/* Make sure all demo previews have consistent spacing */
+.demo-preview {
+  width: 100%;
+}
+
+/* Ensure proper responsive behavior for all demos */
+@media (max-width: 992px) {
+  .demo-preview .row .col-lg-6:first-child {
+    margin-bottom: 1.5rem;
+  }
 }

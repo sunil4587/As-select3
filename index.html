@@ -1,209 +1,191 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select - Modern JavaScript Select Library</title>
-    <meta name="description" content="The most advanced select library for modern web applications. Lightweight, accessible, and developer-friendly with stunning animations and powerful features.">
-    <meta name="keywords" content="javascript, select, dropdown, multi-select, search, accessibility, modern, library">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Select - Modern JavaScript Select Library">
-    <meta property="og:description" content="Revolutionary select components with stunning animations and modern design.">
-    <meta property="og:type" content="website">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Select3 Library -->
-    <link href="lib/select3.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Prism.js for syntax highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-    
-    <!-- Custom Styles -->
-    <link href="styles.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top glass-nav">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#home">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Select - Modern JavaScript Select Library</title>
+        <meta name="description" content="The most advanced select library for modern web applications. Lightweight, accessible, and developer-friendly with stunning animations and powerful features.">
+        <meta name="keywords" content="javascript, select, dropdown, multi-select, search, accessibility, modern, library">
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Select - Modern JavaScript Select Library">
+        <meta property="og:description" content="Revolutionary select components with stunning animations and modern design.">
+        <meta property="og:type" content="website">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Select3 Library -->
+        <link href="lib/select3.min.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+        <!-- Prism.js for syntax highlighting -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+        <!-- Custom Styles -->
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg fixed-top glass-nav">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#home">
                 <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
                 <span class="fw-bold fs-3 gradient-text">Select</span>
                 <span class="badge bg-primary ms-2">v3.0</span>
-            </a>
-            
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto ms-lg-4">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#installation">Install</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#demo">Demo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#use-cases">Use Cases</a>
-                    </li>
-                </ul>
-                
-                <div class="d-flex align-items-center gap-3">
-                    <button class="btn btn-link p-0 theme-toggle" title="Toggle theme">
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto ms-lg-4">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#installation">Install</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#demo">Demo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#use-cases">Use Cases</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-link p-0 theme-toggle" title="Toggle theme">
                         <i class="bi bi-moon-stars-fill fs-5" id="theme-icon"></i>
-                    </button>
-                    <a href="https://github.com/yourusername/select" class="btn btn-outline-primary" target="_blank">
+                        </button>
+                        <a href="https://github.com/yourusername/select" class="btn btn-outline-primary" target="_blank">
                         <i class="bi bi-github me-2"></i>
                         GitHub
-                    </a>
-                    <button class="btn btn-primary get-started-btn">
+                        </a>
+                        <button class="btn btn-primary get-started-btn">
                         Get Started
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background">
-            <div class="floating-element" style="--delay: 0s; --size: 40px; left: 15%;"></div>
-            <div class="floating-element" style="--delay: 2s; --size: 60px; left: 75%;"></div>
-            <div class="floating-element" style="--delay: 4s; --size: 30px; left: 55%;"></div>
-            <div class="floating-element" style="--delay: 6s; --size: 50px; left: 25%;"></div>
-            <div class="floating-element" style="--delay: 8s; --size: 35px; left: 85%;"></div>
-        </div>
-        
-        <div class="container position-relative">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <!-- Status Badge -->
-                        <div class="mb-4">
-                            <div class="feature-badge">
-                                <i class="bi bi-lightning-charge-fill me-2"></i>
-                                Now Available - Select v3.0
+        </nav>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="floating-element" style="--delay: 0s; --size: 40px; left: 15%;"></div>
+                <div class="floating-element" style="--delay: 2s; --size: 60px; left: 75%;"></div>
+                <div class="floating-element" style="--delay: 4s; --size: 30px; left: 55%;"></div>
+                <div class="floating-element" style="--delay: 6s; --size: 50px; left: 25%;"></div>
+                <div class="floating-element" style="--delay: 8s; --size: 35px; left: 85%;"></div>
+            </div>
+            <div class="container position-relative">
+                <div class="row align-items-center min-vh-100">
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <!-- Status Badge -->
+                            <div class="mb-4">
+                                <div class="feature-badge">
+                                    <i class="bi bi-lightning-charge-fill me-2"></i>
+                                    Now Available - Select v3.0
+                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Main Title -->
-                        <h1 class="hero-title mb-4">
-                            The Future of
-                            <span class="title-highlight d-block">
+                            <!-- Main Title -->
+                            <h1 class="hero-title mb-4">
+                                The Future of
+                                <span class="title-highlight d-block">
                                 Select Components
-                            </span>
-                        </h1>
-                        
-                        <!-- Subtitle -->
-                        <p class="hero-subtitle mb-4">
-                            Revolutionary design meets cutting-edge functionality. Select transforms 
-                            ordinary dropdowns into extraordinary user experiences with stunning animations, 
-                            perfect accessibility, and intuitive interactions.
-                        </p>
-                        
-                        <!-- Feature Pills -->
-                        <div class="feature-pills mb-5">
-                            <div class="feature-pill">
-                                <div class="pill-dot bg-success"></div>
-                                <span>Lightweight</span>
+                                </span>
+                            </h1>
+                            <!-- Subtitle -->
+                            <p class="hero-subtitle mb-4">
+                                Revolutionary design meets cutting-edge functionality. Select transforms 
+                                ordinary dropdowns into extraordinary user experiences with stunning animations, 
+                                perfect accessibility, and intuitive interactions.
+                            </p>
+                            <!-- Feature Pills -->
+                            <div class="feature-pills mb-5">
+                                <div class="feature-pill">
+                                    <div class="pill-dot bg-success"></div>
+                                    <span>Lightweight</span>
+                                </div>
+                                <div class="feature-pill">
+                                    <div class="pill-dot bg-warning"></div>
+                                    <span>Accessible</span>
+                                </div>
+                                <div class="feature-pill">
+                                    <div class="pill-dot bg-info"></div>
+                                    <span>Modern Design</span>
+                                </div>
+                                <div class="feature-pill">
+                                    <div class="pill-dot bg-primary"></div>
+                                    <span>Developer Friendly</span>
+                                </div>
                             </div>
-                            <div class="feature-pill">
-                                <div class="pill-dot bg-warning"></div>
-                                <span>Accessible</span>
-                            </div>
-                            <div class="feature-pill">
-                                <div class="pill-dot bg-info"></div>
-                                <span>Modern Design</span>
-                            </div>
-                            <div class="feature-pill">
-                                <div class="pill-dot bg-primary"></div>
-                                <span>Developer Friendly</span>
-                            </div>
-                        </div>
-                        
-                        <!-- CTA Buttons -->
-                        <div class="hero-actions mb-5">
-                            <button class="btn btn-hero-primary me-3">
+                            <!-- CTA Buttons -->
+                            <div class="hero-actions mb-5">
+                                <button class="btn btn-hero-primary me-3">
                                 <i class="bi bi-play-circle-fill me-2"></i>
                                 Try Interactive Demo
-                            </button>
-                            <button class="btn btn-hero-secondary">
+                                </button>
+                                <button class="btn btn-hero-secondary">
                                 <i class="bi bi-github me-2"></i>
                                 View on GitHub
-                            </button>
-                        </div>
-
-                        <!-- Stats -->
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">50K+</div>
-                                <div class="stat-label">Downloads</div>
+                                </button>
                             </div>
-                            <div class="stat-divider"></div>
-                            <div class="stat-item">
-                                <div class="stat-number">4.9★</div>
-                                <div class="stat-label">Rating</div>
-                            </div>
-                            <div class="stat-divider"></div>
-                            <div class="stat-item">
-                                <div class="stat-number">12KB</div>
-                                <div class="stat-label">Min Size</div>
+                            <!-- Stats -->
+                            <div class="hero-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">50K+</div>
+                                    <div class="stat-label">Downloads</div>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div class="stat-item">
+                                    <div class="stat-number">4.9★</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div class="stat-item">
+                                    <div class="stat-number">12KB</div>
+                                    <div class="stat-label">Min Size</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-6">
-                    <div class="hero-demo-container">
-                        <div class="hero-demo glass-card">
-                            <div class="demo-header">
-                                <div class="demo-controls">
-                                    <div class="demo-dot red"></div>
-                                    <div class="demo-dot yellow"></div>
-                                    <div class="demo-dot green"></div>
-                                </div>
-                                <div class="demo-title">
-                                    <i class="bi bi-lightning-charge me-2"></i>
-                                    Live Interactive Demo
-                                </div>
-                                <div class="pulse-dot"></div>
-                            </div>
-                            
-                            <div class="demo-content">
-                                <div class="demo-label mb-3">Choose Your Favorite Frameworks:</div>
-                                <select id="hero-demo-select" class="form-select" multiple>
-                                    <option value="react" selected data-icon="⚛️">React</option>
-                                    <option value="vue" selected data-icon="💚">Vue.js</option>
-                                    <option value="angular" selected data-icon="🅰️">Angular</option>
-                                    <option value="svelte" data-icon="🟠">Svelte</option>
-                                    <option value="next" data-icon="⚫">Next.js</option>
-                                    <option value="nuxt" data-icon="🟢">Nuxt.js</option>
-                                    <option value="gatsby" data-icon="🟣">Gatsby</option>
-                                </select>
-                                
-                                <div class="demo-info mt-3">
-                                    <div class="info-item">
-                                        <i class="bi bi-check-circle-fill text-success me-1"></i>
-                                        <small>Keyboard navigation enabled</small>
+                    <div class="col-lg-6">
+                        <div class="hero-demo-container">
+                            <div class="hero-demo glass-card">
+                                <div class="demo-header">
+                                    <div class="demo-controls">
+                                        <div class="demo-dot red"></div>
+                                        <div class="demo-dot yellow"></div>
+                                        <div class="demo-dot green"></div>
                                     </div>
-                                    <div class="info-item">
-                                        <i class="bi bi-search me-1 text-info"></i>
-                                        <small>Type to search instantly</small>
+                                    <div class="demo-title">
+                                        <i class="bi bi-lightning-charge me-2"></i>
+                                        Live Interactive Demo
+                                    </div>
+                                    <div class="pulse-dot"></div>
+                                </div>
+                                <div class="demo-content">
+                                    <div class="demo-label mb-3">Choose Your Favorite Frameworks:</div>
+                                    <select id="hero-demo-select" class="form-select" multiple>
+                                        <option value="react" selected data-icon="⚛️">React</option>
+                                        <option value="vue" selected data-icon="💚">Vue.js</option>
+                                        <option value="angular" selected data-icon="🅰️">Angular</option>
+                                        <option value="svelte" data-icon="🟠">Svelte</option>
+                                        <option value="next" data-icon="⚫">Next.js</option>
+                                        <option value="nuxt" data-icon="🟢">Nuxt.js</option>
+                                        <option value="gatsby" data-icon="🟣">Gatsby</option>
+                                    </select>
+                                    <div class="demo-info mt-3">
+                                        <div class="info-item">
+                                            <i class="bi bi-check-circle-fill text-success me-1"></i>
+                                            <small>Keyboard navigation enabled</small>
+                                        </div>
+                                        <div class="info-item">
+                                            <i class="bi bi-search me-1 text-info"></i>
+                                            <small>Type to search instantly</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -211,908 +193,1413 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Trust Section -->
-    <section id="trust" class="trust-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h4 class="fw-bold mb-3">
-                    Trusted By More Than <span class="text-primary">+10,000</span> Developers
-                </h4>
-                <p class="text-muted">Works seamlessly with all modern JavaScript frameworks and libraries</p>
-            </div>
-            
-            <div class="row g-3 justify-content-center align-items-center">
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">⚛️</span>
-                        <span class="framework-name">React</span>
+        </section>
+        <!-- Trust Section -->
+        <section id="trust" class="trust-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h4 class="fw-bold mb-3">
+                        Trusted By More Than <span class="text-primary">+10,000</span> Developers
+                    </h4>
+                    <p class="text-muted">Works seamlessly with all modern JavaScript frameworks and libraries</p>
+                </div>
+                <div class="row g-3 justify-content-center align-items-center">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">⚛️</span>
+                            <span class="framework-name">React</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">💚</span>
+                            <span class="framework-name">Vue.js</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">🅰️</span>
+                            <span class="framework-name">Angular</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">🧡</span>
+                            <span class="framework-name">Svelte</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">▲</span>
+                            <span class="framework-name">Next.js</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="trust-logo">
+                            <span class="framework-icon">💚</span>
+                            <span class="framework-name">Nuxt.js</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">💚</span>
-                        <span class="framework-name">Vue.js</span>
+                <div class="row mt-5 text-center">
+                    <div class="col-md-4">
+                        <h5 class="text-primary fw-bold">50K+</h5>
+                        <p class="text-muted small">Weekly Downloads</p>
                     </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">🅰️</span>
-                        <span class="framework-name">Angular</span>
+                    <div class="col-md-4">
+                        <h5 class="text-success fw-bold">2.1K</h5>
+                        <p class="text-muted small">GitHub Stars</p>
                     </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">🧡</span>
-                        <span class="framework-name">Svelte</span>
+                    <div class="col-md-4">
+                        <h5 class="text-warning fw-bold">99.9%</h5>
+                        <p class="text-muted small">Uptime</p>
                     </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">▲</span>
-                        <span class="framework-name">Next.js</span>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-2">
-                    <div class="trust-logo">
-                        <span class="framework-icon">💚</span>
-                        <span class="framework-name">Nuxt.js</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5 text-center">
-                <div class="col-md-4">
-                    <h5 class="text-primary fw-bold">50K+</h5>
-                    <p class="text-muted small">Weekly Downloads</p>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-success fw-bold">2.1K</h5>
-                    <p class="text-muted small">GitHub Stars</p>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="text-warning fw-bold">99.9%</h5>
-                    <p class="text-muted small">Uptime</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <div class="section-badge mb-3">
-                    ⭐ Why Developers Choose Select
+        </section>
+        <!-- Features Section -->
+        <section id="features" class="features-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <div class="section-badge mb-3">
+                        ⭐ Why Developers Choose Select
+                    </div>
+                    <h2 class="section-title mb-4">Built for the Modern Web</h2>
+                    <p class="section-subtitle">
+                        Every feature designed with performance, accessibility, and developer experience in mind. 
+                        Create beautiful, functional select components in minutes, not hours.
+                    </p>
                 </div>
-                <h2 class="section-title mb-4">Built for the Modern Web</h2>
-                <p class="section-subtitle">
-                    Every feature designed with performance, accessibility, and developer experience in mind. 
-                    Create beautiful, functional select components in minutes, not hours.
-                </p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-1">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-3">Instant Search</h5>
-                        <p class="text-muted mb-3">
-                            Lightning-fast search with debounced input, fuzzy matching, and keyboard navigation. 
-                            Find options instantly as you type.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">Fuzzy Search</span>
-                            <span class="feature-tag">Keyboard Nav</span>
-                            <span class="feature-tag">Debounced</span>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-1">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Instant Search</h5>
+                            <p class="text-muted mb-3">
+                                Lightning-fast search with debounced input, fuzzy matching, and keyboard navigation. 
+                                Find options instantly as you type.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">Fuzzy Search</span>
+                                <span class="feature-tag">Keyboard Nav</span>
+                                <span class="feature-tag">Debounced</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-2">
-                            <i class="bi bi-check2-all"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-3">Multi-Select Power</h5>
-                        <p class="text-muted mb-3">
-                            Advanced multi-selection with select all, clear all, and maximum selection limits. 
-                            Perfect for complex forms.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">Select All</span>
-                            <span class="feature-tag">Limits</span>
-                            <span class="feature-tag">Bulk Actions</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-3">
-                            <i class="bi bi-universal-access"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-3">Accessibility First</h5>
-                        <p class="text-muted mb-3">
-                            WCAG 2.1 AA compliant with full screen reader support, ARIA labels, and high contrast modes.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">WCAG 2.1</span>
-                            <span class="feature-tag">Screen Readers</span>
-                            <span class="feature-tag">ARIA</span>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-2">
+                                <i class="bi bi-check2-all"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Multi-Select Power</h5>
+                            <p class="text-muted mb-3">
+                                Advanced multi-selection with select all, clear all, and maximum selection limits. 
+                                Perfect for complex forms.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">Select All</span>
+                                <span class="feature-tag">Limits</span>
+                                <span class="feature-tag">Bulk Actions</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-4">
-                            <i class="bi bi-lightning-charge-fill"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-3">Lightning Fast</h5>
-                        <p class="text-muted mb-3">
-                            Optimized performance with virtual scrolling, lazy loading, and minimal DOM manipulation.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">Virtual Scroll</span>
-                            <span class="feature-tag">Lazy Load</span>
-                            <span class="feature-tag">Optimized</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-5">
-                            <i class="bi bi-code-slash"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-3">Developer Friendly</h5>
-                        <p class="text-muted mb-3">
-                            Simple API, TypeScript support, comprehensive documentation, and extensive customization options.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">TypeScript</span>
-                            <span class="feature-tag">Simple API</span>
-                            <span class="feature-tag">Docs</span>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-3">
+                                <i class="bi bi-universal-access"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Accessibility First</h5>
+                            <p class="text-muted mb-3">
+                                WCAG 2.1 AA compliant with full screen reader support, ARIA labels, and high contrast modes.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">WCAG 2.1</span>
+                                <span class="feature-tag">Screen Readers</span>
+                                <span class="feature-tag">ARIA</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="feature-card h-100">
-                        <div class="feature-icon gradient-6">
-                            <i class="bi bi-palette-fill"></i>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-4">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Lightning Fast</h5>
+                            <p class="text-muted mb-3">
+                                Optimized performance with virtual scrolling, lazy loading, and minimal DOM manipulation.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">Virtual Scroll</span>
+                                <span class="feature-tag">Lazy Load</span>
+                                <span class="feature-tag">Optimized</span>
+                            </div>
                         </div>
-                        <h5 class="fw-semibold mb-3">Modern Design</h5>
-                        <p class="text-muted mb-3">
-                            Beautiful default styling with CSS variables, dark mode support, and easy theming capabilities.
-                        </p>
-                        <div class="feature-tags">
-                            <span class="feature-tag">CSS Variables</span>
-                            <span class="feature-tag">Dark Mode</span>
-                            <span class="feature-tag">Theming</span>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-5">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Developer Friendly</h5>
+                            <p class="text-muted mb-3">
+                                Simple API, TypeScript support, comprehensive documentation, and extensive customization options.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">TypeScript</span>
+                                <span class="feature-tag">Simple API</span>
+                                <span class="feature-tag">Docs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="feature-card h-100">
+                            <div class="feature-icon gradient-6">
+                                <i class="bi bi-palette-fill"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-3">Modern Design</h5>
+                            <p class="text-muted mb-3">
+                                Beautiful default styling with CSS variables, dark mode support, and easy theming capabilities.
+                            </p>
+                            <div class="feature-tags">
+                                <span class="feature-tag">CSS Variables</span>
+                                <span class="feature-tag">Dark Mode</span>
+                                <span class="feature-tag">Theming</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Installation Section -->
-    <section id="installation" class="installation-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <div class="section-badge mb-3">
-                    📦 Quick Setup
+        </section>
+        <!-- Installation Section -->
+        <section id="installation" class="installation-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <div class="section-badge mb-3">
+                        📦 Quick Setup
+                    </div>
+                    <h2 class="section-title mb-4">Get Started in Seconds</h2>
+                    <p class="section-subtitle">
+                        Choose your preferred installation method and start building amazing select components
+                    </p>
                 </div>
-                <h2 class="section-title mb-4">Get Started in Seconds</h2>
-                <p class="section-subtitle">
-                    Choose your preferred installation method and start building amazing select components
-                </p>
-            </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="install-card">
-                        <ul class="nav nav-tabs" id="installTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="npm-tab" data-bs-toggle="tab" data-bs-target="#npm" type="button" role="tab">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="install-card">
+                            <ul class="nav nav-tabs" id="installTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="npm-tab" data-bs-toggle="tab" data-bs-target="#npm" type="button" role="tab">
                                     <i class="bi bi-box-seam me-2"></i>
                                     NPM / Yarn
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="cdn-tab" data-bs-toggle="tab" data-bs-target="#cdn" type="button" role="tab">
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="cdn-tab" data-bs-toggle="tab" data-bs-target="#cdn" type="button" role="tab">
                                     <i class="bi bi-cloud-download me-2"></i>
                                     CDN
-                                </button>
-                            </li>
-                        </ul>
-                        
-                        <div class="tab-content" id="installTabsContent">
-                            <div class="tab-pane fade show active" id="npm" role="tabpanel">
-                                <div class="p-4">
-                                    <h6 class="fw-semibold mb-3">Install via Package Manager</h6>
-                                    
-                                    <div class="mb-4">
-                                        <p class="text-muted small mb-2">Using npm:</p>
-                                        <div class="code-block">
-                                            <button class="copy-btn" data-clipboard-text="npm install select-library">
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="installTabsContent">
+                                <div class="tab-pane fade show active" id="npm" role="tabpanel">
+                                    <div class="p-4">
+                                        <h6 class="fw-semibold mb-3">Install via Package Manager</h6>
+                                        <div class="mb-4">
+                                            <p class="text-muted small mb-2">Using npm:</p>
+                                            <div class="code-block">
+                                                <button class="copy-btn" data-clipboard-text="npm install select-library">
                                                 <i class="bi bi-clipboard"></i>
-                                            </button>
-                                            <pre><code class="language-bash">npm install select-library</code></pre>
+                                                </button>
+                                                <pre><code class="language-bash">npm install select-library</code></pre>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="mb-4">
-                                        <p class="text-muted small mb-2">Using yarn:</p>
-                                        <div class="code-block">
-                                            <button class="copy-btn" data-clipboard-text="yarn add select-library">
+                                        <div class="mb-4">
+                                            <p class="text-muted small mb-2">Using yarn:</p>
+                                            <div class="code-block">
+                                                <button class="copy-btn" data-clipboard-text="yarn add select-library">
                                                 <i class="bi bi-clipboard"></i>
-                                            </button>
-                                            <pre><code class="language-bash">yarn add select-library</code></pre>
+                                                </button>
+                                                <pre><code class="language-bash">yarn add select-library</code></pre>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="tab-pane fade" id="cdn" role="tabpanel">
-                                <div class="p-4">
-                                    <h6 class="fw-semibold mb-3">Include via CDN</h6>
-                                    
-                                    <div class="mb-4">
-                                        <p class="text-muted small mb-2">Add these tags to your HTML:</p>
-                                        <div class="code-block">
-                                            <button class="copy-btn" data-clipboard-text='<!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css">
-
-<!-- JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"></script>'>
+                                <div class="tab-pane fade" id="cdn" role="tabpanel">
+                                    <div class="p-4">
+                                        <h6 class="fw-semibold mb-3">Include via CDN</h6>
+                                        <div class="mb-4">
+                                            <p class="text-muted small mb-2">Add these tags to your HTML:</p>
+                                            <div class="code-block">
+                                                <button class="copy-btn" data-clipboard-text='<!-- CSS -->
+                                                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css">
+                                                    <!-- JavaScript -->
+                                                    <script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"></script>'>
                                                 <i class="bi bi-clipboard"></i>
-                                            </button>
-                                            <pre><code class="language-html">&lt;!-- CSS --&gt;
+                                                </button>
+                                                <pre><code class="language-html">&lt;!-- CSS --&gt;
 &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css"&gt;
 
 &lt;!-- JavaScript --&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"&gt;&lt;/script&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Basic Usage -->
+                        <div class="install-card mt-4">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-code-slash text-primary me-2"></i>
+                                    <h6 class="fw-semibold mb-0">Installation Guide</h6>
+                                </div>
+                                <div class="alert alert-info">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-info-circle-fill me-2"></i>
+                                        <div>
+                                            After installation, check out the Interactive Demos section below to see Select3 in action with code examples.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Configuration Options -->
+                        <div class="install-card mt-4">
+                            <div class="p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <i class="bi bi-gear text-primary me-2"></i>
+                                    <h6 class="fw-semibold mb-0">Configuration Options</h6>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Option</th>
+                                                <th>Type</th>
+                                                <th>Default</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>searchable</code></td>
+                                                <td>boolean</td>
+                                                <td>false</td>
+                                                <td>Enable search functionality</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>placeholder</code></td>
+                                                <td>string</td>
+                                                <td>"Choose an option..."</td>
+                                                <td>Placeholder text when nothing is selected</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>maxSelection</code></td>
+                                                <td>number</td>
+                                                <td>null</td>
+                                                <td>Maximum number of selections allowed</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>selectAll</code></td>
+                                                <td>boolean</td>
+                                                <td>false</td>
+                                                <td>Show "Select All" button for multi-select</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>clearAll</code></td>
+                                                <td>boolean</td>
+                                                <td>false</td>
+                                                <td>Show "Clear All" button</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>remote</code></td>
+                                                <td>function</td>
+                                                <td>null</td>
+                                                <td>Function for loading remote data</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>searchDelay</code></td>
+                                                <td>number</td>
+                                                <td>300</td>
+                                                <td>Delay in ms before triggering search</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Demo Section -->
+        <section id="demo" class="demo-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <div class="section-badge mb-3">
+                        🚀 Try It Live
+                    </div>
+                    <h2 class="section-title mb-4">Interactive Select3 Demos</h2>
+                    <p class="section-subtitle">
+                        Experience Select3 in action! These are fully functional demos showcasing different configurations and use cases.
+                    </p>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Basic Select Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-check2-square"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Basic Select</h5>
+                                    <p class="text-muted mb-0 small">Simple single select dropdown</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="basicSelectTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="basic-preview-tab" data-bs-toggle="tab" data-bs-target="#basic-preview" type="button" role="tab" aria-controls="basic-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="basic-html-tab" data-bs-toggle="tab" data-bs-target="#basic-html" type="button" role="tab" aria-controls="basic-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="basic-js-tab" data-bs-toggle="tab" data-bs-target="#basic-js" type="button" role="tab" aria-controls="basic-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="basicSelectTabContent">
+                                    <div class="tab-pane fade show active" id="basic-preview" role="tabpanel" aria-labelledby="basic-preview-tab">
+                                        <div class="demo-preview">
+                                            <select id="basic-demo-select" class="form-control">
+                                                <option value="">Select an option</option>
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="5">Option 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="basic-html" role="tabpanel" aria-labelledby="basic-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<select id="basic-demo-select" class="form-control">
+                                                <option value="">Select an option</option>
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="5">Option 5</option>
+                                                </select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;select id="basic-demo-select" class="form-control"&gt;
+    &lt;option value=""&gt;Select an option&lt;/option&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+    &lt;option value="3"&gt;Option 3&lt;/option&gt;
+    &lt;option value="4"&gt;Option 4&lt;/option&gt;
+    &lt;option value="5"&gt;Option 5&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="basic-js" role="tabpanel" aria-labelledby="basic-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="$('#basic-demo-select').select3({
+                                                placeholder: 'Select an option',
+                                                searchable: false
+                                                });">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">$('#basic-demo-select').select3({
+    placeholder: 'Select an option',
+    searchable: false
+});</code></pre>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Basic Usage -->
-                    <div class="install-card mt-4">
-                        <div class="p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-code-slash text-primary me-2"></i>
-                                <h6 class="fw-semibold mb-0">Quick Start Guide</h6>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Multi Select Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-list-check"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Multi Select with Search</h5>
+                                    <p class="text-muted mb-0 small">Multiple selection with search functionality and icons</p>
+                                </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <h6 class="fw-semibold mb-3">1. HTML Structure</h6>
-                                    <div class="code-block mb-4">
-                                        <button class="copy-btn" data-clipboard-text='<select id="my-select" multiple>
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3" selected>Option 3</option>
-</select>'>
-                                            <i class="bi bi-clipboard"></i>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="multiSelectTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="multi-preview-tab" data-bs-toggle="tab" data-bs-target="#multi-preview" type="button" role="tab" aria-controls="multi-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
                                         </button>
-                                        <pre><code class="language-html">&lt;select id="my-select" multiple&gt;
-  &lt;option value="1"&gt;Option 1&lt;/option&gt;
-  &lt;option value="2"&gt;Option 2&lt;/option&gt;
-  &lt;option value="3" selected&gt;Option 3&lt;/option&gt;
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="multi-html-tab" data-bs-toggle="tab" data-bs-target="#multi-html" type="button" role="tab" aria-controls="multi-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="multi-js-tab" data-bs-toggle="tab" data-bs-target="#multi-js" type="button" role="tab" aria-controls="multi-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="multiSelectTabContent">
+                                    <div class="tab-pane fade show active" id="multi-preview" role="tabpanel" aria-labelledby="multi-preview-tab">
+                                        <div class="demo-preview">
+                                            <select id="multi-demo-select" multiple class="form-control">
+                                                <option value="javascript" data-icon="🟨">JavaScript</option>
+                                                <option value="python" data-icon="🐍">Python</option>
+                                                <option value="java" data-icon="☕">Java</option>
+                                                <option value="csharp" data-icon="🟪">C#</option>
+                                                <option value="php" data-icon="🐘">PHP</option>
+                                                <option value="ruby" data-icon="💎">Ruby</option>
+                                                <option value="golang" data-icon="🔵">Go</option>
+                                                <option value="swift" data-icon="🧡">Swift</option>
+                                                <option value="rust" data-icon="🦀">Rust</option>
+                                                <option value="kotlin" data-icon="🟣">Kotlin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="multi-html" role="tabpanel" aria-labelledby="multi-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<select id="multi-demo-select" multiple class="form-control">
+                                                <option value="javascript" data-icon="🟨">JavaScript</option>
+                                                <option value="python" data-icon="🐍">Python</option>
+                                                <option value="java" data-icon="☕">Java</option>
+                                                <option value="csharp" data-icon="🟪">C#</option>
+                                                <option value="php" data-icon="🐘">PHP</option>
+                                                <option value="ruby" data-icon="💎">Ruby</option>
+                                                <option value="golang" data-icon="🔵">Go</option>
+                                                <option value="swift" data-icon="🧡">Swift</option>
+                                                <option value="rust" data-icon="🦀">Rust</option>
+                                                <option value="kotlin" data-icon="🟣">Kotlin</option>
+                                                </select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;select id="multi-demo-select" multiple class="form-control"&gt;
+    &lt;option value="javascript" data-icon="🟨"&gt;JavaScript&lt;/option&gt;
+    &lt;option value="python" data-icon="🐍"&gt;Python&lt;/option&gt;
+    &lt;option value="java" data-icon="☕"&gt;Java&lt;/option&gt;
+    &lt;option value="csharp" data-icon="🟪"&gt;C#&lt;/option&gt;
+    &lt;option value="php" data-icon="🐘"&gt;PHP&lt;/option&gt;
+    &lt;option value="ruby" data-icon="💎"&gt;Ruby&lt;/option&gt;
+    &lt;option value="golang" data-icon="🔵"&gt;Go&lt;/option&gt;
+    &lt;option value="swift" data-icon="🧡"&gt;Swift&lt;/option&gt;
+    &lt;option value="rust" data-icon="🦀"&gt;Rust&lt;/option&gt;
+    &lt;option value="kotlin" data-icon="🟣"&gt;Kotlin&lt;/option&gt;
 &lt;/select&gt;</code></pre>
+                                        </div>
                                     </div>
-                                    
-                                    <h6 class="fw-semibold mb-3">2. Initialize Select3</h6>
-                                    <div class="code-block">
-                                        <button class="copy-btn" data-clipboard-text="$('#my-select').select3({
-  searchable: true,
-  placeholder: 'Choose options...',
-  searchPlaceholder: 'Type to search...'
-});">
+                                    <div class="tab-pane fade" id="multi-js" role="tabpanel" aria-labelledby="multi-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="$('#multi-demo-select').select3({
+                                                placeholder: 'Select programming languages',
+                                                searchable: true,
+                                                searchPlaceholder: 'Search languages...',
+                                                selectAll: true,
+                                                clearAll: true
+                                                });">
                                             <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">$('#multi-demo-select').select3({
+    placeholder: 'Select programming languages',
+    searchable: true,
+    searchPlaceholder: 'Search languages...',
+    selectAll: true,
+    clearAll: true
+});</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Max Selection Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-filter-square"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Max Selection Limit</h5>
+                                    <p class="text-muted mb-0 small">Limit the number of items that can be selected</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="maxSelectTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="max-preview-tab" data-bs-toggle="tab" data-bs-target="#max-preview" type="button" role="tab" aria-controls="max-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
                                         </button>
-                                        <pre><code class="language-javascript">$('#my-select').select3({
-  searchable: true,
-  placeholder: 'Choose options...',
-  searchPlaceholder: 'Type to search...'
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="max-html-tab" data-bs-toggle="tab" data-bs-target="#max-html" type="button" role="tab" aria-controls="max-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="max-js-tab" data-bs-toggle="tab" data-bs-target="#max-js" type="button" role="tab" aria-controls="max-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="maxSelectTabContent">
+                                    <div class="tab-pane fade show active" id="max-preview" role="tabpanel" aria-labelledby="max-preview-tab">
+                                        <div class="demo-preview">
+                                            <select id="max-demo-select" multiple class="form-control">
+                                                <option value="design" data-icon="🎨">UI/UX Design</option>
+                                                <option value="frontend" data-icon="🖥️">Frontend Development</option>
+                                                <option value="backend" data-icon="⚙️">Backend Development</option>
+                                                <option value="devops" data-icon="🚀">DevOps</option>
+                                                <option value="mobile" data-icon="📱">Mobile Development</option>
+                                                <option value="data" data-icon="📊">Data Science</option>
+                                                <option value="ml" data-icon="🧠">Machine Learning</option>
+                                                <option value="security" data-icon="🔒">Security</option>
+                                            </select>
+                                            <div id="max-selection-warning" class="alert alert-warning mt-3 d-none">
+                                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                                You can select a maximum of 3 skills.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="max-html" role="tabpanel" aria-labelledby="max-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<select id="max-demo-select" multiple class="form-control">
+                                                <option value="design" data-icon="🎨">UI/UX Design</option>
+                                                <option value="frontend" data-icon="🖥️">Frontend Development</option>
+                                                <option value="backend" data-icon="⚙️">Backend Development</option>
+                                                <option value="devops" data-icon="🚀">DevOps</option>
+                                                <option value="mobile" data-icon="📱">Mobile Development</option>
+                                                <option value="data" data-icon="📊">Data Science</option>
+                                                <option value="ml" data-icon="🧠">Machine Learning</option>
+                                                <option value="security" data-icon="🔒">Security</option>
+                                                </select>
+                                                <div id="max-selection-warning" class="alert alert-warning mt-3 d-none">
+                                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                                You can select a maximum of 3 skills.
+                                                </div>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;select id="max-demo-select" multiple class="form-control"&gt;
+    &lt;option value="design" data-icon="🎨"&gt;UI/UX Design&lt;/option&gt;
+    &lt;option value="frontend" data-icon="🖥️"&gt;Frontend Development&lt;/option&gt;
+    &lt;option value="backend" data-icon="⚙️"&gt;Backend Development&lt;/option&gt;
+    &lt;option value="devops" data-icon="🚀"&gt;DevOps&lt;/option&gt;
+    &lt;option value="mobile" data-icon="📱"&gt;Mobile Development&lt;/option&gt;
+    &lt;option value="data" data-icon="📊"&gt;Data Science&lt;/option&gt;
+    &lt;option value="ml" data-icon="🧠"&gt;Machine Learning&lt;/option&gt;
+    &lt;option value="security" data-icon="🔒"&gt;Security&lt;/option&gt;
+&lt;/select&gt;
+&lt;div id="max-selection-warning" class="alert alert-warning mt-3 d-none"&gt;
+    &lt;i class="bi bi-exclamation-triangle me-2"&gt;&lt;/i&gt;
+    You can select a maximum of 3 skills.
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="max-js" role="tabpanel" aria-labelledby="max-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="$('#max-demo-select').select3({
+                                                placeholder: 'Select up to 3 skills',
+                                                searchable: true,
+                                                searchPlaceholder: 'Find skills...',
+                                                maxSelection: 3
+                                                });
+                                                $('#max-demo-select').on('select3:maxselection', function(e) {
+                                                $('#max-selection-warning').removeClass('d-none');
+                                                setTimeout(() => {
+                                                $('#max-selection-warning').addClass('d-none');
+                                                }, 3000);
+                                                });">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">$('#max-demo-select').select3({
+    placeholder: 'Select up to 3 skills',
+    searchable: true,
+    searchPlaceholder: 'Find skills...',
+    maxSelection: 3
+});
+
+$('#max-demo-select').on('select3:maxselection', function(e) {
+    $('#max-selection-warning').removeClass('d-none');
+    setTimeout(() => {
+        $('#max-selection-warning').addClass('d-none');
+    }, 3000);
+});</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Profile Images Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Select with Profile Images</h5>
+                                    <p class="text-muted mb-0 small">Display user avatars with names</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="profileSelectTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="profile-preview-tab" data-bs-toggle="tab" data-bs-target="#profile-preview" type="button" role="tab" aria-controls="profile-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-html-tab" data-bs-toggle="tab" data-bs-target="#profile-html" type="button" role="tab" aria-controls="profile-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-js-tab" data-bs-toggle="tab" data-bs-target="#profile-js" type="button" role="tab" aria-controls="profile-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="profileSelectTabContent">
+                                    <div class="tab-pane fade show active" id="profile-preview" role="tabpanel" aria-labelledby="profile-preview-tab">
+                                        <div class="demo-preview">
+                                            <select id="profile-demo-select" class="form-control">
+                                                <option value="">Select team members</option>
+                                                <option value="user1" data-img="https://avatar.iran.liara.run/public/boy?username=alex">Alex Johnson</option>
+                                                <option value="user2" data-img="https://avatar.iran.liara.run/public/girl?username=sophia">Sophia Chen</option>
+                                                <option value="user3" data-img="https://avatar.iran.liara.run/public/boy?username=michael">Michael Smith</option>
+                                                <option value="user4" data-img="https://avatar.iran.liara.run/public/girl?username=emma">Emma Davis</option>
+                                                <option value="user5" data-img="https://avatar.iran.liara.run/public/boy?username=david">David Wilson</option>
+                                                <option value="user6" data-img="https://avatar.iran.liara.run/public/girl?username=olivia">Olivia Taylor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-html" role="tabpanel" aria-labelledby="profile-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<select id="profile-demo-select" class="form-control">
+                                                <option value="">Select team members</option>
+                                                <option value="user1" data-img="https://avatar.iran.liara.run/public/boy?username=alex">Alex Johnson</option>
+                                                <option value="user2" data-img="https://avatar.iran.liara.run/public/girl?username=sophia">Sophia Chen</option>
+                                                <option value="user3" data-img="https://avatar.iran.liara.run/public/boy?username=michael">Michael Smith</option>
+                                                <option value="user4" data-img="https://avatar.iran.liara.run/public/girl?username=emma">Emma Davis</option>
+                                                <option value="user5" data-img="https://avatar.iran.liara.run/public/boy?username=david">David Wilson</option>
+                                                <option value="user6" data-img="https://avatar.iran.liara.run/public/girl?username=olivia">Olivia Taylor</option>
+                                                </select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;select id="profile-demo-select" class="form-control"&gt;
+    &lt;option value=""&gt;Select team members&lt;/option&gt;
+    &lt;option value="user1" data-img="https://avatar.iran.liara.run/public/boy?username=alex"&gt;Alex Johnson&lt;/option&gt;
+    &lt;option value="user2" data-img="https://avatar.iran.liara.run/public/girl?username=sophia"&gt;Sophia Chen&lt;/option&gt;
+    &lt;option value="user3" data-img="https://avatar.iran.liara.run/public/boy?username=michael"&gt;Michael Smith&lt;/option&gt;
+    &lt;option value="user4" data-img="https://avatar.iran.liara.run/public/girl?username=emma"&gt;Emma Davis&lt;/option&gt;
+    &lt;option value="user5" data-img="https://avatar.iran.liara.run/public/boy?username=david"&gt;David Wilson&lt;/option&gt;
+    &lt;option value="user6" data-img="https://avatar.iran.liara.run/public/girl?username=olivia"&gt;Olivia Taylor&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-js" role="tabpanel" aria-labelledby="profile-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="$('#profile-demo-select').select3({
+                                                placeholder: 'Select team members',
+                                                imageWidth: 36,
+                                                imageHeight: 36,
+                                                imageBorderRadius: '50%',
+                                                imagePosition: 'left',
+                                                searchable: true
+                                                });">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">$('#profile-demo-select').select3({
+    placeholder: 'Select team members',
+    imageWidth: 36,
+    imageHeight: 36,
+    imageBorderRadius: '50%',
+    imagePosition: 'left',
+    searchable: true
+});</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Remote Data Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-person-badge"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Remote User Data</h5>
+                                    <p class="text-muted mb-0 small">Load random user profiles from an API</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="remoteSelectTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="remote-preview-tab" data-bs-toggle="tab" data-bs-target="#remote-preview" type="button" role="tab" aria-controls="remote-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="remote-html-tab" data-bs-toggle="tab" data-bs-target="#remote-html" type="button" role="tab" aria-controls="remote-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="remote-js-tab" data-bs-toggle="tab" data-bs-target="#remote-js" type="button" role="tab" aria-controls="remote-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="remoteSelectTabContent">
+                                    <div class="tab-pane fade show active" id="remote-preview" role="tabpanel" aria-labelledby="remote-preview-tab">
+                                        <div class="demo-preview">
+                                            <select id="remote-demo-select" class="form-control">
+                                                <option value="">Search for random users...</option>
+                                            </select>
+                                            <div class="mt-3 small text-muted">
+                                                <i class="bi bi-info-circle"></i> Click to fetch random users from the RandomUser API.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="remote-html" role="tabpanel" aria-labelledby="remote-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<select id="remote-demo-select" class="form-control">
+                                                <option value="">Search for random users...</option>
+                                                </select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;select id="remote-demo-select" class="form-control"&gt;
+    &lt;option value=""&gt;Search for random users...&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="remote-js" role="tabpanel" aria-labelledby="remote-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="$('#remote-demo-select').select3({
+                                                placeholder: 'Search for random users...',
+                                                searchable: true,
+                                                ajax: {
+                                                url: function(params) {
+                                                // Build URL with query parameters
+                                                let url = 'https://randomuser.me/api/?results=10';
+                                                url += '&inc=name,picture,location,email,login';
+                                                url += '&nat=us,gb,fr,au,ca';
+                                                // Use search term as seed if provided for consistent results
+                                                if (params.term) {
+                                                url += '&seed=' + encodeURIComponent(params.term);
+                                                }
+                                                return url;
+                                                },
+                                                dataType: 'json',
+                                                delay: 250,
+                                                cache: false,
+                                                processResults: function(data) {
+                                                return {
+                                                results: data.results.map(function(user) {
+                                                const fullName = user.name.first + ' ' + user.name.last;
+                                                return {
+                                                id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
+                                                text: fullName,
+                                                html: '<div class=\"d-flex align-items-center gap-2\">
+                                                ' +
+                                                '<img src=\"' + user.picture.medium + '\" width=\"48\" height=\"48\" style=\"border-radius:50%\">' +
+                                                '
+                                                <div>
+                                                    ' +
+                                                    '
+                                                    <div class=\"fw-semibold\">' + fullName + '</div>
+                                                    ' +
+                                                    '
+                                                    <div class=\"small text-muted\">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>
+                                                    ' +
+                                                    '
+                                                </div>
+                                                ' +
+                                                '
+                                                <div class=\"ms-auto small text-muted\">' + 
+                                                    '<i class=\"bi bi-envelope me-1\"></i>' + 
+                                                    user.email +
+                                                    '
+                                                </div>
+                                                ' +
+                                                '
+                                        </div>
+                                        '
+                                        };
+                                        })
+                                        };
+                                        },
+                                        error: function(xhr, status, error) {
+                                        console.error('RandomUser API Error:', status, error);
+                                        }
+                                        }
+                                        });">
+                                        <i class="bi bi-clipboard"></i>
+                                        </button>
+                                        <pre><code class="language-javascript">$('#remote-demo-select').select3({
+    placeholder: 'Search for random users...',
+    searchable: true,
+    ajax: {
+        url: function(params) {
+            // Build URL with query parameters
+            let url = 'https://randomuser.me/api/?results=10';
+            url += '&inc=name,picture,location,email,login';
+            url += '&nat=us,gb,fr,au,ca';
+            
+            // Use search term as seed if provided for consistent results
+            if (params.term) {
+                url += '&seed=' + encodeURIComponent(params.term);
+            }
+            
+            return url;
+        },
+        dataType: 'json',
+        delay: 250,
+        cache: false,
+        processResults: function(data) {
+            return {
+                results: data.results.map(function(user) {
+                    const fullName = user.name.first + ' ' + user.name.last;
+                    return {
+                        id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
+                        text: fullName,
+                        html: '<div class=\"d-flex align-items-center gap-2\">' +
+                              '<img src=\"' + user.picture.medium + '\" width=\"48\" height=\"48\" style=\"border-radius:50%\">' +
+                              '<div>' +
+                              '<div class=\"fw-semibold\">' + fullName + '</div>' +
+                              '<div class=\"small text-muted\">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>' +
+                              '</div>' +
+                              '<div class=\"ms-auto small text-muted\">' + 
+                              '<i class=\"bi bi-envelope me-1\"></i>' + 
+                              user.email +
+                              '</div>' +
+                              '</div>'
+                    };
+                })
+            };
+        },
+        error: function(xhr, status, error) {
+            console.error('RandomUser API Error:', status, error);
+        }
+    }
 });</code></pre>
                                     </div>
                                 </div>
-                                
-                                <div class="col-lg-6">
-                                    <h6 class="fw-semibold mb-3">3. Advanced Configuration</h6>
-                                    <div class="code-block mb-4">
-                                        <button class="copy-btn" data-clipboard-text="$('#advanced-select').select3({
-  // Search and filtering
-  searchable: true,
-  searchPlaceholder: 'Search options...',
-  
-  // Multi-selection features
-  selectAll: true,
-  clearAll: true,
-  maxSelection: 5,
-  
-  // Remote data loading
-  remote: async function(query) {
-    const response = await fetch(`/api/search?q=${query}`);
-    return response.json();
-  },
-  
-  // Styling options
-  placeholder: 'Select items...',
-  noResultsText: 'No matches found',
-  loadingText: 'Loading...'
-});">
-                                            <i class="bi bi-clipboard"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Custom Theme Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-palette"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Custom Themed Select</h5>
+                                    <p class="text-muted mb-0 small">Customized colors and styling</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="customThemeTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="custom-preview-tab" data-bs-toggle="tab" data-bs-target="#custom-preview" type="button" role="tab" aria-controls="custom-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
                                         </button>
-                                        <pre><code class="language-javascript">$('#advanced-select').select3({
-  // Search and filtering
-  searchable: true,
-  searchPlaceholder: 'Search options...',
-  
-  // Multi-selection features
-  selectAll: true,
-  clearAll: true,
-  maxSelection: 5,
-  
-  // Remote data loading
-  remote: async function(query) {
-    const response = await fetch(`/api/search?q=${query}`);
-    return response.json();
-  },
-  
-  // Styling options
-  placeholder: 'Select items...',
-  noResultsText: 'No matches found',
-  loadingText: 'Loading...'
-});</code></pre>
-                                    </div>
-                                    
-                                    <h6 class="fw-semibold mb-3">4. Event Handling</h6>
-                                    <div class="code-block">
-                                        <button class="copy-btn" data-clipboard-text="$('#my-select').on('select3:change', function(e) {
-  console.log('Selection changed:', e.detail.value);
-}).on('select3:open', function() {
-  console.log('Dropdown opened');
-}).on('select3:close', function() {
-  console.log('Dropdown closed');
-});">
-                                            <i class="bi bi-clipboard"></i>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="custom-html-tab" data-bs-toggle="tab" data-bs-target="#custom-html" type="button" role="tab" aria-controls="custom-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
                                         </button>
-                                        <pre><code class="language-javascript">$('#my-select').on('select3:change', function(e) {
-  console.log('Selection changed:', e.detail.value);
-}).on('select3:open', function() {
-  console.log('Dropdown opened');
-}).on('select3:close', function() {
-  console.log('Dropdown closed');
-});</code></pre>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="custom-js-tab" data-bs-toggle="tab" data-bs-target="#custom-js" type="button" role="tab" aria-controls="custom-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="custom-css-tab" data-bs-toggle="tab" data-bs-target="#custom-css" type="button" role="tab" aria-controls="custom-css" aria-selected="false">
+                                        <i class="bi bi-filetype-css me-1"></i> CSS
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="customThemeTabContent">
+                                    <div class="tab-pane fade show active" id="custom-preview" role="tabpanel" aria-labelledby="custom-preview-tab">
+                                        <div class="demo-preview">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-3 mb-lg-0">
+                                                    <div class="mb-3">
+                                                        <label for="custom-demo-select" class="form-label fw-semibold">Choose Your Mood:</label>
+                                                        <select id="custom-demo-select" class="form-control custom-select-theme">
+                                                            <option value="">How are you feeling today?</option>
+                                                            <option value="happy" data-icon="😊">Happy</option>
+                                                            <option value="excited" data-icon="🥳">Excited</option>
+                                                            <option value="calm" data-icon="😌">Calm</option>
+                                                            <option value="focused" data-icon="🧠">Focused</option>
+                                                            <option value="tired" data-icon="😴">Tired</option>
+                                                            <option value="inspired" data-icon="💡">Inspired</option>
+                                                            <option value="creative" data-icon="🎨">Creative</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="custom-demo-select-multi" class="form-label fw-semibold">Choose Your Activities:</label>
+                                                        <select id="custom-demo-select-multi" class="form-control custom-select-theme" multiple>
+                                                            <option value="coding" data-icon="💻">Coding</option>
+                                                            <option value="reading" data-icon="📚">Reading</option>
+                                                            <option value="gaming" data-icon="🎮">Gaming</option>
+                                                            <option value="exercising" data-icon="🏃">Exercising</option>
+                                                            <option value="cooking" data-icon="🍳">Cooking</option>
+                                                            <option value="music" data-icon="🎵">Music</option>
+                                                            <option value="art" data-icon="🎨">Art</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-html" role="tabpanel" aria-labelledby="custom-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<!-- Single Select with Custom Theme -->
+                                                <label for="custom-demo-select" class="form-label">Choose Your Mood:</label>
+                                                <select id="custom-demo-select" class="form-control custom-select-theme">
+                                                <option value="">How are you feeling today?</option>
+                                                <option value="happy" data-icon="😊">Happy</option>
+                                                <option value="excited" data-icon="🥳">Excited</option>
+                                                <option value="calm" data-icon="😌">Calm</option>
+                                                <option value="focused" data-icon="🧠">Focused</option>
+                                                <option value="tired" data-icon="😴">Tired</option>
+                                                <option value="inspired" data-icon="💡">Inspired</option>
+                                                <option value="creative" data-icon="🎨">Creative</option>
+                                                </select>
+                                                <!-- Multi Select with Custom Theme -->
+                                                <label for="custom-demo-select-multi" class="form-label">Choose Your Activities:</label>
+                                                <select id="custom-demo-select-multi" class="form-control custom-select-theme" multiple>
+                                                <option value="coding" data-icon="💻">Coding</option>
+                                                <option value="reading" data-icon="📚">Reading</option>
+                                                <option value="gaming" data-icon="🎮">Gaming</option>
+                                                <option value="exercising" data-icon="🏃">Exercising</option>
+                                                <option value="cooking" data-icon="🍳">Cooking</option>
+                                                <option value="music" data-icon="🎵">Music</option>
+                                                <option value="art" data-icon="🎨">Art</option>
+                                                </select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;!-- Single Select with Custom Theme --&gt;
+    &lt;label for="custom-demo-select" class="form-label"&gt;Choose Your Mood:&lt;/label&gt;
+    &lt;select id="custom-demo-select" class="form-control custom-select-theme"&gt;
+        &lt;option value=""&gt;How are you feeling today?&lt;/option&gt;
+        &lt;option value="happy" data-icon="😊"&gt;Happy&lt;/option&gt;
+        &lt;option value="excited" data-icon="🥳"&gt;Excited&lt;/option&gt;
+        &lt;option value="calm" data-icon="😌"&gt;Calm&lt;/option&gt;
+        &lt;option value="focused" data-icon="🧠"&gt;Focused&lt;/option&gt;
+        &lt;option value="tired" data-icon="😴"&gt;Tired&lt;/option&gt;
+        &lt;option value="inspired" data-icon="💡"&gt;Inspired&lt;/option&gt;
+        &lt;option value="creative" data-icon="🎨"&gt;Creative&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Multi Select with Custom Theme --&gt;
+    &lt;label for="custom-demo-select-multi" class="form-label"&gt;Choose Your Activities:&lt;/label&gt;
+    &lt;select id="custom-demo-select-multi" class="form-control custom-select-theme" multiple&gt;
+        &lt;option value="coding" data-icon="💻"&gt;Coding&lt;/option&gt;
+        &lt;option value="reading" data-icon="📚"&gt;Reading&lt;/option&gt;
+        &lt;option value="gaming" data-icon="🎮"&gt;Gaming&lt;/option&gt;
+        &lt;option value="exercising" data-icon="🏃"&gt;Exercising&lt;/option&gt;
+        &lt;option value="cooking" data-icon="🍳"&gt;Cooking&lt;/option&gt;
+        &lt;option value="music" data-icon="🎵"&gt;Music&lt;/option&gt;
+        &lt;option value="art" data-icon="🎨"&gt;Art&lt;/option&gt;
+    &lt;/select&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-js" role="tabpanel" aria-labelledby="custom-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="// Initialize single select with custom theme
+                                                $('#custom-demo-select').select3({
+                                                placeholder: 'How are you feeling today?',
+                                                searchable: true,
+                                                theme: 'custom-purple'
+                                                });
+                                                // Initialize multi select with custom theme
+                                                $('#custom-demo-select-multi').select3({
+                                                placeholder: 'Select your activities',
+                                                searchable: true,
+                                                selectAll: true,
+                                                clearAll: true,
+                                                theme: 'custom-purple'
+                                                });
+                                                ">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">// Initialize single select with custom theme
+    $('#custom-demo-select').select3({
+        placeholder: 'How are you feeling today?',
+        searchable: true,
+        theme: 'custom-purple'
+    });
+
+    // Initialize multi select with custom theme
+    $('#custom-demo-select-multi').select3({
+        placeholder: 'Select your activities',
+        searchable: true,
+        selectAll: true,
+        clearAll: true,
+        theme: 'custom-purple'
+    });</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="custom-css" role="tabpanel" aria-labelledby="custom-css-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="/* Custom Purple Theme for Select3 */
+                                                .select3-container.custom-purple .select3-dropdown {
+                                                border-color: #8A2BE2;
+                                                box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+                                                }
+                                                .select3-container.custom-purple .select3-selection {
+                                                border-color: #8A2BE2;
+                                                background: linear-gradient(to right, rgba(138, 43, 226, 0.05), rgba(138, 43, 226, 0.1));
+                                                }
+                                                .select3-container.custom-purple .select3-selection:hover {
+                                                border-color: #9370DB;
+                                                }
+                                                .select3-container.custom-purple.select3-focus .select3-selection {
+                                                border-color: #8A2BE2;
+                                                box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+                                                }
+                                                /* Customize the selected items */
+                                                .select3-container.custom-purple .select3-tag {
+                                                background-color: #8A2BE2;
+                                                border-color: #8A2BE2;
+                                                color: #fff;
+                                                }
+                                                .select3-container.custom-purple .select3-tag:hover {
+                                                background-color: #9370DB;
+                                                }
+                                                /* Customize the dropdown items */
+                                                .select3-container.custom-purple .select3-option:hover,
+                                                .select3-container.custom-purple .select3-option.select3-option-highlighted {
+                                                background-color: rgba(138, 43, 226, 0.1);
+                                                }
+                                                .select3-container.custom-purple .select3-option.select3-option-selected {
+                                                background-color: rgba(138, 43, 226, 0.2);
+                                                color: #8A2BE2;
+                                                }
+                                                /* Customize action buttons */
+                                                .select3-container.custom-purple .select3-actions .select3-select-all,
+                                                .select3-container.custom-purple .select3-actions .select3-clear-all {
+                                                color: #8A2BE2;
+                                                }
+                                                .select3-container.custom-purple .select3-actions .select3-select-all:hover,
+                                                .select3-container.custom-purple .select3-actions .select3-clear-all:hover {
+                                                text-decoration: none;
+                                                color: #9370DB;
+                                                }">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-css">/* Custom Purple Theme for Select3 */
+    .select3-container.custom-purple .select3-dropdown {
+        border-color: #8A2BE2;
+        box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+    }
+
+    .select3-container.custom-purple .select3-selection {
+        border-color: #8A2BE2;
+        background: linear-gradient(to right, rgba(138, 43, 226, 0.05), rgba(138, 43, 226, 0.1));
+    }
+
+    .select3-container.custom-purple .select3-selection:hover {
+        border-color: #9370DB;
+    }
+
+    .select3-container.custom-purple.select3-focus .select3-selection {
+        border-color: #8A2BE2;
+        box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+    }
+
+    /* Customize the selected items */
+    .select3-container.custom-purple .select3-tag {
+        background-color: #8A2BE2;
+        border-color: #8A2BE2;
+        color: #fff;
+    }
+
+    .select3-container.custom-purple .select3-tag:hover {
+        background-color: #9370DB;
+    }
+
+    /* Customize the dropdown items */
+    .select3-container.custom-purple .select3-option:hover,
+    .select3-container.custom-purple .select3-option.select3-option-highlighted {
+        background-color: rgba(138, 43, 226, 0.1);
+    }
+
+    .select3-container.custom-purple .select3-option.select3-option-selected {
+        background-color: rgba(138, 43, 226, 0.2);
+        color: #8A2BE2;
+    }
+
+    /* Customize action buttons */
+    .select3-container.custom-purple .select3-actions .select3-select-all,
+    .select3-container.custom-purple .select3-actions .select3-clear-all {
+        color: #8A2BE2;
+    }
+
+    .select3-container.custom-purple .select3-actions .select3-select-all:hover,
+    .select3-container.custom-purple .select3-actions .select3-clear-all:hover {
+        text-decoration: none;
+        color: #9370DB;
+    }</code></pre>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="alert alert-info mt-4">
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-info-circle-fill me-2"></i>
-                                    <div>
-                                        <strong>Pro Tip:</strong> 
-                                        Use <code>data-icon</code> attributes on option elements to add custom icons. 
-                                        Support for emoji, CSS classes, and image URLs.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Configuration Options -->
-                    <div class="install-card mt-4">
-                        <div class="p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-gear text-primary me-2"></i>
-                                <h6 class="fw-semibold mb-0">Configuration Options</h6>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Option</th>
-                                            <th>Type</th>
-                                            <th>Default</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><code>searchable</code></td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Enable search functionality</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>placeholder</code></td>
-                                            <td>string</td>
-                                            <td>"Choose an option..."</td>
-                                            <td>Placeholder text when nothing is selected</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>maxSelection</code></td>
-                                            <td>number</td>
-                                            <td>null</td>
-                                            <td>Maximum number of selections allowed</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>selectAll</code></td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Show "Select All" button for multi-select</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>clearAll</code></td>
-                                            <td>boolean</td>
-                                            <td>false</td>
-                                            <td>Show "Clear All" button</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>remote</code></td>
-                                            <td>function</td>
-                                            <td>null</td>
-                                            <td>Function for loading remote data</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>searchDelay</code></td>
-                                            <td>number</td>
-                                            <td>300</td>
-                                            <td>Delay in ms before triggering search</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section id="demo" class="demo-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <div class="section-badge mb-3">
-                    🚀 Try It Live
-                </div>
-                <h2 class="section-title mb-4">Interactive Select3 Demos</h2>
-                <p class="section-subtitle">
-                    Experience Select3 in action! These are fully functional demos showcasing different configurations and use cases.
-                </p>
+            <!-- End of demo section -->
             </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="demo-card">
-                        <div class="demo-card-header">
-                            <div class="demo-icon">
-                                <i class="bi bi-globe"></i>
-                            </div>
-                            <div class="demo-title">
-                                <h5 class="mb-1">Multi-Select with Search</h5>
-                                <p class="text-muted small mb-0">Country selector with instant search</p>
-                            </div>
-                            <div class="demo-status">
-                                <div class="status-dot active"></div>
-                                <span class="small">Interactive</span>
-                            </div>
-                        </div>
-                        
-                        <div class="demo-card-content">
-                            <div class="mb-3">
-                                <label for="country-select" class="form-label">Choose Countries:</label>
-                                <select id="country-select" class="form-select" multiple>
-                                    <option value="us" selected data-icon="🇺🇸">United States</option>
-                                    <option value="uk" selected data-icon="🇬🇧">United Kingdom</option>
-                                    <option value="ca" data-icon="🇨🇦">Canada</option>
-                                    <option value="de" data-icon="🇩🇪">Germany</option>
-                                    <option value="fr" data-icon="🇫🇷">France</option>
-                                    <option value="jp" data-icon="🇯🇵">Japan</option>
-                                    <option value="au" data-icon="🇦🇺">Australia</option>
-                                    <option value="in" data-icon="🇮🇳">India</option>
-                                    <option value="br" data-icon="🇧🇷">Brazil</option>
-                                    <option value="cn" data-icon="🇨🇳">China</option>
-                                </select>
-                            </div>
-                            
-                            <div class="demo-features">
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-search"></i> Searchable
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-check-all"></i> Select All
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-x-circle"></i> Clear All
-                                </span>
-                            </div>
-                        </div>
+        </section>
+        <!-- Use Cases Section -->
+        <section id="use-cases" class="use-cases-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <div class="section-badge mb-3">
+                        💼 Real-World Applications
                     </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="demo-card">
-                        <div class="demo-card-header">
-                            <div class="demo-icon">
-                                <i class="bi bi-flag-fill"></i>
-                            </div>
-                            <div class="demo-title">
-                                <h5 class="mb-1">Priority Selector</h5>
-                                <p class="text-muted small mb-0">Single select with custom styling</p>
-                            </div>
-                            <div class="demo-status">
-                                <div class="status-dot active"></div>
-                                <span class="small">Interactive</span>
-                            </div>
-                        </div>
-                        
-                        <div class="demo-card-content">
-                            <div class="mb-3">
-                                <label for="priority-select" class="form-label">Set Priority:</label>
-                                <select id="priority-select" class="form-select">
-                                    <option value="">Select Priority</option>
-                                    <option value="low" data-icon="🟢">Low Priority</option>
-                                    <option value="medium" data-icon="🟡">Medium Priority</option>
-                                    <option value="high" data-icon="🟠" selected>High Priority</option>
-                                    <option value="urgent" data-icon="🔴">Urgent</option>
-                                    <option value="critical" data-icon="⚫">Critical</option>
-                                </select>
-                            </div>
-                            
-                            <div class="demo-features">
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-palette"></i> Custom Icons
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-hand-index"></i> Single Select
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-speedometer2"></i> Fast Loading
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="demo-card">
-                        <div class="demo-card-header">
-                            <div class="demo-icon">
-                                <i class="bi bi-code-square"></i>
-                            </div>
-                            <div class="demo-title">
-                                <h5 class="mb-1">Skills Selector</h5>
-                                <p class="text-muted small mb-0">Limited selection with validation</p>
-                            </div>
-                            <div class="demo-status">
-                                <div class="status-dot warning"></div>
-                                <span class="small">Max 3</span>
-                            </div>
-                        </div>
-                        
-                        <div class="demo-card-content">
-                            <div class="mb-3">
-                                <label for="skills-select" class="form-label">Select Skills (Max 3):</label>
-                                <select id="skills-select" class="form-select" multiple>
-                                    <option value="js" selected data-icon="💛">JavaScript</option>
-                                    <option value="react" selected data-icon="⚛️">React</option>
-                                    <option value="ts" selected data-icon="💙">TypeScript</option>
-                                    <option value="vue" data-icon="💚">Vue.js</option>
-                                    <option value="angular" data-icon="🅰️">Angular</option>
-                                    <option value="node" data-icon="💚">Node.js</option>
-                                    <option value="python" data-icon="🐍">Python</option>
-                                    <option value="java" data-icon="☕">Java</option>
-                                    <option value="php" data-icon="🐘">PHP</option>
-                                    <option value="css" data-icon="🎨">CSS</option>
-                                </select>
-                            </div>
-                            <div id="skills-warning" class="alert alert-warning d-none">
-                                <i class="bi bi-exclamation-triangle me-2"></i>
-                                Maximum 3 selections reached
-                            </div>
-                            
-                            <div class="demo-features">
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-shield-check"></i> Max Limit
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-exclamation-triangle"></i> Validation
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-bell"></i> Notifications
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="demo-card">
-                        <div class="demo-card-header">
-                            <div class="demo-icon">
-                                <i class="bi bi-cloud-arrow-down-fill"></i>
-                            </div>
-                            <div class="demo-title">
-                                <h5 class="mb-1">Remote Data Loading</h5>
-                                <p class="text-muted small mb-0">Dynamic content from API</p>
-                            </div>
-                            <div class="demo-status">
-                                <div class="status-dot loading"></div>
-                                <span class="small">Dynamic</span>
-                            </div>
-                        </div>
-                        
-                        <div class="demo-card-content">
-                            <div class="mb-3">
-                                <label for="repo-select" class="form-label">Search GitHub Repositories:</label>
-                                <select id="repo-select" class="form-select">
-                                    <option value="">Type to search repositories...</option>
-                                </select>
-                            </div>
-                            
-                            <div class="demo-features">
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-arrow-repeat"></i> Async Loading
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-funnel"></i> Debounced Search
-                                </span>
-                                <span class="demo-feature-tag">
-                                    <i class="bi bi-arrow-clockwise"></i> Auto Retry
-                                </span>
-                            </div>
-                            
-                            <div class="demo-hint">
-                                <i class="bi bi-lightbulb text-warning me-2"></i>
-                                <small>Type to search GitHub repositories</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section -->
-    <section id="use-cases" class="use-cases-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <div class="section-badge mb-3">
-                    💼 Real-World Applications
-                </div>
-                <h2 class="section-title mb-4">Perfect for Every Project</h2>
-                <p class="section-subtitle">
-                    From simple forms to complex dashboards, Select adapts to your needs
-                </p>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="use-case-card">
-                        <div class="use-case-icon">
-                            <i class="bi bi-ui-checks"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-2">Forms & Surveys</h5>
-                        <p class="text-muted small">
-                            Perfect for contact forms, registration pages, and user surveys with multiple choice questions.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="use-case-card">
-                        <div class="use-case-icon">
-                            <i class="bi bi-graph-up-arrow"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-2">Admin Dashboards</h5>
-                        <p class="text-muted small">
-                            Ideal for admin panels, data filtering, and user management interfaces with complex selections.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="use-case-card">
-                        <div class="use-case-icon">
-                            <i class="bi bi-cart-check"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-2">E-commerce Filters</h5>
-                        <p class="text-muted small">
-                            Great for product filtering, category selection, and shopping cart options in online stores.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-3">
-                    <div class="use-case-card">
-                        <div class="use-case-icon">
-                            <i class="bi bi-people-fill"></i>
-                        </div>
-                        <h5 class="fw-semibold mb-2">Team Management</h5>
-                        <p class="text-muted small">
-                            Perfect for assigning team members, selecting permissions, and managing user roles.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Support Section -->
-    <section id="support" class="support-section py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="support-card">
-                        <div class="support-icon mb-4">
-                            <i class="bi bi-heart-fill"></i>
-                        </div>
-                        <h3 class="fw-bold mb-3">Support Open Source</h3>
-                        <p class="text-muted mb-4">
-                            Select is free and open source. If you find it useful, consider supporting the project 
-                            to help us maintain and improve it for everyone.
-                        </p>
-                        
-                        <div class="support-buttons">
-                            <a href="#" class="btn btn-primary btn-lg me-3">
-                                <i class="bi bi-cup-hot-fill me-2"></i>
-                                Buy Me a Coffee
-                            </a>
-                            <a href="#" class="btn btn-outline-primary btn-lg">
-                                <i class="bi bi-github me-2"></i>
-                                Sponsor on GitHub
-                            </a>
-                        </div>
-                        
-                        <div class="support-stats mt-4">
-                            <div class="row text-center">
-                                <div class="col-4">
-                                    <div class="fw-bold text-primary">127</div>
-                                    <div class="small text-muted">Contributors</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="fw-bold text-success">$2,340</div>
-                                    <div class="small text-muted">Raised</div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="fw-bold text-warning">45</div>
-                                    <div class="small text-muted">Sponsors</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="footer-brand mb-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
-                            <span class="fw-bold fs-3">Select</span>
-                            <span class="badge bg-primary ms-2">v3.0</span>
-                        </div>
-                        <p class="text-muted">
-                            The most advanced select library for modern web applications. 
-                            Built with performance, accessibility, and developer experience in mind.
-                        </p>
-                    </div>
-                    
-                    <div class="footer-stats">
-                        <div class="d-flex gap-4">
-                            <div class="text-center">
-                                <i class="bi bi-download text-primary"></i>
-                                <div class="small text-muted">50K+ Downloads</div>
-                            </div>
-                            <div class="text-center">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <div class="small text-muted">4.9/5 Rating</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-2 col-md-3">
-                    <h6 class="fw-semibold mb-3">Documentation</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#features" class="text-muted text-decoration-none">Features</a></li>
-                        <li class="mb-2"><a href="#installation" class="text-muted text-decoration-none">Installation</a></li>
-                        <li class="mb-2"><a href="#demo" class="text-muted text-decoration-none">Examples</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">API Reference</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-3">
-                    <h6 class="fw-semibold mb-3">Resources</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">GitHub</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Changelog</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Issues</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discussions</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-3">
-                    <h6 class="fw-semibold mb-3">Community</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discord</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Twitter</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Stack Overflow</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-2 col-md-3">
-                    <h6 class="fw-semibold mb-3">Legal</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">MIT License</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Use</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Security</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <hr class="my-4">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="text-muted small mb-0">
-                        © 2025 Select. Released under the <a href="#" class="text-decoration-none">MIT License</a>.
+                    <h2 class="section-title mb-4">Perfect for Every Project</h2>
+                    <p class="section-subtitle">
+                        From simple forms to complex dashboards, Select adapts to your needs
                     </p>
                 </div>
-                <div class="col-md-6">
-                    <div class="social-links text-md-end">
-                        <a href="#" class="social-link me-3" aria-label="GitHub">
-                            <i class="bi bi-github"></i>
-                        </a>
-                        <a href="#" class="social-link me-3" aria-label="Twitter">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link me-3" aria-label="Discord">
-                            <i class="bi bi-discord"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="use-case-card">
+                            <div class="use-case-icon">
+                                <i class="bi bi-ui-checks"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Forms & Surveys</h5>
+                            <p class="text-muted small">
+                                Perfect for contact forms, registration pages, and user surveys with multiple choice questions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="use-case-card">
+                            <div class="use-case-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Admin Dashboards</h5>
+                            <p class="text-muted small">
+                                Ideal for admin panels, data filtering, and user management interfaces with complex selections.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="use-case-card">
+                            <div class="use-case-icon">
+                                <i class="bi bi-cart-check"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">E-commerce Filters</h5>
+                            <p class="text-muted small">
+                                Great for product filtering, category selection, and shopping cart options in online stores.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="use-case-card">
+                            <div class="use-case-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h5 class="fw-semibold mb-2">Team Management</h5>
+                            <p class="text-muted small">
+                                Perfect for assigning team members, selecting permissions, and managing user roles.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/select3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="scripts.js"></script>
-</body>
+        </section>
+        <!-- Support Section -->
+        <section id="support" class="support-section py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="support-card">
+                            <div class="support-icon mb-4">
+                                <i class="bi bi-heart-fill"></i>
+                            </div>
+                            <h3 class="fw-bold mb-3">Support Open Source</h3>
+                            <p class="text-muted mb-4">
+                                Select is free and open source. If you find it useful, consider supporting the project 
+                                to help us maintain and improve it for everyone.
+                            </p>
+                            <div class="support-buttons">
+                                <a href="#" class="btn btn-primary btn-lg me-3">
+                                <i class="bi bi-cup-hot-fill me-2"></i>
+                                Buy Me a Coffee
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-lg">
+                                <i class="bi bi-github me-2"></i>
+                                Sponsor on GitHub
+                                </a>
+                            </div>
+                            <div class="support-stats mt-4">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="fw-bold text-primary">127</div>
+                                        <div class="small text-muted">Contributors</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="fw-bold text-success">$2,340</div>
+                                        <div class="small text-muted">Raised</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="fw-bold text-warning">45</div>
+                                        <div class="small text-muted">Sponsors</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="footer-brand mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
+                                <span class="fw-bold fs-3">Select</span>
+                                <span class="badge bg-primary ms-2">v3.0</span>
+                            </div>
+                            <p class="text-muted">
+                                The most advanced select library for modern web applications. 
+                                Built with performance, accessibility, and developer experience in mind.
+                            </p>
+                        </div>
+                        <div class="footer-stats">
+                            <div class="d-flex gap-4">
+                                <div class="text-center">
+                                    <i class="bi bi-download text-primary"></i>
+                                    <div class="small text-muted">50K+ Downloads</div>
+                                </div>
+                                <div class="text-center">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <div class="small text-muted">4.9/5 Rating</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h6 class="fw-semibold mb-3">Documentation</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#features" class="text-muted text-decoration-none">Features</a></li>
+                            <li class="mb-2"><a href="#installation" class="text-muted text-decoration-none">Installation</a></li>
+                            <li class="mb-2"><a href="#demo" class="text-muted text-decoration-none">Examples</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">API Reference</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h6 class="fw-semibold mb-3">Resources</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">GitHub</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Changelog</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Issues</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discussions</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h6 class="fw-semibold mb-3">Community</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Discord</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Twitter</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Stack Overflow</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <h6 class="fw-semibold mb-3">Legal</h6>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">MIT License</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms of Use</a></li>
+                            <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-muted small mb-0">
+                            © 2025 Select. Released under the <a href="#" class="text-decoration-none">MIT License</a>.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-links text-md-end">
+                            <a href="#" class="social-link me-3" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                            </a>
+                            <a href="#" class="social-link me-3" aria-label="Twitter">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link me-3" aria-label="Discord">
+                            <i class="bi bi-discord"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Toast Container -->
+        <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;"></div>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/select3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+        <script src="scripts.js"></script>
+    </body>
 </html>
