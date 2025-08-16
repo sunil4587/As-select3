@@ -1,8 +1,3 @@
-/**
- * MultiSelect - CSS Styles
- * A Bootstrap 5 compatible multi-select component
- * Version: 2.1.0
- */
 
 /* Core Structure */
 .multi-select-container {
@@ -160,6 +155,22 @@
 .multi-select-option.selected {
   background-color: rgba(var(--bs-primary-rgb, 13, 110, 253), 0.12);
   font-weight: 500;
+}
+
+.multi-select-option.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: rgba(var(--bs-secondary-rgb, 108, 117, 125), 0.05);
+}
+
+.multi-select-option.disabled:hover,
+.multi-select-option.disabled.focused {
+  background-color: rgba(var(--bs-secondary-rgb, 108, 117, 125), 0.05);
+}
+
+.multi-select-option.disabled .form-check-input {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .multi-select-option-left {
