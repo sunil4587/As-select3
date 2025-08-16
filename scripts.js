@@ -34,6 +34,23 @@ class SelectLandingPage {
     if (themeIcon) {
       themeIcon.className = theme === 'dark' ? 'bi bi-sun-fill fs-5' : 'bi bi-moon-stars-fill fs-5';
     }
+    
+    const themeChangedEvent = new CustomEvent('themeChanged', { detail: { theme } });
+    document.dispatchEvent(themeChangedEvent);
+    
+    // Force immediate navbar update
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      const isDarkTheme = theme === 'dark';
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (isDarkTheme) {
+        navbar.style.background = scrollTop > 100 ? 'rgba(26, 32, 44, 0.95)' : 'rgba(26, 32, 44, 0.8)';
+      } else {
+        navbar.style.background = scrollTop > 100 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
+      }
+      navbar.style.backdropFilter = 'blur(20px)';
+    }
   }
 
   getStoredTheme() {
@@ -209,18 +226,32 @@ class SelectLandingPage {
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
     
-    window.addEventListener('scroll', () => {
+    const updateNavbarBackground = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const isDarkTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark';
       
-      if (scrollTop > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.backdropFilter = 'blur(20px)';
+      if (isDarkTheme) {
+        if (scrollTop > 100) {
+          navbar.style.background = 'rgba(26, 32, 44, 0.95)';
+          navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+          navbar.style.background = 'rgba(26, 32, 44, 0.8)';
+        }
       } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+        if (scrollTop > 100) {
+          navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+          navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+          navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+        }
       }
       
       lastScrollTop = scrollTop;
-    });
+    };
+    
+    window.addEventListener('scroll', updateNavbarBackground);
+    document.addEventListener('themeChanged', updateNavbarBackground);
+    updateNavbarBackground();
   }
 
   setupToastNotifications() {
@@ -579,41 +610,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function fixSelect3() {
-    // Apply high z-index to all select3 dropdowns
     $('.select3-dropdown').css('z-index', '99999');
-    
-    // Ensure all containers allow overflow
     $('.demo-card, .card, .form-group, .glass-card, .hero-demo-container').css('overflow', 'visible');
-    
-    // Position containers relatively
     $('.select3-container').css('position', 'relative');
-    
-    // Set absolute positioning for dropdowns
     $('.select3-dropdown').css({
       'position': 'absolute',
       'width': '100%'
     });
-    
-    // Prevent transform animations on cards with select3
     $('.select3-container').closest('.demo-card, .glass-card').css({
       'transform': 'none',
       'transition': 'box-shadow 0.3s'
     });
-    
-    // Fix hero demo specifically - use the same approach as the demo cards
     $('#hero-demo-select').closest('.glass-card').css({
       'overflow': 'visible',
       'position': 'relative',
       'z-index': '50'
     });
-    
-    // Fix any hero-demo-select dropdown positioning
     $('#hero-demo-select').next('.select3-container').css({
       'position': 'relative',
       'z-index': '99990'
     });
-    
-    // Fix hover effects
     $('.demo-card:has(.select3-container), .glass-card:has(.select3-container)').hover(
       function() {
         $(this).css('box-shadow', 'var(--shadow-lg)');
@@ -622,6 +638,20 @@ document.addEventListener('DOMContentLoaded', function() {
         $(this).css('box-shadow', 'var(--shadow-md)');
       }
     );
+    
+    // Force navbar background update
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      const isDarkTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (isDarkTheme) {
+        navbar.style.background = scrollTop > 100 ? 'rgba(26, 32, 44, 0.95)' : 'rgba(26, 32, 44, 0.8)';
+      } else {
+        navbar.style.background = scrollTop > 100 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
+      }
+      navbar.style.backdropFilter = 'blur(20px)';
+    }
   }
   
   if ($.fn.select3 && $.fn.select3.Constructor) {
