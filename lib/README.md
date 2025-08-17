@@ -1,6 +1,10 @@
 # As-Select3 - Modern JavaScript Select Library
 
-**Version:** 1.0.0  
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/sunil4587/As-select3)
+[![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
+
 **Author:** Sunil Kumar  
 **License:** MIT  
 **Repository:** https://github.com/sunil4587/As-select3
@@ -21,14 +25,34 @@ As-Select3 is a lightweight, modern JavaScript library for creating beautiful an
 
 ## 📦 Installation
 
-### Include Files
+### Via NPM
+```bash
+npm install as-select3
+```
+
+### Via Yarn
+```bash
+yarn add as-select3
+```
+
+### Via CDN
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="select3.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.css">
 
 <!-- JavaScript (requires jQuery) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-<script src="select3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.js"></script>
+```
+
+### Direct Include
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="dist/as-select3.min.css">
+
+<!-- JavaScript (requires jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="dist/as-select3.min.js"></script>
 ```
 
 ### Basic Usage
@@ -40,13 +64,31 @@ As-Select3 is a lightweight, modern JavaScript library for creating beautiful an
 </select>
 
 <script>
-$('#my-select').select3({
+$('#my-select').asSelect3({
     placeholder: 'Choose options...',
     searchable: true,
     selectAll: true,
     clearAll: true
 });
 </script>
+```
+
+### ES Module Usage
+```javascript
+// Import styles
+import 'as-select3/dist/as-select3.min.css';
+
+// Import jQuery if you haven't already
+import $ from 'jquery';
+
+// Import as-select3
+import 'as-select3';
+
+// Initialize
+$('#my-select').asSelect3({
+    placeholder: 'Choose options...',
+    searchable: true
+});
 ```
 
 ## ⚙️ Configuration Options
@@ -65,7 +107,7 @@ $('#my-select').select3({
 ## 🌐 Remote Data Example
 
 ```javascript
-$('#remote-select').select3({
+$('#remote-select').asSelect3({
     placeholder: 'Search users...',
     searchable: true,
     remote: async function(searchTerm) {
@@ -89,19 +131,19 @@ $('#remote-select').select3({
 
 ```css
 /* Custom theme example */
-.select3-container.my-theme .select3-selection {
+.as-select3-container.my-theme .as-select3-selection {
     border-color: #007bff;
     background: linear-gradient(to right, rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.2));
 }
 
-.select3-container.my-theme .select3-tag {
+.as-select3-container.my-theme .as-select3-tag {
     background-color: #007bff;
     color: white;
 }
 ```
 
 ```javascript
-$('#themed-select').select3({
+$('#themed-select').asSelect3({
     theme: 'my-theme'
 });
 ```
@@ -109,19 +151,38 @@ $('#themed-select').select3({
 ## 🔧 Events
 
 ```javascript
-$('#my-select').on('select3:change', function(e) {
+$('#my-select').on('asSelect3:change', function(e) {
     console.log('Selection changed:', e.detail.value);
 });
 
-$('#my-select').on('select3:maxselection', function(e) {
+$('#my-select').on('asSelect3:maxselection', function(e) {
     alert('Maximum selection reached!');
 });
 ```
+
+Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`
 
 ## 📋 Requirements
 
 - **jQuery 3.0+** - Required dependency
 - **Modern browsers** - Chrome, Firefox, Safari, Edge
+
+## 🔧 API Methods
+
+```javascript
+// Get current value(s)
+const value = $('#my-select').asSelect3('getValue');
+
+// Set value(s)
+$('#my-select').asSelect3('setValue', ['option1', 'option2']);
+
+// Open/close dropdown
+$('#my-select').asSelect3('open');
+$('#my-select').asSelect3('close');
+
+// Destroy instance
+$('#my-select').asSelect3('destroy');
+```
 
 ## 🐛 Browser Support
 
@@ -151,9 +212,11 @@ If you encounter any issues or have questions:
 
 ## 🚀 Quick Start
 
-1. Download and extract the Select3 package
-2. Include the CSS and JS files in your HTML
+1. Install via npm: `npm install as-select3` 
+2. Import the CSS and JS files in your project
 3. Initialize on your select elements
 4. Customize as needed!
+
+Alternatively, use CDN or download files directly.
 
 Happy coding! 🎉
