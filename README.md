@@ -1,6 +1,40 @@
 # As-Select3 - Modern JavaScript Select Library
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
+[![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
+
+A lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
+
+## 📦 Installation
+
+### Via NPM
+
+```bash
+npm install as-select3
+```
+
+### Via CDN
+
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.css">
+
+<!-- JavaScript (requires jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.js"></script>
+```
+
+### Direct Download
+
+[Download As-Select3 v1.0.0](https://github.com/sunil4587/As-select3/releases/download/v1.0.0/as-select3.zip) - Complete package with library files and documentation.
+``` Library
+
+# As-Select3 - Modern JavaScript Select Library
+
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
+[![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
 
@@ -177,17 +211,17 @@ $('#my-select').asSelect3('destroy');
 
 ```
 As-select3/
+├── images/
+│   └── icons/           # Project icons and visuals
 ├── lib/
-│   ├── as-select3.min.css    # Main stylesheet
-│   └── as-select3.min.js     # Main JavaScript library
-├── select3/               # Distribution package
-│   ├── README.md         # Package documentation
-│   ├── package.json      # Package metadata
-│   ├── select3.min.css   # Styled CSS with headers
-│   └── select3.min.js    # JavaScript with headers
-├── index.html            # Demo and documentation page
-├── scripts.js            # Demo page JavaScript
-├── styles.css            # Demo page styles
+│   ├── dist/
+│   │   ├── as-select3.min.css    # Main stylesheet
+│   │   └── as-select3.min.js     # Main JavaScript library
+│   ├── package.json     # NPM package configuration
+│   └── README.md        # Package documentation
+├── index.html           # Demo and documentation page
+├── scripts.js           # Demo page JavaScript
+├── styles.css           # Demo page styles
 └── README.md            # This file
 ```
 

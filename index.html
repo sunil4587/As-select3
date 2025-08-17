@@ -409,6 +409,12 @@
                                     CDN
                                     </button>
                                 </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="direct-download-tab" data-bs-toggle="tab" data-bs-target="#direct-download" type="button" role="tab">
+                                    <i class="bi bi-download me-2"></i>
+                                    Download
+                                    </button>
+                                </li>
                             </ul>
                             <div class="tab-content" id="installTabsContent">
                                 <div class="tab-pane fade show active" id="npm" role="tabpanel">
@@ -417,47 +423,92 @@
                                         <div class="mb-4">
                                             <p class="text-muted small mb-2">Using npm:</p>
                                             <div class="code-block">
-                                                <button class="copy-btn" data-clipboard-text="npm install select-library">
+                                                <button class="copy-btn" data-clipboard-text="npm install as-select3">
                                                 <i class="bi bi-clipboard"></i>
                                                 </button>
-                                                <pre><code class="language-bash">npm install select-library</code></pre>
+                                                <pre><code class="language-bash">npm install as-select3</code></pre>
                                             </div>
                                         </div>
                                         <div class="mb-4">
                                             <p class="text-muted small mb-2">Using yarn:</p>
                                             <div class="code-block">
-                                                <button class="copy-btn" data-clipboard-text="yarn add select-library">
+                                                <button class="copy-btn" data-clipboard-text="yarn add as-select3">
                                                 <i class="bi bi-clipboard"></i>
                                                 </button>
-                                                <pre><code class="language-bash">yarn add select-library</code></pre>
+                                                <pre><code class="language-bash">yarn add as-select3</code></pre>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="text-muted small mb-2">Import in your JavaScript:</p>
+                                            <div class="code-block">
+                                                <button class="copy-btn" data-clipboard-text="import 'as-select3/dist/as-select3.min.css';
+import 'as-select3';">
+                                                <i class="bi bi-clipboard"></i>
+                                                </button>
+                                                <pre><code class="language-javascript">// Import the CSS
+import 'as-select3/dist/as-select3.min.css';
+
+// Import the library (requires jQuery)
+import 'as-select3';</code></pre>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="cdn" role="tabpanel">
                                     <div class="p-4">
-                                        <h6 class="fw-semibold mb-3">Local Installation</h6>
+                                        <h6 class="fw-semibold mb-3">CDN Installation</h6>
                                         <div class="mb-4">
-                                            <p class="text-muted small mb-2">Download and include these files:</p>
+                                            <p class="text-muted small mb-2">Include via CDN:</p>
                                             <div class="code-block">
                                                 <button class="copy-btn" data-clipboard-text='<!-- CSS -->
-<link rel="stylesheet" href="lib/as-select3.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.css">
 <!-- JavaScript (requires jQuery) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-<script src="lib/as-select3.min.js"></script>'>
+<script src="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.js"></script>'>
                                                 <i class="bi bi-clipboard"></i>
                                                 </button>
                                                 <pre><code class="language-html">&lt;!-- CSS --&gt;
-&lt;link rel="stylesheet" href="lib/as-select3.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.css"&gt;
 
 &lt;!-- JavaScript (requires jQuery) --&gt;
 &lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="lib/as-select3.min.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://cdn.jsdelivr.net/npm/as-select3/dist/as-select3.min.js"&gt;&lt;/script&gt;</code></pre>
                                             </div>
                                         </div>
                                         <div class="text-center">
                                             <a href="as-select3-library.zip" class="btn btn-primary" download>
                                                 <i class="bi bi-download me-2"></i>
+                                                Download As-Select3 Package
+                                            </a>
+                                            <div class="mt-2 small text-muted">
+                                                Includes library files, examples, and documentation
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="direct-download" role="tabpanel">
+                                    <div class="p-4">
+                                        <h6 class="fw-semibold mb-3">Local File Installation</h6>
+                                        <div class="mb-4">
+                                            <p class="text-muted small mb-2">Download and include these files:</p>
+                                            <div class="code-block">
+                                                <button class="copy-btn" data-clipboard-text='<!-- CSS -->
+<link rel="stylesheet" href="lib/dist/as-select3.min.css">
+<!-- JavaScript (requires jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="lib/dist/as-select3.min.js"></script>'>
+                                                <i class="bi bi-clipboard"></i>
+                                                </button>
+                                                <pre><code class="language-html">&lt;!-- CSS --&gt;
+&lt;link rel="stylesheet" href="lib/dist/as-select3.min.css"&gt;
+
+&lt;!-- JavaScript (requires jQuery) --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="lib/dist/as-select3.min.js"&gt;&lt;/script&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <a href="https://github.com/sunil4587/As-select3/releases/download/v1.0.0/as-select3.zip" class="btn btn-primary">
                                                 Download As-Select3 Package
                                             </a>
                                             <div class="mt-2 small text-muted">
