@@ -519,51 +519,52 @@ class SelectLandingPage {
         $('#remote-demo-select').select3({
           placeholder: 'Search for random users...',
           searchable: true,
-          ajax: {
-            url: function(params) {
+          remote: async function(searchTerm) {
+            try {
               // Build URL with query parameters
               let url = 'https://randomuser.me/api/?results=10';
               url += '&inc=name,picture,location,email,login';
               url += '&nat=us,gb,fr,au,ca';
               
               // Use search term as seed if provided for consistent results
-              if (params.term) {
-                url += '&seed=' + encodeURIComponent(params.term);
+              if (searchTerm) {
+                url += '&seed=' + encodeURIComponent(searchTerm);
               }
               
-              return url;
-            },
-            dataType: 'json',
-            delay: 250,
-            cache: false,
-            processResults: function(data) {
-              return {
-                results: data.results.map(function(user) {
-                  const fullName = user.name.first + ' ' + user.name.last;
-                  return {
-                    id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
-                    text: fullName,
-                    html: '<div class="d-flex align-items-center gap-2">' +
-                          '<img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%">' +
-                          '<div>' +
-                          '<div class="fw-semibold">' + fullName + '</div>' +
-                          '<div class="small text-muted">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>' +
-                          '</div>' +
-                          '<div class="ms-auto small text-muted">' + 
-                          '<i class="bi bi-envelope me-1"></i>' + 
-                          user.email +
-                          '</div>' +
-                          '</div>'
-                  };
-                })
-              };
-            },
-            error: function(xhr, status, error) {
-              console.error('RandomUser API Error:', status, error);
-              // Display a helpful message in the dropdown
-              $('#remote-demo-select').html('<option value="">API Error - Try again later</option>');
+              console.log('Fetching from:', url); // Debug log
               
-              // Add a visible error message for the user
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              
+              const data = await response.json();
+              console.log('API Response:', data); // Debug log
+              
+              // Transform data to Select3 format
+              return data.results.map(function(user) {
+                const fullName = user.name.first + ' ' + user.name.last;
+                return {
+                  value: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
+                  text: fullName,
+                  icon: user.picture.medium, // Use icon property for images
+                  html: '<div class="d-flex align-items-center gap-2">' +
+                        '<img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%">' +
+                        '<div>' +
+                        '<div class="fw-semibold">' + fullName + '</div>' +
+                        '<div class="small text-muted">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>' +
+                        '</div>' +
+                        '<div class="ms-auto small text-muted">' + 
+                        '<i class="bi bi-envelope me-1"></i>' + 
+                        user.email +
+                        '</div>' +
+                        '</div>'
+                };
+              });
+              
+            } catch (error) {
+              console.error('RandomUser API Error:', error);
+              // Show error in the dropdown
               if (!$('#randomuser-api-error').length) {
                 $('<div id="randomuser-api-error" class="alert alert-danger mt-2" role="alert">' +
                   '<i class="bi bi-exclamation-triangle-fill me-2"></i>' +
@@ -575,6 +576,7 @@ class SelectLandingPage {
                   $('#randomuser-api-error').fadeOut(function() { $(this).remove(); });
                 }, 5000);
               }
+              return []; // Return empty array on error
             }
           }
         });

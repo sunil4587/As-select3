@@ -1007,110 +1007,93 @@ $('#max-demo-select').on('select3:maxselection', function(e) {
                                     <div class="tab-pane fade" id="remote-js" role="tabpanel" aria-labelledby="remote-js-tab">
                                         <div class="code-block">
                                             <button class="copy-btn" data-clipboard-text="$('#remote-demo-select').select3({
-                                                placeholder: 'Search for random users...',
-                                                searchable: true,
-                                                ajax: {
-                                                url: function(params) {
-                                                // Build URL with query parameters
-                                                let url = 'https://randomuser.me/api/?results=10';
-                                                url += '&inc=name,picture,location,email,login';
-                                                url += '&nat=us,gb,fr,au,ca';
-                                                // Use search term as seed if provided for consistent results
-                                                if (params.term) {
-                                                url += '&seed=' + encodeURIComponent(params.term);
-                                                }
-                                                return url;
-                                                },
-                                                dataType: 'json',
-                                                delay: 250,
-                                                cache: false,
-                                                processResults: function(data) {
-                                                return {
-                                                results: data.results.map(function(user) {
-                                                const fullName = user.name.first + ' ' + user.name.last;
-                                                return {
-                                                id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
-                                                text: fullName,
-                                                html: '<div class=\"d-flex align-items-center gap-2\">
-                                                ' +
-                                                '<img src=\"' + user.picture.medium + '\" width=\"48\" height=\"48\" style=\"border-radius:50%\">' +
-                                                '
-                                                <div>
-                                                    ' +
-                                                    '
-                                                    <div class=\"fw-semibold\">' + fullName + '</div>
-                                                    ' +
-                                                    '
-                                                    <div class=\"small text-muted\">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>
-                                                    ' +
-                                                    '
-                                                </div>
-                                                ' +
-                                                '
-                                                <div class=\"ms-auto small text-muted\">' + 
-                                                    '<i class=\"bi bi-envelope me-1\"></i>' + 
-                                                    user.email +
-                                                    '
-                                                </div>
-                                                ' +
-                                                '
-                                        </div>
-                                        '
-                                        };
-                                        })
-                                        };
-                                        },
-                                        error: function(xhr, status, error) {
-                                        console.error('RandomUser API Error:', status, error);
-                                        }
-                                        }
-                                        });">
+    placeholder: 'Search for random users...',
+    searchable: true,
+    remote: async function(searchTerm) {
+        try {
+            let url = 'https://randomuser.me/api/?results=10';
+            url += '&inc=name,picture,location,email,login';
+            url += '&nat=us,gb,fr,au,ca';
+            
+            if (searchTerm) {
+                url += '&seed=' + encodeURIComponent(searchTerm);
+            }
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            return data.results.map(function(user) {
+                const fullName = user.name.first + ' ' + user.name.last;
+                return {
+                    value: user.login.uuid,
+                    text: fullName,
+                    icon: user.picture.medium,
+                    html: '&lt;div class=&quot;d-flex align-items-center gap-2&quot;&gt;' +
+                          '&lt;img src=&quot;' + user.picture.medium + '&quot; width=&quot;48&quot; height=&quot;48&quot; style=&quot;border-radius:50%&quot;&gt;' +
+                          '&lt;div&gt;' +
+                          '&lt;div class=&quot;fw-semibold&quot;&gt;' + fullName + '&lt;/div&gt;' +
+                          '&lt;div class=&quot;small text-muted&quot;&gt;' + user.location.city + ', ' + user.location.country + '&lt;/div&gt;' +
+                          '&lt;/div&gt;' +
+                          '&lt;div class=&quot;ms-auto small text-muted&quot;&gt;' + 
+                          '&lt;i class=&quot;bi bi-envelope me-1&quot;&gt;&lt;/i&gt;' + 
+                          user.email +
+                          '&lt;/div&gt;' +
+                          '&lt;/div&gt;'
+                };
+            });
+        } catch (error) {
+            console.error('Error:', error);
+            return [];
+        }
+    }
+});">
                                         <i class="bi bi-clipboard"></i>
                                         </button>
                                         <pre><code class="language-javascript">$('#remote-demo-select').select3({
     placeholder: 'Search for random users...',
     searchable: true,
-    ajax: {
-        url: function(params) {
+    remote: async function(searchTerm) {
+        try {
             // Build URL with query parameters
             let url = 'https://randomuser.me/api/?results=10';
             url += '&inc=name,picture,location,email,login';
             url += '&nat=us,gb,fr,au,ca';
             
             // Use search term as seed if provided for consistent results
-            if (params.term) {
-                url += '&seed=' + encodeURIComponent(params.term);
+            if (searchTerm) {
+                url += '&seed=' + encodeURIComponent(searchTerm);
             }
             
-            return url;
-        },
-        dataType: 'json',
-        delay: 250,
-        cache: false,
-        processResults: function(data) {
-            return {
-                results: data.results.map(function(user) {
-                    const fullName = user.name.first + ' ' + user.name.last;
-                    return {
-                        id: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
-                        text: fullName,
-                        html: '<div class=\"d-flex align-items-center gap-2\">' +
-                              '<img src=\"' + user.picture.medium + '\" width=\"48\" height=\"48\" style=\"border-radius:50%\">' +
-                              '<div>' +
-                              '<div class=\"fw-semibold\">' + fullName + '</div>' +
-                              '<div class=\"small text-muted\">' + (user.location ? user.location.city + ', ' + user.location.country : '') + '</div>' +
-                              '</div>' +
-                              '<div class=\"ms-auto small text-muted\">' + 
-                              '<i class=\"bi bi-envelope me-1\"></i>' + 
-                              user.email +
-                              '</div>' +
-                              '</div>'
-                    };
-                })
-            };
-        },
-        error: function(xhr, status, error) {
-            console.error('RandomUser API Error:', status, error);
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Transform data to Select3 format with images
+            return data.results.map(function(user) {
+                const fullName = user.name.first + ' ' + user.name.last;
+                return {
+                    value: user.login.uuid,
+                    text: fullName,
+                    icon: user.picture.medium, // Use icon property for images
+                    html: '&lt;div class="d-flex align-items-center gap-2"&gt;' +
+                          '&lt;img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%"&gt;' +
+                          '&lt;div&gt;' +
+                          '&lt;div class="fw-semibold"&gt;' + fullName + '&lt;/div&gt;' +
+                          '&lt;div class="small text-muted"&gt;' + user.location.city + ', ' + user.location.country + '&lt;/div&gt;' +
+                          '&lt;/div&gt;' +
+                          '&lt;div class="ms-auto small text-muted"&gt;' + 
+                          '&lt;i class="bi bi-envelope me-1"&gt;&lt;/i&gt;' + 
+                          user.email +
+                          '&lt;/div&gt;' +
+                          '&lt;/div&gt;'
+                };
+            });
+        } catch (error) {
+            console.error('RandomUser API Error:', error);
+            return []; // Return empty array on error
         }
     }
 });</code></pre>
