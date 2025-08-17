@@ -1,0 +1,22 @@
+{
+    "name": "Select3 - Modern JavaScript Select Library",
+    "short_name": "Select3",
+    "description": "Advanced select library with search, multi-selection, and remote data loading",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0F6FFC",
+    "theme_color": "#0F6FFC",
+    "icons": [
+        {
+            "src": "images/icons/favicon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any"
+        },
+        {
+            "src": "images/icons/logo.svg",
+            "type": "image/svg+xml", 
+            "sizes": "512x512",
+            "purpose": "any maskable"
+        }
+    ]
+}
