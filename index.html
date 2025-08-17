@@ -14,7 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
         <!-- Select3 Library -->
-        <link href="lib/select3.min.css" rel="stylesheet">
+        <link href="select3/select3.min.css" rel="stylesheet">
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -427,21 +427,32 @@
                                 </div>
                                 <div class="tab-pane fade" id="cdn" role="tabpanel">
                                     <div class="p-4">
-                                        <h6 class="fw-semibold mb-3">Include via CDN</h6>
+                                        <h6 class="fw-semibold mb-3">Local Installation</h6>
                                         <div class="mb-4">
-                                            <p class="text-muted small mb-2">Add these tags to your HTML:</p>
+                                            <p class="text-muted small mb-2">Download and include these files:</p>
                                             <div class="code-block">
                                                 <button class="copy-btn" data-clipboard-text='<!-- CSS -->
-                                                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css">
-                                                    <!-- JavaScript -->
-                                                    <script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"></script>'>
+<link rel="stylesheet" href="lib/select3.min.css">
+<!-- JavaScript (requires jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="lib/select3.min.js"></script>'>
                                                 <i class="bi bi-clipboard"></i>
                                                 </button>
                                                 <pre><code class="language-html">&lt;!-- CSS --&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.css"&gt;
+&lt;link rel="stylesheet" href="lib/select3.min.css"&gt;
 
-&lt;!-- JavaScript --&gt;
-&lt;script src="https://cdn.jsdelivr.net/npm/select-library@3.0.0/dist/select.min.js"&gt;&lt;/script&gt;</code></pre>
+&lt;!-- JavaScript (requires jQuery) --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="lib/select3.min.js"&gt;&lt;/script&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="select3-library.zip" class="btn btn-primary" download>
+                                                <i class="bi bi-download me-2"></i>
+                                                Download Select3 Package
+                                            </a>
+                                            <div class="mt-2 small text-muted">
+                                                Includes library files, examples, and documentation
                                             </div>
                                         </div>
                                     </div>
@@ -1054,12 +1065,10 @@ $('#max-demo-select').on('select3:maxselection', function(e) {
     searchable: true,
     remote: async function(searchTerm) {
         try {
-            // Build URL with query parameters
             let url = 'https://randomuser.me/api/?results=10';
             url += '&inc=name,picture,location,email,login';
             url += '&nat=us,gb,fr,au,ca';
             
-            // Use search term as seed if provided for consistent results
             if (searchTerm) {
                 url += '&seed=' + encodeURIComponent(searchTerm);
             }
@@ -1071,21 +1080,20 @@ $('#max-demo-select').on('select3:maxselection', function(e) {
             
             const data = await response.json();
             
-            // Transform data to Select3 format with images
             return data.results.map(function(user) {
                 const fullName = user.name.first + ' ' + user.name.last;
                 return {
                     value: user.login.uuid,
                     text: fullName,
-                    icon: user.picture.medium, // Use icon property for images
-                    html: '&lt;div class="d-flex align-items-center gap-2"&gt;' +
-                          '&lt;img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%"&gt;' +
+                    icon: user.picture.medium,
+                    html: '&lt;div class=&quot;d-flex align-items-center gap-2&quot;&gt;' +
+                          '&lt;img src=&quot;' + user.picture.medium + '&quot; width=&quot;48&quot; height=&quot;48&quot; style=&quot;border-radius:50%&quot;&gt;' +
                           '&lt;div&gt;' +
-                          '&lt;div class="fw-semibold"&gt;' + fullName + '&lt;/div&gt;' +
-                          '&lt;div class="small text-muted"&gt;' + user.location.city + ', ' + user.location.country + '&lt;/div&gt;' +
+                          '&lt;div class=&quot;fw-semibold&quot;&gt;' + fullName + '&lt;/div&gt;' +
+                          '&lt;div class=&quot;small text-muted&quot;&gt;' + user.location.city + ', ' + user.location.country + '&lt;/div&gt;' +
                           '&lt;/div&gt;' +
-                          '&lt;div class="ms-auto small text-muted"&gt;' + 
-                          '&lt;i class="bi bi-envelope me-1"&gt;&lt;/i&gt;' + 
+                          '&lt;div class=&quot;ms-auto small text-muted&quot;&gt;' + 
+                          '&lt;i class=&quot;bi bi-envelope me-1&quot;&gt;&lt;/i&gt;' + 
                           user.email +
                           '&lt;/div&gt;' +
                           '&lt;/div&gt;'
@@ -1093,7 +1101,7 @@ $('#max-demo-select').on('select3:maxselection', function(e) {
             });
         } catch (error) {
             console.error('RandomUser API Error:', error);
-            return []; // Return empty array on error
+            return [];
         }
     }
 });</code></pre>
@@ -1578,7 +1586,7 @@ $('#max-demo-select').on('select3:maxselection', function(e) {
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/select3.min.js"></script>
+        <script src="select3/select3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>

@@ -521,17 +521,13 @@ class SelectLandingPage {
           searchable: true,
           remote: async function(searchTerm) {
             try {
-              // Build URL with query parameters
               let url = 'https://randomuser.me/api/?results=10';
               url += '&inc=name,picture,location,email,login';
               url += '&nat=us,gb,fr,au,ca';
               
-              // Use search term as seed if provided for consistent results
               if (searchTerm) {
                 url += '&seed=' + encodeURIComponent(searchTerm);
               }
-              
-              console.log('Fetching from:', url); // Debug log
               
               const response = await fetch(url);
               if (!response.ok) {
@@ -539,15 +535,13 @@ class SelectLandingPage {
               }
               
               const data = await response.json();
-              console.log('API Response:', data); // Debug log
               
-              // Transform data to Select3 format
               return data.results.map(function(user) {
                 const fullName = user.name.first + ' ' + user.name.last;
                 return {
                   value: user.login ? user.login.uuid : Math.random().toString(36).substring(2),
                   text: fullName,
-                  icon: user.picture.medium, // Use icon property for images
+                  icon: user.picture.medium,
                   html: '<div class="d-flex align-items-center gap-2">' +
                         '<img src="' + user.picture.medium + '" width="48" height="48" style="border-radius:50%">' +
                         '<div>' +
@@ -564,24 +558,21 @@ class SelectLandingPage {
               
             } catch (error) {
               console.error('RandomUser API Error:', error);
-              // Show error in the dropdown
               if (!$('#randomuser-api-error').length) {
                 $('<div id="randomuser-api-error" class="alert alert-danger mt-2" role="alert">' +
                   '<i class="bi bi-exclamation-triangle-fill me-2"></i>' +
                   'Error fetching data from RandomUser API. Please try again later.' +
                   '</div>').insertAfter('#remote-demo-select');
                 
-                // Auto-hide after 5 seconds
                 setTimeout(function() {
                   $('#randomuser-api-error').fadeOut(function() { $(this).remove(); });
                 }, 5000);
               }
-              return []; // Return empty array on error
+              return [];
             }
           }
         });
         
-        // Add helpful message
         if (!$('#remote-demo-select').next('.mt-2.small.text-muted').length) {
           $('<div class="mt-2 small text-muted">' +
             '<i class="bi bi-info-circle me-1"></i>' +

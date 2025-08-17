@@ -1,0 +1,37 @@
+{
+  "name": "select3",
+  "version": "3.0.0",
+  "description": "Modern JavaScript Select Library with advanced features",
+  "main": "select3.min.js",
+  "style": "select3.min.css",
+  "author": "Sunil Kumar <https://github.com/sunil4587>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunil4587/As-select3.git"
+  },
+  "keywords": [
+    "select",
+    "dropdown",
+    "multiselect",
+    "search",
+    "javascript",
+    "jquery",
+    "ui",
+    "form",
+    "input",
+    "component"
+  ],
+  "dependencies": {
+    "jquery": ">=3.0.0"
+  },
+  "files": [
+    "select3.min.css",
+    "select3.min.js",
+    "README.md"
+  ],
+  "homepage": "https://github.com/sunil4587/As-select3",
+  "bugs": {
+    "url": "https://github.com/sunil4587/As-select3/issues"
+  }
+}
