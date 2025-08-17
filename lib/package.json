@@ -1,6 +1,6 @@
 {
   "name": "as-select3",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "description": "Modern JavaScript Select Library with advanced features",
   "main": "dist/as-select3.min.js",
   "style": "dist/as-select3.min.css",

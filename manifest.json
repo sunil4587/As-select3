@@ -1,6 +1,6 @@
 {
-    "name": "Select3 - Modern JavaScript Select Library",
-    "short_name": "Select3",
+    "name": "As-Select3 - Modern JavaScript Select Library",
+    "short_name": "As-Select3",
     "description": "Advanced select library with search, multi-selection, and remote data loading",
     "start_url": "/",
     "display": "standalone",

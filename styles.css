@@ -877,8 +877,8 @@ body {
   transition: var(--transition);
 }
 
-/* Disable hover animation on cards with select3 */
-.demo-card:has(.select3-container) {
+/* Disable hover animation on cards with as-select3 */
+.demo-card:has(.as-select3-container) {
   transform: none !important;
   transition: box-shadow var(--transition);
 }
@@ -888,8 +888,8 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* Ensure hover on cards with select3 only changes shadow, not position */
-.demo-card:has(.select3-container):hover {
+/* Ensure hover on cards with as-select3 only changes shadow, not position */
+.demo-card:has(.as-select3-container):hover {
   transform: none !important;
   box-shadow: var(--shadow-lg);
 }
@@ -1313,69 +1313,69 @@ body {
   }
 }
 
-/* ===== SELECT3 THEME FIXES ===== */
-[data-bs-theme="dark"] .select3-container {
+/* ===== AS-SELECT3 THEME FIXES ===== */
+[data-bs-theme="dark"] .as-select3-container {
   color: var(--text-primary);
 }
 
-[data-bs-theme="dark"] .select3-dropdown {
+[data-bs-theme="dark"] .as-select3-dropdown {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
 }
 
-[data-bs-theme="dark"] .select3-options {
+[data-bs-theme="dark"] .as-select3-options {
   background-color: var(--surface-color);
 }
 
-[data-bs-theme="dark"] .select3-option {
+[data-bs-theme="dark"] .as-select3-option {
   color: var(--text-primary);
 }
 
-[data-bs-theme="dark"] .select3-option:hover,
-[data-bs-theme="dark"] .select3-option.active {
+[data-bs-theme="dark"] .as-select3-option:hover,
+[data-bs-theme="dark"] .as-select3-option.active {
   background-color: var(--accent-bg);
 }
 
-[data-bs-theme="dark"] .select3-search input {
+[data-bs-theme="dark"] .as-select3-search input {
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
 
-[data-bs-theme="dark"] .select3-search input::placeholder {
+[data-bs-theme="dark"] .as-select3-search input::placeholder {
   color: var(--text-muted);
 }
 
-[data-bs-theme="dark"] .select3-tag {
+[data-bs-theme="dark"] .as-select3-tag {
   background-color: var(--accent-bg);
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
 }
 
-[data-bs-theme="dark"] .select3-tag-remove:hover {
+[data-bs-theme="dark"] .as-select3-tag-remove:hover {
   color: var(--text-primary);
 }
 
-[data-bs-theme="dark"] .select3-trigger {
+[data-bs-theme="dark"] .as-select3-trigger {
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
 }
 
 /* ===== CUSTOM SELECT THEMES ===== */
-/* Custom Purple Theme for Select3 */
-.select3-container.custom-purple .select3-dropdown {
+/* Custom Purple Theme for As-Select3 */
+.as-select3-container.custom-purple .as-select3-dropdown {
   border-color: #8A2BE2;
   box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
 }
 
-.select3-container.custom-purple .select3-selection {
+.as-select3-container.custom-purple .as-select3-selection {
   border-color: #8A2BE2;
   background: linear-gradient(to right, rgba(138, 43, 226, 0.05), rgba(138, 43, 226, 0.1));
 }
 
-.select3-container.custom-purple .select3-selection:hover {
+.as-select3-container.custom-purple .as-select3-selection:hover {
   border-color: #9370DB;
 }
 

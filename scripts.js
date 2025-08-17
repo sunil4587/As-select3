@@ -10,7 +10,7 @@ class SelectLandingPage {
     this.setupAnimations();
     this.setupInteractiveElements();
     this.setupToastNotifications();
-    this.setupSelect3Demos();
+    this.setupAsSelect3Demos();
   }
 
   setupTheme() {
@@ -78,8 +78,8 @@ class SelectLandingPage {
     };
     
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.select3-container') || 
-          e.target.closest('.select3-dropdown')) {
+      if (e.target.closest('.as-select3-container') || 
+          e.target.closest('.as-select3-dropdown')) {
         disableSmoothScroll();
       }
     }, true);
@@ -421,18 +421,18 @@ class SelectLandingPage {
     });
   }
 
-  setupSelect3Demos() {
+  setupAsSelect3Demos() {
     if (typeof $ === 'undefined') {
       return;
     }
     
     setTimeout(() => {
-      if (typeof $.fn.select3 === 'undefined') {
+      if (typeof $.fn.asSelect3 === 'undefined') {
         return;
       }
       
       this.initializeSelectComponents();
-      this.enhanceSelect3Icons();
+      this.enhanceAsSelect3Icons();
       
       // Initialize Syntax Highlighting for code blocks
       if (typeof Prism !== 'undefined') {
@@ -441,8 +441,8 @@ class SelectLandingPage {
     }, 100);
   }
   
-  enhanceSelect3Icons() {
-    $('.select3-option-icon, .select3-tag-icon, .select3-single-icon').each(function() {
+  enhanceAsSelect3Icons() {
+    $('.as-select3-option-icon, .as-select3-tag-icon, .as-select3-single-icon').each(function() {
       const $icon = $(this);
       if (!$icon.find('img').length && !$icon.find('i').length) {
         $icon.css({
@@ -458,7 +458,7 @@ class SelectLandingPage {
     // Initialize the new demos in the installation section
     if ($('#basic-demo-select').length) {
       try {
-        $('#basic-demo-select').select3({
+        $('#basic-demo-select').asSelect3({
           placeholder: 'Select an option',
           searchable: false
         });
@@ -468,7 +468,7 @@ class SelectLandingPage {
     
     if ($('#multi-demo-select').length) {
       try {
-        $('#multi-demo-select').select3({
+        $('#multi-demo-select').asSelect3({
           placeholder: 'Select programming languages',
           searchable: true,
           searchPlaceholder: 'Search languages...',
@@ -481,14 +481,14 @@ class SelectLandingPage {
     
     if ($('#max-demo-select').length) {
       try {
-        $('#max-demo-select').select3({
+        $('#max-demo-select').asSelect3({
           placeholder: 'Select up to 3 skills',
           searchable: true,
           searchPlaceholder: 'Find skills...',
           maxSelection: 3
         });
         
-        $('#max-demo-select').on('select3:maxselection', function(e) {
+        $('#max-demo-select').on('asSelect3:maxselection', function(e) {
           $('#max-selection-warning').removeClass('d-none');
           setTimeout(() => {
             $('#max-selection-warning').addClass('d-none');
@@ -501,7 +501,7 @@ class SelectLandingPage {
     // Initialize the new profile images demo
     if ($('#profile-demo-select').length) {
       try {
-        $('#profile-demo-select').select3({
+        $('#profile-demo-select').asSelect3({
           placeholder: 'Select team members',
           imageWidth: 36,
           imageHeight: 36,
@@ -516,7 +516,7 @@ class SelectLandingPage {
     // Initialize the remote data fetching demo
     if ($('#remote-demo-select').length) {
       try {
-        $('#remote-demo-select').select3({
+        $('#remote-demo-select').asSelect3({
           placeholder: 'Search for random users...',
           searchable: true,
           remote: async function(searchTerm) {
@@ -587,7 +587,7 @@ class SelectLandingPage {
     // Initialize the custom theme demo
     if ($('#custom-demo-select').length) {
       try {
-        $('#custom-demo-select').select3({
+        $('#custom-demo-select').asSelect3({
           placeholder: 'How are you feeling today?',
           searchable: true,
           theme: 'custom-purple'
@@ -598,7 +598,7 @@ class SelectLandingPage {
     
     if ($('#custom-demo-select-multi').length) {
       try {
-        $('#custom-demo-select-multi').select3({
+        $('#custom-demo-select-multi').asSelect3({
           placeholder: 'Select your activities',
           searchable: true,
           selectAll: true,
@@ -612,7 +612,7 @@ class SelectLandingPage {
     // Original demos
     if ($('#hero-demo-select').length) {
       try {
-        $('#hero-demo-select').select3({
+        $('#hero-demo-select').asSelect3({
           searchable: true,
           selectAll: false,
           clearAll: true,
@@ -625,7 +625,7 @@ class SelectLandingPage {
 
     if ($('#country-select').length) {
       try {
-        $('#country-select').select3({
+        $('#country-select').asSelect3({
           searchable: true,
           selectAll: true,
           clearAll: true,
@@ -638,7 +638,7 @@ class SelectLandingPage {
 
     if ($('#priority-select').length) {
       try {
-        $('#priority-select').select3({
+        $('#priority-select').asSelect3({
           searchable: false,
           placeholder: 'Select priority...'
         });
@@ -648,7 +648,7 @@ class SelectLandingPage {
 
     if ($('#skills-select').length) {
       try {
-        const skillsSelect = $('#skills-select').select3({
+        const skillsSelect = $('#skills-select').asSelect3({
           searchable: true,
           selectAll: false,
           clearAll: true,
@@ -657,7 +657,7 @@ class SelectLandingPage {
           searchPlaceholder: 'Search skills...'
         });
 
-        $('#skills-select').on('select3:maxselection', function(e) {
+        $('#skills-select').on('asSelect3:maxselection', function(e) {
           $('#skills-warning').removeClass('d-none');
           setTimeout(() => {
             $('#skills-warning').addClass('d-none');
@@ -669,21 +669,7 @@ class SelectLandingPage {
 
     if ($('#repo-select').length) {
       try {
-        $('#repo-select').select3({
-          searchable: true,
-          placeholder: 'Type to search repositories...',
-          remote: this.searchGitHubRepos.bind(this),
-          searchDelay: 500,
-          noResultsText: 'No repositories found',
-          loadingText: 'Searching repositories...'
-        });
-      } catch (err) {
-      }
-    }
-
-    if ($('#repo-select').length) {
-      try {
-        $('#repo-select').select3({
+        $('#repo-select').asSelect3({
           searchable: true,
           placeholder: 'Type to search repositories...',
           remote: this.searchGitHubRepos.bind(this),

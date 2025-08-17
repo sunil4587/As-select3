@@ -1,6 +1,6 @@
-# Select3 - Modern JavaScript Select Library
+# As-Select3 - Modern JavaScript Select Library
 
-[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
 
@@ -19,23 +19,23 @@ A lightweight, modern JavaScript library for creating beautiful and interactive 
 
 ## 🎯 Live Demo
 
-Visit the [demo page](https://sunil4587.github.io/As-select3/) to see Select3 in action with interactive examples.
+Visit the [demo page](https://sunil4587.github.io/As-select3/) to see As-Select3 in action with interactive examples.
 
 ## � Installation
 
 ### Download Package
 
-[Download Select3 v3.0.0](select3-library.zip) - Complete package with library files and documentation.
+[Download As-Select3 v1.0.0](as-select3-library.zip) - Complete package with library files and documentation.
 
 ### Include Files
 
 ```html
 <!-- CSS -->
-<link rel="stylesheet" href="lib/select3.min.css">
+<link rel="stylesheet" href="lib/as-select3.min.css">
 
 <!-- JavaScript (requires jQuery) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
-<script src="lib/select3.min.js"></script>
+<script src="lib/as-select3.min.js"></script>
 ```
 
 ### Basic Usage
@@ -48,7 +48,7 @@ Visit the [demo page](https://sunil4587.github.io/As-select3/) to see Select3 in
 </select>
 
 <script>
-$('#my-select').select3({
+$('#my-select').asSelect3({
     placeholder: 'Choose options...',
     searchable: true,
     selectAll: true,
@@ -73,7 +73,7 @@ $('#my-select').select3({
 ## 🌐 Remote Data Example
 
 ```javascript
-$('#remote-select').select3({
+$('#remote-select').asSelect3({
     placeholder: 'Search users...',
     searchable: true,
     remote: async function(searchTerm) {
@@ -97,19 +97,19 @@ $('#remote-select').select3({
 
 ```css
 /* Custom theme example */
-.select3-container.my-theme .select3-selection {
+.as-select3-container.my-theme .as-select3-selection {
     border-color: #007bff;
     background: linear-gradient(to right, rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.2));
 }
 
-.select3-container.my-theme .select3-tag {
+.as-select3-container.my-theme .as-select3-tag {
     background-color: #007bff;
     color: white;
 }
 ```
 
 ```javascript
-$('#themed-select').select3({
+$('#themed-select').asSelect3({
     theme: 'my-theme'
 });
 ```
@@ -117,20 +117,20 @@ $('#themed-select').select3({
 ## 🔧 Events
 
 ```javascript
-$('#my-select').on('select3:change', function(e) {
+$('#my-select').on('asSelect3:change', function(e) {
     console.log('Selection changed:', e.detail.value);
 });
 
-$('#my-select').on('select3:maxselection', function(e) {
+$('#my-select').on('asSelect3:maxselection', function(e) {
     alert('Maximum selection reached!');
 });
 ```
 
-Available events: `select3:change`, `select3:open`, `select3:close`, `select3:maxselection`, `select3:selectall`, `select3:clearall`
+Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`
 
 ## 📱 Mobile Support
 
-Select3 is fully responsive with:
+As-Select3 is fully responsive with:
 - Touch-friendly interface
 - Mobile-optimized dropdown positioning  
 - Reduced motion support for accessibility
@@ -154,17 +154,17 @@ document.documentElement.setAttribute('data-bs-theme', 'dark');
 
 ```javascript
 // Get current value(s)
-const value = $('#my-select').select3('getValue');
+const value = $('#my-select').asSelect3('getValue');
 
 // Set value(s)
-$('#my-select').select3('setValue', ['option1', 'option2']);
+$('#my-select').asSelect3('setValue', ['option1', 'option2']);
 
 // Open/close dropdown
-$('#my-select').select3('open');
-$('#my-select').select3('close');
+$('#my-select').asSelect3('open');
+$('#my-select').asSelect3('close');
 
 // Destroy instance
-$('#my-select').select3('destroy');
+$('#my-select').asSelect3('destroy');
 ```
 
 ## 📋 Requirements
@@ -178,8 +178,8 @@ $('#my-select').select3('destroy');
 ```
 As-select3/
 ├── lib/
-│   ├── select3.min.css    # Main stylesheet
-│   └── select3.min.js     # Main JavaScript library
+│   ├── as-select3.min.css    # Main stylesheet
+│   └── as-select3.min.js     # Main JavaScript library
 ├── select3/               # Distribution package
 │   ├── README.md         # Package documentation
 │   ├── package.json      # Package metadata

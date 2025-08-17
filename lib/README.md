@@ -1,13 +1,13 @@
-# Select3 - Modern JavaScript Select Library
+# As-Select3 - Modern JavaScript Select Library
 
-**Version:** 3.0.0  
+**Version:** 1.0.0  
 **Author:** Sunil Kumar  
 **License:** MIT  
 **Repository:** https://github.com/sunil4587/As-select3
 
 ## 📖 Description
 
-Select3 is a lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
+As-Select3 is a lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
 
 ## ✨ Features
 
