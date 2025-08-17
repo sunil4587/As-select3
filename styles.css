@@ -1,6 +1,4 @@
-/* ===== CSS VARIABLES ===== */
 :root {
-  /* Colors */
   --primary-color: #4A90E2;
   --primary-light: #7B68EE;
   --primary-dark: #2E5BDA;
@@ -13,7 +11,6 @@
   --text-secondary: #4A5568;
   --text-muted: #718096;
   
-  /* Gradients */
   --primary-gradient: linear-gradient(135deg, #4A90E2 0%, #7B68EE 100%);
   --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -22,24 +19,20 @@
   --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
   --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
   
-  /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
   
-  /* Spacing */
   --border-radius: 16px;
   --border-radius-sm: 8px;
   --border-radius-lg: 24px;
   
-  /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.15s ease;
 }
 
-/* Dark theme variables */
 [data-bs-theme="dark"] {
   --background-color: #1A202C;
   --surface-color: #2D3748;
@@ -52,18 +45,15 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.3);
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.4);
   
-  /* Dark mode specific colors */
   --border-color: #30363d;
   --border-hover: #525862;
   --card-bg: #21262d;
   --code-bg: #161b22;
   --accent-bg: rgba(56, 139, 253, 0.1);
   
-  /* Ensure gradients look good in dark mode */
   --primary-gradient: linear-gradient(135deg, #3182CE 0%, #6B46C1 100%);
 }
 
-/* ===== GLOBAL STYLES ===== */
 * {
   box-sizing: border-box;
 }
@@ -76,7 +66,6 @@ body {
   color: var(--text-primary);
 }
 
-/* ===== TYPOGRAPHY ===== */
 .gradient-text {
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -113,7 +102,7 @@ body {
   font-weight: 600;
 }
 
-/* ===== NAVIGATION ===== */
+
 .glass-nav {
   backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.8) !important;
@@ -239,7 +228,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* ===== HERO SECTION ===== */
+
 .hero-section {
   min-height: 100vh;
   background: var(--primary-gradient);
@@ -451,7 +440,7 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Hero Demo */
+
 .hero-demo-container {
   width: 100%;
   position: relative;
@@ -463,7 +452,7 @@ body {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--border-radius);
-  overflow: visible; /* Changed from hidden to visible for dropdowns */
+  overflow: visible;
   box-shadow: var(--shadow-xl);
   position: relative;
 }
@@ -601,7 +590,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* ===== TRUST SECTION ===== */
+
 .trust-section {
   background: var(--background-color);
 }
@@ -632,7 +621,7 @@ body {
   color: var(--text-primary);
 }
 
-/* ===== FEATURES SECTION ===== */
+
 .features-section {
   background: var(--surface-color);
 }
@@ -691,7 +680,7 @@ body {
   font-weight: 500;
 }
 
-/* ===== INSTALLATION SECTION ===== */
+
 .installation-section {
   background: var(--background-color);
 }
@@ -736,7 +725,7 @@ body {
   background: var(--accent-color);
 }
 
-/* ===== DEMO TABS ===== */
+
 .demo-tabs {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 0;
@@ -864,7 +853,7 @@ body {
   border-color: var(--primary-color);
 }
 
-/* ===== DEMO SECTION ===== */
+
 .demo-section {
   background: var(--surface-color);
 }
@@ -874,24 +863,15 @@ body {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);
   overflow: visible;
-  transition: var(--transition);
+  transform: none;
+  transition: none;
 }
 
-/* Disable hover animation on cards with as-select3 */
-.demo-card:has(.as-select3-container) {
-  transform: none !important;
-  transition: box-shadow var(--transition);
-}
-
-.demo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Ensure hover on cards with as-select3 only changes shadow, not position */
-.demo-card:has(.as-select3-container):hover {
-  transform: none !important;
-  box-shadow: var(--shadow-lg);
+.demo-card:hover,
+.demo-card:active,
+.demo-card:focus {
+  transform: none;
+  box-shadow: var(--shadow-md);
 }
 
 .demo-card-header {
@@ -1007,7 +987,7 @@ body {
   margin-top: 1rem;
 }
 
-/* ===== USE CASES SECTION ===== */
+
 .use-cases-section {
   background: var(--background-color);
 }
@@ -1040,7 +1020,7 @@ body {
   margin: 0 auto 1rem;
 }
 
-/* ===== SUPPORT SECTION ===== */
+
 .support-section {
   background: var(--surface-color);
 }
@@ -1079,7 +1059,7 @@ body {
   padding: 1.5rem;
 }
 
-/* ===== FOOTER ===== */
+
 .footer {
   background: #f8f9fa;
   color: #333;
@@ -1169,7 +1149,7 @@ body {
   color: white;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+
 @media (max-width: 768px) {
   .hero-actions {
     flex-direction: column;
@@ -1229,7 +1209,7 @@ body {
   }
 }
 
-/* ===== ANIMATIONS ===== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1245,7 +1225,7 @@ body {
   animation: fadeInUp 0.6s ease-out;
 }
 
-/* ===== UTILITIES ===== */
+
 .glass-effect {
   backdrop-filter: blur(20px) saturate(180%);
   background: rgba(255, 255, 255, 0.1);
@@ -1266,7 +1246,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* ===== SCROLLBAR STYLING ===== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -1284,7 +1264,7 @@ body {
   background: var(--primary-color);
 }
 
-/* ===== SELECTION STYLING ===== */
+
 ::selection {
   background: var(--primary-color);
   color: white;
@@ -1313,7 +1293,7 @@ body {
   }
 }
 
-/* ===== AS-SELECT3 THEME FIXES ===== */
+
 [data-bs-theme="dark"] .as-select3-container {
   color: var(--text-primary);
 }
@@ -1363,8 +1343,8 @@ body {
   color: var(--text-primary);
 }
 
-/* ===== CUSTOM SELECT THEMES ===== */
-/* Custom Purple Theme for As-Select3 */
+
+
 .as-select3-container.custom-purple .as-select3-dropdown {
   border-color: #8A2BE2;
   box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
@@ -1384,7 +1364,7 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
 }
 
-/* Customize the selected items */
+
 .select3-container.custom-purple .select3-tag {
   background-color: #8A2BE2;
   border-color: #8A2BE2;
@@ -1395,7 +1375,7 @@ body {
   background-color: #9370DB;
 }
 
-/* Customize the dropdown items */
+
 .select3-container.custom-purple .select3-option:hover,
 .select3-container.custom-purple .select3-option.select3-option-highlighted {
   background-color: rgba(138, 43, 226, 0.1);
@@ -1406,7 +1386,7 @@ body {
   color: #8A2BE2;
 }
 
-/* Customize action buttons */
+
 .select3-container.custom-purple .select3-actions .select3-select-all,
 .select3-container.custom-purple .select3-actions .select3-clear-all {
   color: #8A2BE2;
@@ -1418,19 +1398,36 @@ body {
   color: #9370DB;
 }
 
-/* Ensure consistent width for all demo cards */
+
 .demo-card {
   width: 100%;
 }
 
-/* Make sure all demo previews have consistent spacing */
+
 .demo-preview {
   width: 100%;
 }
 
-/* Ensure proper responsive behavior for all demos */
+
 @media (max-width: 992px) {
   .demo-preview .row .col-lg-6:first-child {
     margin-bottom: 1.5rem;
   }
+}
+
+.demo-card .as-select3-container,
+.glass-card .as-select3-container {
+  z-index: 5;
+}
+
+#hero-demo-select {
+  z-index: 10;
+}
+
+#hero-demo-select + .as-select3-container {
+  z-index: 10;
+}
+
+.glass-card {
+  z-index: 5;
 }

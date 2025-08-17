@@ -38,7 +38,6 @@ class SelectLandingPage {
     const themeChangedEvent = new CustomEvent('themeChanged', { detail: { theme } });
     document.dispatchEvent(themeChangedEvent);
     
-    // Force immediate navbar update
     const navbar = document.querySelector('.navbar');
     if (navbar) {
       const isDarkTheme = theme === 'dark';
@@ -134,7 +133,6 @@ class SelectLandingPage {
       });
     });
     
-    // Add clipboard functionality for new demo tabs - needs to be delayed to ensure DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         const tabsWithCopy = ['basicSelectTabs', 'multiSelectTabs', 'maxSelectTabs'];
@@ -150,7 +148,6 @@ class SelectLandingPage {
                 if (targetPanel) {
                   const copyBtn = targetPanel.querySelector('.copy-btn');
                   if (copyBtn) {
-                    // Reinitialize copy functionality for the newly shown tab
                     copyBtn.addEventListener('click', () => {
                       const text = copyBtn.getAttribute('data-clipboard-text');
                       if (text) {
@@ -193,6 +190,11 @@ class SelectLandingPage {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        if (entry.target.classList.contains('demo-card')) {
+          observer.unobserve(entry.target);
+          return;
+        }
+        
         if (entry.isIntersecting) {
           entry.target.classList.add('fade-in-up');
           observer.unobserve(entry.target);
@@ -201,7 +203,7 @@ class SelectLandingPage {
     }, observerOptions);
 
     const animateElements = document.querySelectorAll(
-      '.feature-card, .install-card, .demo-card, .use-case-card, .section-badge'
+      '.feature-card, .install-card, .use-case-card, .section-badge'
     );
     
     animateElements.forEach(el => observer.observe(el));
@@ -222,10 +224,13 @@ class SelectLandingPage {
   }
 
   setupInteractiveElements() {
-    const cards = document.querySelectorAll('.feature-card, .demo-card, .use-case-card');
+
+    const cards = document.querySelectorAll('.feature-card, .use-case-card');
     cards.forEach(card => {
       card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-8px)';
+                if (!card.querySelector('.as-select3')) {
+          card.style.transform = 'translateY(-8px)';
+        }
       });
       
       card.addEventListener('mouseleave', () => {
@@ -434,7 +439,7 @@ class SelectLandingPage {
       this.initializeSelectComponents();
       this.enhanceAsSelect3Icons();
       
-      // Initialize Syntax Highlighting for code blocks
+
       if (typeof Prism !== 'undefined') {
         Prism.highlightAll();
       }
@@ -455,7 +460,7 @@ class SelectLandingPage {
   }
   
   initializeSelectComponents() {
-    // Initialize the new demos in the installation section
+
     if ($('#basic-demo-select').length) {
       try {
         $('#basic-demo-select').asSelect3({
@@ -498,7 +503,7 @@ class SelectLandingPage {
       }
     }
     
-    // Initialize the new profile images demo
+
     if ($('#profile-demo-select').length) {
       try {
         $('#profile-demo-select').asSelect3({
@@ -513,7 +518,7 @@ class SelectLandingPage {
       }
     }
     
-    // Initialize the remote data fetching demo
+
     if ($('#remote-demo-select').length) {
       try {
         $('#remote-demo-select').asSelect3({
@@ -584,7 +589,7 @@ class SelectLandingPage {
       }
     }
     
-    // Initialize the custom theme demo
+
     if ($('#custom-demo-select').length) {
       try {
         $('#custom-demo-select').asSelect3({
@@ -609,7 +614,7 @@ class SelectLandingPage {
       }
     }
     
-    // Original demos
+
     if ($('#hero-demo-select').length) {
       try {
         $('#hero-demo-select').asSelect3({
@@ -787,77 +792,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
   
-  function fixSelect3() {
-    $('.select3-dropdown').css('z-index', '99999');
-    $('.demo-card, .card, .form-group, .glass-card, .hero-demo-container').css('overflow', 'visible');
-    $('.select3-container').css('position', 'relative');
-    $('.select3-dropdown').css({
-      'position': 'absolute',
-      'width': '100%'
-    });
-    $('.select3-container').closest('.demo-card, .glass-card').css({
-      'transform': 'none',
-      'transition': 'box-shadow 0.3s'
-    });
-    $('#hero-demo-select').closest('.glass-card').css({
-      'overflow': 'visible',
-      'position': 'relative',
-      'z-index': '50'
-    });
-    $('#hero-demo-select').next('.select3-container').css({
-      'position': 'relative',
-      'z-index': '99990'
-    });
-    $('.demo-card:has(.select3-container), .glass-card:has(.select3-container)').hover(
-      function() {
-        $(this).css('box-shadow', 'var(--shadow-lg)');
-      },
-      function() {
-        $(this).css('box-shadow', 'var(--shadow-md)');
-      }
-    );
-    
-    // Force navbar background update
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-      const isDarkTheme = document.documentElement.getAttribute('data-bs-theme') === 'dark';
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (isDarkTheme) {
-        navbar.style.background = scrollTop > 100 ? 'rgba(26, 32, 44, 0.95)' : 'rgba(26, 32, 44, 0.8)';
-      } else {
-        navbar.style.background = scrollTop > 100 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
-      }
-      navbar.style.backdropFilter = 'blur(20px)';
-    }
-  }
-  
-  if ($.fn.select3 && $.fn.select3.Constructor) {
-    const proto = $.fn.select3.Constructor.prototype;
-    
-    const originalInit = proto._init;
-    
-    proto._init = function() {
-      originalInit.apply(this, arguments);
-      
-      this.$dropdown.css('z-index', '99999');
-    };
-  }
-  
-  fixSelect3();
-  
-  // Run twice with a delay to ensure it works after everything is rendered
-  setTimeout(fixSelect3, 500);
-  
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.select3-trigger') || 
-        e.target.closest('.select3-option')) {
-      e.preventDefault();
-      
-      // Re-run the fix when interacting with dropdowns
-      setTimeout(fixSelect3, 10);
-    }
-  }, true);
-  
-  document.documentElement.style.scrollBehavior = 'auto';
+  $('.demo-card').off('mouseenter mouseleave');
+  $('.demo-card, .glass-card').has('.as-select3-container').css('overflow', 'visible');
 });
