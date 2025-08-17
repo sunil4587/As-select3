@@ -28,7 +28,7 @@ npm install as-select3
 
 ### Direct Download
 
-[Download As-Select3 v1.0.0](https://github.com/sunil4587/As-select3/releases/download/v1.0.0/as-select3.zip) - Complete package with library files and documentation.
+[Download As-Select3 v1.0.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
 ``` Library
 
 # As-Select3 - Modern JavaScript Select Library
@@ -59,7 +59,7 @@ Visit the [demo page](https://sunil4587.github.io/As-select3/) to see As-Select3
 
 ### Download Package
 
-[Download As-Select3 v1.0.0](as-select3-library.zip) - Complete package with library files and documentation.
+[Download As-Select3 v1.0.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
 
 ### Include Files
 
