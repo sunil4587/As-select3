@@ -1,11 +1,28 @@
 # As-Select3 - Modern JavaScript Select Library
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/sunil4587/As-select3)
 [![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
 
-A lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
+A lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, custom themes, and HTML rendering support.
+
+## ✨ Features
+
+- 🔍 **Searchable** - Built-in search functionality with real-time filtering
+- 🏷️ **Multi-select** - Select multiple options with elegant tag interface
+- 🌐 **Remote Data** - Load data from APIs with async/await support
+- 🎨 **Customizable** - Custom themes and comprehensive styling options
+- 📱 **Responsive** - Mobile-friendly design with touch support
+- ♿ **Accessible** - Full ARIA compliance and keyboard navigation
+- 🚀 **Lightweight** - Minimal footprint with optimized performance
+- 🎭 **HTML Rendering** - Rich HTML content in options and selections
+- 🔧 **Template Support** - Custom templates for advanced formatting
+- 🎯 **Events** - Comprehensive event system for custom integrations
+
+## 🎯 Live Demo
+
+Visit the [demo page](https://sunil4587.github.io/As-select3/) to see As-Select3 in action with interactive examples.
 
 ## 📦 Installation
 
@@ -28,38 +45,7 @@ npm install as-select3
 
 ### Direct Download
 
-[Download As-Select3 v1.0.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
-``` Library
-
-# As-Select3 - Modern JavaScript Select Library
-
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
-[![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
-
-A lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
-
-## ✨ Features
-
-- 🔍 **Searchable** - Built-in search functionality with real-time filtering
-- 🏷️ **Multi-select** - Select multiple options with elegant tag interface
-- 🌐 **Remote Data** - Load data from APIs with async/await support
-- 🎨 **Customizable** - Custom themes and comprehensive styling options
-- 📱 **Responsive** - Mobile-friendly design with touch support
-- ♿ **Accessible** - Full ARIA compliance and keyboard navigation
-- 🚀 **Lightweight** - Minimal footprint with optimized performance
-- 🎯 **Events** - Comprehensive event system for custom integrations
-
-## 🎯 Live Demo
-
-Visit the [demo page](https://sunil4587.github.io/As-select3/) to see As-Select3 in action with interactive examples.
-
-## � Installation
-
-### Download Package
-
-[Download As-Select3 v1.0.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
+[Download As-Select3 v1.1.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
 
 ### Include Files
 
@@ -95,14 +81,25 @@ $('#my-select').asSelect3({
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `placeholder` | string | "Choose an option..." | Placeholder text |
-| `searchable` | boolean | true | Enable search functionality |
-| `selectAll` | boolean | false | Show "Select All" button |
-| `clearAll` | boolean | false | Show "Clear All" button |
-| `maxSelection` | number | null | Maximum selections allowed |
-| `remote` | function | null | Function for remote data loading |
-| `searchDelay` | number | 300 | Search delay in milliseconds |
-| `theme` | string | null | Custom theme class |
+| `placeholder` | string | Auto-generated | Custom placeholder text |
+| `searchable` | boolean | `true` | Enable/disable search functionality |
+| `selectAll` | boolean | `true` (multiple only) | Show "Select All" button |
+| `clearAll` | boolean | `true` | Show "Clear All" button |
+| `maxSelection` | number | `null` | Maximum number of selections |
+| `remote` | function | `null` | Remote data loading function |
+| `searchDelay` | number | `300` | Search input delay in ms |
+| `noResultsText` | string | 'No results found' | Text when no results match |
+| `loadingText` | string | 'Loading...' | Text during remote loading |
+| `searchPlaceholder` | string | 'Search options...' | Search input placeholder |
+| `selectAllText` | string | 'Select All' | Select All button text |
+| `clearAllText` | string | 'Clear All' | Clear All button text |
+| `defaultIconClass` | string | 'bi bi-chevron-down' | Default arrow icon class |
+| `iconPrefix` | string | `null` | Icon prefix for custom icons |
+| `allowHtml` | boolean | `true` | Enable HTML content in options |
+| `escapeMarkup` | function | identity | HTML sanitization function |
+| `templateResult` | function | `null` | Custom option rendering template |
+| `templateSelection` | function | `null` | Custom selection rendering template |
+| `matcher` | function | `null` | Custom search matching function |
 
 ## 🌐 Remote Data Example
 
@@ -123,6 +120,54 @@ $('#remote-select').asSelect3({
                      <div class="text-muted">${user.email}</div>
                    </div>`
         }));
+    }
+});
+```
+
+## 🎭 HTML Rendering & Templating
+
+### Basic HTML Content
+
+Add rich HTML content to options using the `html` property or `data-html` attribute:
+
+```html
+<select id="rich-select">
+    <option value="user1" data-html="<strong>John Doe</strong><br><small>Administrator</small>">John Doe</option>
+    <option value="user2" data-html="<strong>Jane Smith</strong><br><small>Editor</small>">Jane Smith</option>
+</select>
+
+<script>
+$('#rich-select').asSelect3({
+    allowHtml: true,
+    placeholder: 'Select a user...'
+});
+</script>
+```
+
+### Custom Templates
+
+Use `templateResult` and `templateSelection` for advanced customization:
+
+```javascript
+$('#custom-select').asSelect3({
+    templateResult: function(data) {
+        if (!data.id) return data.text;
+        
+        return `<div class="d-flex align-items-center">
+                  <img src="/avatars/${data.id}.jpg" width="32" height="32" class="rounded-circle me-2">
+                  <div>
+                    <div class="fw-semibold">${data.text}</div>
+                    <small class="text-muted">ID: ${data.id}</small>
+                  </div>
+                </div>`;
+    },
+    templateSelection: function(data) {
+        if (!data.id) return data.text;
+        
+        return `<div class="d-flex align-items-center">
+                  <img src="/avatars/${data.id}.jpg" width="20" height="20" class="rounded-circle me-1">
+                  <span>${data.text}</span>
+                </div>`;
     }
 });
 ```
@@ -160,7 +205,7 @@ $('#my-select').on('asSelect3:maxselection', function(e) {
 });
 ```
 
-Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`
+Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`, `asSelect3:optionadded`, `asSelect3:optionremoved`, `asSelect3:optionscleared`, `asSelect3:valuechanged`
 
 ## 📱 Mobile Support
 
@@ -186,19 +231,43 @@ document.documentElement.setAttribute('data-bs-theme', 'dark');
 
 ## 🔧 API Methods
 
+### Instance Methods
+
+Access methods through the instance:
+
 ```javascript
+// Get the instance
+const instance = $('#my-select')[0]._asSelect3;
+
 // Get current value(s)
-const value = $('#my-select').asSelect3('getValue');
+const value = instance.getValue();
 
 // Set value(s)
-$('#my-select').asSelect3('setValue', ['option1', 'option2']);
+instance.setValue(['option1', 'option2']);
 
 // Open/close dropdown
-$('#my-select').asSelect3('open');
-$('#my-select').asSelect3('close');
+instance.open();
+instance.close();
+
+// Reset to original state
+instance.reset();
+
+// Enable/disable
+instance.enable();
+instance.disable();
+
+// Add/remove options
+instance.addOption({ value: 'new', text: 'New Option' });
+instance.removeOption('option1');
+
+// Clear all options
+instance.clearOptions();
+
+// Refresh options
+instance.refreshOptions();
 
 // Destroy instance
-$('#my-select').asSelect3('destroy');
+instance.destroy();
 ```
 
 ## 📋 Requirements
@@ -246,7 +315,7 @@ As-select3/
 
 ### Multi-select with Search
 ```javascript
-$('#multi-select').select3({
+$('#multi-select').asSelect3({
     placeholder: 'Select programming languages',
     searchable: true,
     searchPlaceholder: 'Search languages...',
@@ -257,19 +326,50 @@ $('#multi-select').select3({
 
 ### Limited Selection
 ```javascript
-$('#skills-select').select3({
+$('#skills-select').asSelect3({
     placeholder: 'Select up to 3 skills',
     maxSelection: 3,
     searchable: true
 });
 ```
 
-### Profile Images
-```html
-<select id="team-select">
-    <option value="user1" data-icon="https://avatar.example.com/user1.jpg">John Doe</option>
-    <option value="user2" data-icon="https://avatar.example.com/user2.jpg">Jane Smith</option>
-</select>
+### Profile Images with HTML
+```javascript
+$('#team-select').asSelect3({
+    placeholder: 'Select team members',
+    allowHtml: true,
+    templateResult: function(data) {
+        return `<div class="d-flex align-items-center">
+                  <img src="${data.icon}" width="32" height="32" class="rounded-circle me-2">
+                  <span>${data.text}</span>
+                </div>`;
+    }
+});
+```
+
+### Remote Data with Custom Formatting
+```javascript
+$('#users-select').asSelect3({
+    placeholder: 'Search users...',
+    searchable: true,
+    remote: async function(query) {
+        const response = await fetch(`/api/users?q=${query}`);
+        const users = await response.json();
+        
+        return users.map(user => ({
+            value: user.id,
+            text: user.name,
+            icon: user.avatar,
+            html: `<div class="d-flex align-items-center">
+                     <img src="${user.avatar}" width="40" height="40" class="rounded-circle me-2">
+                     <div>
+                       <div class="fw-semibold">${user.name}</div>
+                       <small class="text-muted">${user.role}</small>
+                     </div>
+                   </div>`
+        }));
+    }
+});
 ```
 
 ## 🤝 Contributing
@@ -301,240 +401,13 @@ If you encounter any issues:
 
 ## 🚀 Roadmap
 
-- [ ] NPM package publication
-- [ ] CDN distribution
+- [x] NPM package publication
+- [x] CDN distribution
 - [ ] TypeScript definitions
 - [ ] React/Vue wrapper components
 - [ ] Additional themes and customization options
+- [ ] Enhanced jQuery plugin methods
 
 ---
 
 ⭐ **If you like this project, please give it a star on GitHub!**
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-    </select>
-</div>
-```
-
-### 3. Initialize with jQuery
-
-```javascript
-$('#mySelect').multiSelect({
-    placeholder: 'Select options...',
-    searchable: true,
-    selectAll: true
-});
-```
-
-## 🔧 Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `placeholder` | string | 'Select options...' | Placeholder text when no options selected |
-| `searchable` | boolean | true | Enable search functionality |
-| `selectAll` | boolean | true | Show Select All button (multiple mode only) |
-| `clearAll` | boolean | true | Show Clear All button |
-| `maxSelection` | number | null | Maximum number of items that can be selected |
-| `remote` | function | null | Function for remote data loading, receives search query |
-| `searchDelay` | number | 300 | Milliseconds to wait before triggering remote search |
-| `noResultsText` | string | 'No results found' | Text to show when no results match search |
-| `loadingText` | string | 'Loading...' | Text to show during remote data loading |
-| `searchPlaceholder` | string | 'Search options...' | Placeholder for search input |
-| `selectAllText` | string | 'Select All' | Text for Select All button |
-| `clearAllText` | string | 'Clear All' | Text for Clear All button |
-
-## 📋 Methods
-
-Access methods through the jQuery element:
-
-```javascript
-// Examples
-$('#mySelect').data('multiSelect').open();
-$('#mySelect').data('multiSelect').getValue();
-```
-
-| Method | Description |
-|--------|-------------|
-| `open()` | Opens the dropdown |
-| `close()` | Closes the dropdown |
-| `getValue()` | Gets selected value(s) |
-| `setValue(val)` | Sets selected value(s) |
-| `selectAll()` | Selects all options |
-| `clearAll()` | Clears all selections |
-| `disable()` | Disables the control |
-| `enable()` | Enables the control |
-## 🔄 Events
-
-Listen for events on the original select element:
-
-```javascript
-$('#mySelect').on('multiselect:change', function(e, data) {
-    console.log('Selected values:', data.value);
-});
-```
-
-| Event | Description |
-|-------|-------------|
-| `multiselect:change` | Triggered when selection changes |
-| `multiselect:open` | Triggered when dropdown opens |
-| `multiselect:close` | Triggered when dropdown closes |
-| `multiselect:selectall` | Triggered when Select All is clicked |
-| `multiselect:clearall` | Triggered when Clear All is clicked |
-| `multiselect:maxselection` | Triggered when max selection limit is reached |
-| `multiselect:optionadded` | Triggered when an option is added |
-| `multiselect:optionremoved` | Triggered when an option is removed |
-
-## 🎨 Theming
-
-The component uses Bootstrap CSS variables, making it compatible with Bootstrap themes and dark mode. 
-Custom styling can be added by targeting the component's CSS classes.
-
-## �️ Icon/Image Support
-
-You can add icons or images to your options:
-
-```javascript
-$('#mySelect').multiSelect({
-    // Your other options...
-});
-
-// Populate with icons/images
-$('#mySelect').data('multiSelect').populateOptions([
-    { value: "1", text: "Option with Icon", icon: "bi bi-star-fill" },
-    { value: "2", text: "Option with Image", icon: "https://example.com/image.png" },
-    { value: "3", text: "Regular Option" }
-]);
-```
-
-The icons/images will appear in both dropdown options and selected tags.
-
-## �🔍 Remote Data Loading
-
-```javascript
-$('#mySelect').multiSelect({
-    remote: async function(query) {
-        const response = await fetch(`/api/search?q=${query}`);
-        return await response.json();
-        // Should return: [{ value: "1", text: "Option 1", icon: "bi bi-person" }, ...]
-    }
-});
-```
-
-## 📱 Mobile Support
-
-Automatically adapts for mobile devices with touch-friendly controls and optimized layout.
-
-## License
-
-MIT
-    searchable: true,
-    selectAll: true,
-    clearAll: true,
-    maxSelection: 5
-});
-```
-
-## ⚙️ Configuration Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `placeholder` | string | Auto-generated | Custom placeholder text |
-| `searchable` | boolean | `true` | Enable/disable search functionality |
-| `selectAll` | boolean | `true` (multiple only) | Show "Select All" button |
-| `clearAll` | boolean | `true` | Show "Clear All" button |
-| `maxSelection` | number | `null` | Maximum number of selections |
-| `remote` | function | `null` | Remote data loading function |
-| `searchDelay` | number | `300` | Search input delay in ms |
-
-## 🔧 API Methods
-
-### jQuery Plugin Methods
-
-```javascript
-// Get current value(s)
-const value = $('#mySelect').multiSelect('getValue');
-
-// Set value(s)
-$('#mySelect').multiSelect('setValue', ['option1', 'option2']);
-
-// Reset to original state
-$('#mySelect').multiSelect('reset');
-
-// Enable/disable
-$('#mySelect').multiSelect('enable');
-$('#mySelect').multiSelect('disable');
-
-// Validate
-const isValid = $('#mySelect').multiSelect('validate');
-
-// Destroy instance
-$('#mySelect').multiSelect('destroy');
-```
-
-### Direct Instance Access
-
-```javascript
-const instance = $('#mySelect').multiSelect()[0]._multiSelect;
-instance.setValue(['option1']);
-```
-
-## 📱 Responsive Design
-
-The library includes responsive breakpoints:
-- **Mobile (< 576px)**: Optimized touch targets and spacing
-- **Tablet (< 768px)**: Adjusted padding and margins
-- **Desktop (≥ 768px)**: Full feature set with optimal spacing
-
-## 🎨 Customization
-
-### CSS Variables
-
-The component uses Bootstrap 5 CSS variables for consistent theming:
-
-```css
-.multi-select-trigger {
-    border-color: var(--bs-primary);
-    background: var(--bs-body-bg);
-}
-```
-
-### Dark Theme Support
-
-Automatically adapts to Bootstrap's dark theme:
-
-```html
-<html data-bs-theme="dark">
-```
-
-## ♿ Accessibility
-
-- **ARIA attributes** for screen readers
-- **Keyboard navigation** support
-- **Focus management** and visible focus indicators
-- **Reduced motion** support for users with vestibular disorders
-
-## 🧪 Testing
-
-Open `test.html` in your browser to test the jQuery integration and UI improvements.
-
-## 📝 Changelog
-
-### v2.0.0
-- ✅ jQuery 3.3+ integration
-- ✅ Fixed padding/margin issues
-- ✅ Improved responsive design
-- ✅ Enhanced UI animations
-- ✅ Better form integration
-- ✅ Optimized mobile experience
-
-### v1.0.0
-- Initial release with vanilla JavaScript
-
-## 🤝 Contributing
-
-Made by Sunil Kumar
-
-## 📄 License
-
-Open source - feel free to use and modify!

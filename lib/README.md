@@ -15,15 +15,16 @@ As-Select3 is a lightweight, modern JavaScript library for creating beautiful an
 
 ## ✨ Features
 
-- 🔍 **Searchable** - Built-in search functionality
-- 🏷️ **Multi-select** - Select multiple options with tags
-- 🌐 **Remote Data** - Load data from APIs
-- 🎨 **Customizable** - Custom themes and styling
-- 📱 **Responsive** - Mobile-friendly design
-- ♿ **Accessible** - ARIA compliant
-- 🚀 **Lightweight** - Minimal footprint
+- 🔍 **Searchable** - Built-in search functionality with real-time filtering
+- 🏷️ **Multi-select** - Select multiple options with elegant tag interface
+- 🌐 **Remote Data** - Load data from APIs with async/await support
+- 🎨 **Customizable** - Custom themes and comprehensive styling options
+- 📱 **Responsive** - Mobile-friendly design with touch support
+- ♿ **Accessible** - Full ARIA compliance and keyboard navigation
+- 🚀 **Lightweight** - Minimal footprint with optimized performance
 - 🎭 **HTML Rendering** - Rich HTML content in options and selections
 - 🔧 **Template Support** - Custom templates for advanced formatting
+- 🎯 **Events** - Comprehensive event system for custom integrations
 
 ## 📦 Installation
 
@@ -97,19 +98,25 @@ $('#my-select').asSelect3({
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `placeholder` | string | "Choose an option..." | Placeholder text |
-| `searchable` | boolean | true | Enable search functionality |
-| `selectAll` | boolean | false | Show "Select All" button |
-| `clearAll` | boolean | false | Show "Clear All" button |
-| `maxSelection` | number | null | Maximum selections allowed |
-| `remote` | function | null | Function for remote data loading |
-| `searchDelay` | number | 300 | Search delay in milliseconds |
-| `theme` | string | null | Custom theme class |
-| `allowHtml` | boolean | true | Enable HTML content in options |
-| `escapeMarkup` | function | identity | Function to escape/sanitize HTML markup |
-| `templateResult` | function | null | Custom template function for option rendering |
-| `templateSelection` | function | null | Custom template function for selection rendering |
-| `matcher` | function | null | Custom search matching function |
+| `placeholder` | string | Auto-generated | Custom placeholder text |
+| `searchable` | boolean | `true` | Enable/disable search functionality |
+| `selectAll` | boolean | `true` (multiple only) | Show "Select All" button |
+| `clearAll` | boolean | `true` | Show "Clear All" button |
+| `maxSelection` | number | `null` | Maximum number of selections |
+| `remote` | function | `null` | Remote data loading function |
+| `searchDelay` | number | `300` | Search input delay in ms |
+| `noResultsText` | string | 'No results found' | Text when no results match |
+| `loadingText` | string | 'Loading...' | Text during remote loading |
+| `searchPlaceholder` | string | 'Search options...' | Search input placeholder |
+| `selectAllText` | string | 'Select All' | Select All button text |
+| `clearAllText` | string | 'Clear All' | Clear All button text |
+| `defaultIconClass` | string | 'bi bi-chevron-down' | Default arrow icon class |
+| `iconPrefix` | string | `null` | Icon prefix for custom icons |
+| `allowHtml` | boolean | `true` | Enable HTML content in options |
+| `escapeMarkup` | function | identity | HTML sanitization function |
+| `templateResult` | function | `null` | Custom option rendering template |
+| `templateSelection` | function | `null` | Custom selection rendering template |
+| `matcher` | function | `null` | Custom search matching function |
 
 ## 🌐 Remote Data Example
 
@@ -295,28 +302,52 @@ $('#my-select').on('asSelect3:maxselection', function(e) {
 });
 ```
 
-Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`
+Available events: `asSelect3:change`, `asSelect3:open`, `asSelect3:close`, `asSelect3:maxselection`, `asSelect3:selectall`, `asSelect3:clearall`, `asSelect3:optionadded`, `asSelect3:optionremoved`, `asSelect3:optionscleared`, `asSelect3:valuechanged`
 
 ## 📋 Requirements
 
 - **jQuery 3.0+** - Required dependency
-- **Modern browsers** - Chrome, Firefox, Safari, Edge
+- **Modern browsers** - Chrome 60+, Firefox 55+, Safari 12+, Edge 79+
 
 ## 🔧 API Methods
 
+### Instance Methods
+
+Access methods through the instance:
+
 ```javascript
+// Get the instance
+const instance = $('#my-select')[0]._asSelect3;
+
 // Get current value(s)
-const value = $('#my-select').asSelect3('getValue');
+const value = instance.getValue();
 
 // Set value(s)
-$('#my-select').asSelect3('setValue', ['option1', 'option2']);
+instance.setValue(['option1', 'option2']);
 
 // Open/close dropdown
-$('#my-select').asSelect3('open');
-$('#my-select').asSelect3('close');
+instance.open();
+instance.close();
+
+// Reset to original state
+instance.reset();
+
+// Enable/disable
+instance.enable();
+instance.disable();
+
+// Add/remove options
+instance.addOption({ value: 'new', text: 'New Option' });
+instance.removeOption('option1');
+
+// Clear all options
+instance.clearOptions();
+
+// Refresh options
+instance.refreshOptions();
 
 // Destroy instance
-$('#my-select').asSelect3('destroy');
+instance.destroy();
 ```
 
 ## 🐛 Browser Support
