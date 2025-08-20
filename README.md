@@ -33,7 +33,7 @@ npm install as-select3
 
 # As-Select3 - Modern JavaScript Select Library
 
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/sunil4587/As-select3)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/sunil4587/As-select3)
 [![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
