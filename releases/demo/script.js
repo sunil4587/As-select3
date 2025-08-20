@@ -111,4 +111,38 @@ $(document).ready(function() {
         imagePosition: 'left',
         searchable: true
     });
+    
+
+    $('#html-demo-select').asSelect3({
+        allowHtml: true,
+        placeholder: 'Choose a team member...',
+        searchable: true
+    });
+    
+    $('#template-demo-select').asSelect3({
+        placeholder: 'Select products...',
+        selectAll: true,
+        clearAll: true,
+        templateResult: function(data) {
+            if (!data.id) return data.text;
+            
+            const products = {
+                laptop: { image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=100&h=100&fit=crop', price: '$1,299' },
+                phone: { image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=100&h=100&fit=crop', price: '$899' },
+                tablet: { image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=100&h=100&fit=crop', price: '$649' },
+                headphones: { image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop', price: '$299' }
+            };
+            
+            const product = products[data.id];
+            if (!product) return data.text;
+            
+            return `<div class="d-flex align-items-center">
+                      <img src="${product.image}" alt="${data.text}" width="50" height="50" class="rounded me-2">
+                      <div>
+                        <div class="fw-semibold">${data.text}</div>
+                        <small class="text-success">${product.price}</small>
+                      </div>
+                    </div>`;
+        }
+    });
 });

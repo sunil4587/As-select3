@@ -1,7 +1,7 @@
 {
   "name": "as-select3",
-  "version": "1.0.2",
-  "description": "Modern JavaScript Select Library with advanced features",
+  "version": "1.1.0",
+  "description": "Modern JavaScript Select Library with advanced features and HTML rendering support",
   "keywords": [
     "select",
     "dropdown",
@@ -12,7 +12,10 @@
     "ui",
     "form",
     "input",
-    "component"
+    "component",
+    "html",
+    "templating",
+    "customization"
   ],
   "homepage": "https://github.com/sunil4587/As-select3",
   "bugs": {
@@ -28,7 +31,8 @@
   "main": "dist/as-select3.min.js",
   "files": [
     "dist/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "test": "echo \"No build process required - pure jQuery plugin\""

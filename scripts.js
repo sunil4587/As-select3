@@ -686,6 +686,52 @@ class SelectLandingPage {
         console.error('Error initializing repo select:', err);
       }
     }
+
+
+    if ($('#html-basic-select').length) {
+      try {
+        $('#html-basic-select').asSelect3({
+          allowHtml: true,
+          placeholder: 'Choose a team member...',
+          searchable: true
+        });
+      } catch (err) {
+        console.error('Error initializing HTML basic select:', err);
+      }
+    }
+
+    if ($('#html-template-select').length) {
+      try {
+        $('#html-template-select').asSelect3({
+          placeholder: 'Select users...',
+          selectAll: true,
+          clearAll: true,
+          templateResult: function(data) {
+            if (!data.id) return data.text;
+            
+            const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+            return `<div class="d-flex align-items-center">
+                      <img src="${avatarUrl}" alt="${data.text}" width="32" height="32" class="rounded-circle me-2">
+                      <div>
+                        <div class="fw-semibold">${data.text}</div>
+                        <small class="text-muted">ID: ${data.id} • Online</small>
+                      </div>
+                    </div>`;
+          },
+          templateSelection: function(data) {
+            if (!data.id) return data.text;
+            
+            const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+            return `<div class="d-flex align-items-center">
+                      <img src="${avatarUrl}" alt="${data.text}" width="20" height="20" class="rounded-circle me-1">
+                      <span>${data.text}</span>
+                    </div>`;
+          }
+        });
+      } catch (err) {
+        console.error('Error initializing HTML template select:', err);
+      }
+    }
   }
 
   async searchGitHubRepos(query) {

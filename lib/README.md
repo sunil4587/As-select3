@@ -1,6 +1,6 @@
 # As-Select3 - Modern JavaScript Select Library
 
-[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/sunil4587/As-select3)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/sunil4587/As-select3)
 [![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
@@ -11,7 +11,7 @@
 
 ## 📖 Description
 
-As-Select3 is a lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
+As-Select3 is a lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, custom themes, and **HTML rendering support** for rich option content.
 
 ## ✨ Features
 
@@ -22,6 +22,8 @@ As-Select3 is a lightweight, modern JavaScript library for creating beautiful an
 - 📱 **Responsive** - Mobile-friendly design
 - ♿ **Accessible** - ARIA compliant
 - 🚀 **Lightweight** - Minimal footprint
+- 🎭 **HTML Rendering** - Rich HTML content in options and selections
+- 🔧 **Template Support** - Custom templates for advanced formatting
 
 ## 📦 Installation
 
@@ -103,6 +105,11 @@ $('#my-select').asSelect3({
 | `remote` | function | null | Function for remote data loading |
 | `searchDelay` | number | 300 | Search delay in milliseconds |
 | `theme` | string | null | Custom theme class |
+| `allowHtml` | boolean | true | Enable HTML content in options |
+| `escapeMarkup` | function | identity | Function to escape/sanitize HTML markup |
+| `templateResult` | function | null | Custom template function for option rendering |
+| `templateSelection` | function | null | Custom template function for selection rendering |
+| `matcher` | function | null | Custom search matching function |
 
 ## 🌐 Remote Data Example
 
@@ -123,6 +130,134 @@ $('#remote-select').asSelect3({
                      <div class="text-muted">${user.email}</div>
                    </div>`
         }));
+    }
+});
+```
+
+## 🎭 HTML Rendering & Templating
+
+### Basic HTML Content
+
+Add rich HTML content to options using the `html` property or `data-html` attribute:
+
+```html
+<select id="rich-select">
+    <option value="user1" data-html="<strong>John Doe</strong><br><small>Administrator</small>">John Doe</option>
+    <option value="user2" data-html="<strong>Jane Smith</strong><br><small>Editor</small>">Jane Smith</option>
+</select>
+
+<script>
+$('#rich-select').asSelect3({
+    allowHtml: true,
+    placeholder: 'Select a user...'
+});
+</script>
+```
+
+### Custom Templates
+
+Use `templateResult` and `templateSelection` for advanced customization:
+
+```javascript
+$('#custom-select').asSelect3({
+    templateResult: function(data) {
+        if (!data.id) return data.text;
+        
+        return `<div class="d-flex align-items-center">
+                  <img src="/avatars/${data.id}.jpg" width="32" height="32" class="rounded-circle me-2">
+                  <div>
+                    <div class="fw-semibold">${data.text}</div>
+                    <small class="text-muted">ID: ${data.id}</small>
+                  </div>
+                </div>`;
+    },
+    templateSelection: function(data) {
+        if (!data.id) return data.text;
+        
+        return `<div class="d-flex align-items-center">
+                  <img src="/avatars/${data.id}.jpg" width="20" height="20" class="rounded-circle me-1">
+                  <span>${data.text}</span>
+                </div>`;
+    }
+});
+```
+
+### HTML with Icons and Images
+
+```javascript
+$('#media-select').asSelect3({
+    allowHtml: true,
+    remote: async function(query) {
+        const results = await fetchMediaFiles(query);
+        return results.map(file => ({
+            value: file.id,
+            text: file.name,
+            html: `<div class="d-flex align-items-center">
+                     <img src="${file.thumbnail}" width="40" height="40" class="me-2">
+                     <div>
+                       <div class="fw-semibold">${file.name}</div>
+                       <small class="text-muted">${file.size} • ${file.type}</small>
+                     </div>
+                   </div>`
+        }));
+    }
+});
+```
+
+### Security: HTML Escaping
+
+Control HTML safety with the `escapeMarkup` function:
+
+```javascript
+$('#secure-select').asSelect3({
+    allowHtml: true,
+    escapeMarkup: function(markup) {
+        // Custom sanitization
+        return DOMPurify.sanitize(markup);
+    }
+});
+```
+
+### Complex Data Structure
+
+```javascript
+const complexData = [
+    {
+        value: 'task1',
+        text: 'Update Documentation',
+        html: `<div class="task-item">
+                 <div class="d-flex justify-content-between">
+                   <span class="fw-semibold">Update Documentation</span>
+                   <span class="badge bg-warning">Medium</span>
+                 </div>
+                 <div class="small text-muted mt-1">
+                   <i class="bi bi-person"></i> Assigned to: John Doe
+                   <i class="bi bi-calendar ms-2"></i> Due: Dec 15, 2024
+                 </div>
+               </div>`
+    }
+];
+
+$('#task-select').asSelect3({
+    data: complexData,
+    allowHtml: true,
+    placeholder: 'Select a task...'
+});
+```
+
+### Custom Matcher for HTML Content
+
+```javascript
+$('#searchable-html').asSelect3({
+    allowHtml: true,
+    matcher: function(query, data) {
+        // Search in both text and HTML content
+        const searchText = (data.text || '').toLowerCase();
+        const searchHtml = (data.html || '').toLowerCase();
+        const searchQuery = query.toLowerCase();
+        
+        return searchText.includes(searchQuery) || 
+               searchHtml.includes(searchQuery);
     }
 });
 ```

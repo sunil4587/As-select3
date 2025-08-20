@@ -40,7 +40,7 @@
                 <a class="navbar-brand d-flex align-items-center" href="#home">
                 <i class="bi bi-ui-checks-grid text-primary fs-2 me-2"></i>
                 <span class="fw-bold fs-3 gradient-text">As-Select3</span>
-                <span class="badge bg-primary ms-2">v1.0</span>
+                <span class="badge bg-primary ms-2">v1.1</span>
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -132,10 +132,11 @@
                             </div>
                             <!-- CTA Buttons -->
                             <div class="hero-actions mb-5">
-                                <button class="btn btn-hero-primary me-3">
+                                <button class="btn btn-hero-primary me-2">
                                 <i class="bi bi-play-circle-fill me-2"></i>
                                 Try Interactive Demo
                                 </button>
+
                                 <button class="btn btn-hero-secondary">
                                 <i class="bi bi-github me-2"></i>
                                 View on GitHub
@@ -1433,6 +1434,174 @@ $('#max-demo-select').on('asSelect3:maxselection', function(e) {
         text-decoration: none;
         color: #9370DB;
     }</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- HTML Rendering Demo -->
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-palette-fill"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">HTML Rendering & Templates</h5>
+                                    <p class="text-muted mb-0 small">Rich HTML content with custom templates (NEW in v1.1)</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="htmlRenderingTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="html-preview-tab" data-bs-toggle="tab" data-bs-target="#html-preview" type="button" role="tab" aria-controls="html-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="html-html-tab" data-bs-toggle="tab" data-bs-target="#html-html" type="button" role="tab" aria-controls="html-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="html-js-tab" data-bs-toggle="tab" data-bs-target="#html-js" type="button" role="tab" aria-controls="html-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="htmlRenderingTabContent">
+                                    <div class="tab-pane fade show active" id="html-preview" role="tabpanel" aria-labelledby="html-preview-tab">
+                                        <div class="demo-preview">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-3 mb-lg-0">
+                                                    <div class="mb-3">
+                                                        <label for="html-basic-select" class="form-label fw-semibold">Team Members (HTML Content):</label>
+                                                        <select id="html-basic-select" class="form-control">
+                                                            <option value="">Choose a team member...</option>
+                                                            <option value="john" data-html="<strong>John Doe</strong><br><small class='text-muted'><i class='bi bi-code-slash'></i> Lead Developer</small>">John Doe</option>
+                                                            <option value="jane" data-html="<strong>Jane Smith</strong><br><small class='text-muted'><i class='bi bi-palette'></i> UI/UX Designer</small>">Jane Smith</option>
+                                                            <option value="bob" data-html="<strong>Bob Wilson</strong><br><small class='text-muted'><i class='bi bi-kanban'></i> Project Manager</small>">Bob Wilson</option>
+                                                            <option value="alice" data-html="<strong>Alice Brown</strong><br><small class='text-muted'><i class='bi bi-bug'></i> QA Engineer</small>">Alice Brown</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="html-template-select" class="form-label fw-semibold">Users (Custom Templates):</label>
+                                                        <select id="html-template-select" class="form-control" multiple>
+                                                            <option value="1">Sarah Johnson</option>
+                                                            <option value="2">Michael Chen</option>
+                                                            <option value="3">Emma Davis</option>
+                                                            <option value="4">David Rodriguez</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="html-html" role="tabpanel" aria-labelledby="html-html-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text='<!-- HTML Content Options -->
+<select id="html-basic-select" class="form-control">
+    <option value="">Choose a team member...</option>
+    <option value="john" data-html="&lt;strong&gt;John Doe&lt;/strong&gt;&lt;br&gt;&lt;small class=&quot;text-muted&quot;&gt;&lt;i class=&quot;bi bi-code-slash&quot;&gt;&lt;/i&gt; Lead Developer&lt;/small&gt;">John Doe</option>
+    <option value="jane" data-html="&lt;strong&gt;Jane Smith&lt;/strong&gt;&lt;br&gt;&lt;small class=&quot;text-muted&quot;&gt;&lt;i class=&quot;bi bi-palette&quot;&gt;&lt;/i&gt; UI/UX Designer&lt;/small&gt;">Jane Smith</option>
+</select>
+
+<!-- Template-based Options -->
+<select id="html-template-select" class="form-control" multiple>
+    <option value="1">Sarah Johnson</option>
+    <option value="2">Michael Chen</option>
+    <option value="3">Emma Davis</option>
+</select>'>
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-html">&lt;!-- HTML Content Options --&gt;
+&lt;select id="html-basic-select" class="form-control"&gt;
+    &lt;option value=""&gt;Choose a team member...&lt;/option&gt;
+    &lt;option value="john" data-html="&amp;lt;strong&amp;gt;John Doe&amp;lt;/strong&amp;gt;&amp;lt;br&amp;gt;&amp;lt;small class=&amp;quot;text-muted&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;bi bi-code-slash&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; Lead Developer&amp;lt;/small&amp;gt;"&gt;John Doe&lt;/option&gt;
+    &lt;option value="jane" data-html="&amp;lt;strong&amp;gt;Jane Smith&amp;lt;/strong&amp;gt;&amp;lt;br&amp;gt;&amp;lt;small class=&amp;quot;text-muted&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;bi bi-palette&amp;quot;&amp;gt;&amp;lt;/i&amp;gt; UI/UX Designer&amp;lt;/small&amp;gt;"&gt;Jane Smith&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Template-based Options --&gt;
+&lt;select id="html-template-select" class="form-control" multiple&gt;
+    &lt;option value="1"&gt;Sarah Johnson&lt;/option&gt;
+    &lt;option value="2"&gt;Michael Chen&lt;/option&gt;
+    &lt;option value="3"&gt;Emma Davis&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="html-js" role="tabpanel" aria-labelledby="html-js-tab">
+                                        <div class="code-block">
+                                            <button class="copy-btn" data-clipboard-text="// HTML Content with data-html attribute
+$('#html-basic-select').asSelect3({
+    allowHtml: true,
+    placeholder: 'Choose a team member...',
+    searchable: true
+});
+
+// Custom Templates
+$('#html-template-select').asSelect3({
+    placeholder: 'Select users...',
+    templateResult: function(data) {
+        if (!data.id) return data.text;
+        
+        const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+        return `<div class=&quot;d-flex align-items-center&quot;>
+                  <img src=&quot;${avatarUrl}&quot; alt=&quot;${data.text}&quot; width=&quot;32&quot; height=&quot;32&quot; class=&quot;rounded-circle me-2&quot;>
+                  <div>
+                    <div class=&quot;fw-semibold&quot;>${data.text}</div>
+                    <small class=&quot;text-muted&quot;>ID: ${data.id} • Online</small>
+                  </div>
+                </div>`;
+    },
+    templateSelection: function(data) {
+        if (!data.id) return data.text;
+        
+        const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+        return `<div class=&quot;d-flex align-items-center&quot;>
+                  <img src=&quot;${avatarUrl}&quot; alt=&quot;${data.text}&quot; width=&quot;20&quot; height=&quot;20&quot; class=&quot;rounded-circle me-1&quot;>
+                  <span>${data.text}</span>
+                </div>`;
+    }
+});">
+                                            <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <pre><code class="language-javascript">// HTML Content with data-html attribute
+$('#html-basic-select').asSelect3({
+    allowHtml: true,
+    placeholder: 'Choose a team member...',
+    searchable: true
+});
+
+// Custom Templates
+$('#html-template-select').asSelect3({
+    placeholder: 'Select users...',
+    templateResult: function(data) {
+        if (!data.id) return data.text;
+        
+        const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+        return `&lt;div class="d-flex align-items-center"&gt;
+                  &lt;img src="${avatarUrl}" alt="${data.text}" width="32" height="32" class="rounded-circle me-2"&gt;
+                  &lt;div&gt;
+                    &lt;div class="fw-semibold"&gt;${data.text}&lt;/div&gt;
+                    &lt;small class="text-muted"&gt;ID: ${data.id} • Online&lt;/small&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;`;
+    },
+    templateSelection: function(data) {
+        if (!data.id) return data.text;
+        
+        const avatarUrl = `https://i.pravatar.cc/150?u=${data.id}`;
+        return `&lt;div class="d-flex align-items-center"&gt;
+                  &lt;img src="${avatarUrl}" alt="${data.text}" width="20" height="20" class="rounded-circle me-1"&gt;
+                  &lt;span&gt;${data.text}&lt;/span&gt;
+                &lt;/div&gt;`;
+    }
+});</code></pre>
                                         </div>
                                     </div>
                                 </div>
