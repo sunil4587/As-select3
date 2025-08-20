@@ -31,13 +31,6 @@ npm install as-select3
 [Download As-Select3 v1.0.0](https://sunil4587.github.io/As-select3/as-select3.zip) - Complete package with library files and documentation.
 ``` Library
 
-# As-Select3 - Modern JavaScript Select Library
-
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/sunil4587/As-select3)
-[![NPM](https://img.shields.io/npm/v/as-select3.svg)](https://www.npmjs.com/package/as-select3)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![jQuery](https://img.shields.io/badge/jquery-3.0+-yellow.svg)](https://jquery.com)
-
 A lightweight, modern JavaScript library for creating beautiful and interactive select dropdowns. Built with jQuery, it provides advanced features like search, multi-selection, remote data loading, and custom themes.
 
 ## ✨ Features
