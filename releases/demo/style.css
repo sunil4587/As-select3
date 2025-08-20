@@ -1,6 +1,5 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;  
 }
@@ -56,4 +55,8 @@ label {
 .custom-dropdown .as-select3-results .as-select3-option.as-select3-option-highlighted {
     background-color: #f8f4fc;
     color: #8e44ad;
+}
+
+.container-fluid {
+    width: 1600px;
 }

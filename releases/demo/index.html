@@ -14,103 +14,118 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container py-4">
-        <h1 class="text-center mb-5">As-Select3 Examples</h1>
+    <main class="container-fluid">
+        <div class="py-4">
+            <h1 class="text-center mb-5">As-Select3 Examples</h1>
 
-        <div class="example card shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title">Basic Example</h2>
-                <label for="basic-select">Select an option:</label>
-                <select id="basic-select" class="form-select mb-3">
-                    <option value="">Choose an option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                </select>
-                <pre><code>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Basic Example</h2>
+                            <label for="basic-select">Select an option:</label>
+                            <select id="basic-select" class="form-select mb-3">
+                                <option value="">Choose an option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                                <option value="5">Option 5</option>
+                            </select>
+                            <pre><code>
 $('#basic-select').asSelect3({
     placeholder: 'Choose an option...',
     searchable: true
 });
-                </code></pre>
-            </div>
-        </div>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">Multiple Selection</h2>
-                <label for="multi-select">Select multiple options:</label>
-                <select id="multi-select" multiple class="form-select mb-3">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                </select>
-                <pre><code>
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Multiple Selection</h2>
+                            <label for="multi-select">Select multiple options:</label>
+                            <select id="multi-select" multiple class="form-select mb-3">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                                <option value="5">Option 5</option>
+                            </select>
+                            <pre><code>
 $('#multi-select').asSelect3({
     placeholder: 'Choose options...',
     searchable: true,
     selectAll: true,
     clearAll: true
 });
-                </code></pre>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="example card shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title">Preselected Value</h2>
-                <label for="preselected-select">Select with preselected value:</label>
-                <select id="preselected-select" class="form-select mb-3">
-                    <option value="1">Option 1</option>
-                    <option value="2" selected>Option 2 (Preselected)</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                </select>
-                <pre><code>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Preselected Value</h2>
+                            <label for="preselected-select">Select with preselected value:</label>
+                            <select id="preselected-select" class="form-select mb-3">
+                                <option value="1">Option 1</option>
+                                <option value="2" selected>Option 2 (Preselected)</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                                <option value="5">Option 5</option>
+                            </select>
+                            <pre><code>
 $('#preselected-select').asSelect3({
     searchable: true
 });
-                </code></pre>
-            </div>
-        </div>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">With Icons</h2>
-                <label for="icon-select">Select with icons:</label>
-                <select id="icon-select" class="form-select mb-3">
-                    <option value="html" data-icon="bi-filetype-html">HTML</option>
-                    <option value="css" data-icon="bi-filetype-css">CSS</option>
-                    <option value="js" data-icon="bi-filetype-js">JavaScript</option>
-                    <option value="php" data-icon="bi-filetype-php">PHP</option>
-                    <option value="json" data-icon="bi-filetype-json">JSON</option>
-                    <option value="md" data-icon="bi-filetype-md">Markdown</option>
-                </select>
-                <pre><code>
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">With Icons</h2>
+                            <label for="icon-select">Select with icons:</label>
+                            <select id="icon-select" class="form-select mb-3">
+                                <option value="html" data-icon="bi-filetype-html">HTML</option>
+                                <option value="css" data-icon="bi-filetype-css">CSS</option>
+                                <option value="js" data-icon="bi-filetype-js">JavaScript</option>
+                                <option value="php" data-icon="bi-filetype-php">PHP</option>
+                                <option value="json" data-icon="bi-filetype-json">JSON</option>
+                                <option value="md" data-icon="bi-filetype-md">Markdown</option>
+                            </select>
+                            <pre><code>
 $('#icon-select').asSelect3({
     placeholder: 'Select a language...',
     searchable: true
 });
-                </code></pre>
-            </div>
-        </div>
-        
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">Remote Data Loading</h2>
-                <div class="mb-3">
-                    <label for="remote-select">Select a US state:</label>
-                    <select id="remote-select" class="form-select">
-                        <option value="">Loading states...</option>
-                    </select>
+                            </code></pre>
+                        </div>
+                    </div>
                 </div>
-                
-                <pre><code>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Remote Data Loading</h2>
+                            <div class="mb-3">
+                                <label for="remote-select">Select a US state:</label>
+                                <select id="remote-select" class="form-select">
+                                    <option value="">Loading states...</option>
+                                </select>
+                            </div>
+                            
+                            <pre><code>
 $('#remote-select').asSelect3({
     placeholder: 'Select a state...',
     searchable: true,
@@ -118,24 +133,26 @@ $('#remote-select').asSelect3({
         return fetchStates(query);
     }
 });
-                </code></pre>
-            </div>
-        </div>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">Max Selection Limit</h2>
-                <label for="max-select">Select up to 3 options:</label>
-                <select id="max-select" class="form-select mb-3" multiple>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                    <option value="5">Option 5</option>
-                    <option value="6">Option 6</option>
-                    <option value="7">Option 7</option>
-                </select>
-                <pre><code>
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Max Selection Limit</h2>
+                            <label for="max-select">Select up to 3 options:</label>
+                            <select id="max-select" class="form-select mb-3" multiple>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                                <option value="5">Option 5</option>
+                                <option value="6">Option 6</option>
+                                <option value="7">Option 7</option>
+                            </select>
+                            <pre><code>
 $('#max-select').asSelect3({
     placeholder: 'Choose up to 3 options...',
     searchable: true,
@@ -143,47 +160,53 @@ $('#max-select').asSelect3({
     selectAll: true,
     clearAll: true
 });
-                </code></pre>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">Placeholder with Search</h2>
-                <label for="placeholder-select">Search with placeholder:</label>
-                <select id="placeholder-select" class="form-select mb-3">
-                    <option value=""></option>
-                    <option value="1">Apple</option>
-                    <option value="2">Banana</option>
-                    <option value="3">Cherry</option>
-                    <option value="4">Date</option>
-                    <option value="5">Elderberry</option>
-                    <option value="6">Fig</option>
-                    <option value="7">Grape</option>
-                </select>
-                <pre><code>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Placeholder with Search</h2>
+                            <label for="placeholder-select">Search with placeholder:</label>
+                            <select id="placeholder-select" class="form-select mb-3">
+                                <option value=""></option>
+                                <option value="1">Apple</option>
+                                <option value="2">Banana</option>
+                                <option value="3">Cherry</option>
+                                <option value="4">Date</option>
+                                <option value="5">Elderberry</option>
+                                <option value="6">Fig</option>
+                                <option value="7">Grape</option>
+                            </select>
+                            <pre><code>
 $('#placeholder-select').asSelect3({
     placeholder: 'Search for a fruit...',
     searchable: true
 });
-                </code></pre>
-            </div>
-        </div>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">User Profiles with Avatars</h2>
-                <label for="profile-demo-select">Select team members:</label>
-                <select id="profile-demo-select" class="form-select mb-3">
-                    <option value="">Select team members</option>
-                    <option value="user1" data-icon="https://avatar.iran.liara.run/public/boy?username=alex">Alex Johnson</option>
-                    <option value="user2" data-icon="https://avatar.iran.liara.run/public/girl?username=sophia">Sophia Chen</option>
-                    <option value="user3" data-icon="https://avatar.iran.liara.run/public/boy?username=michael">Michael Smith</option>
-                    <option value="user4" data-icon="https://avatar.iran.liara.run/public/girl?username=emma">Emma Davis</option>
-                    <option value="user5" data-icon="https://avatar.iran.liara.run/public/boy?username=david">David Wilson</option>
-                    <option value="user6" data-icon="https://avatar.iran.liara.run/public/girl?username=olivia">Olivia Taylor</option>
-                </select>
-                <pre><code>
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">User Profiles with Avatars</h2>
+                            <label for="profile-demo-select">Select team members:</label>
+                            <select id="profile-demo-select" class="form-select mb-3">
+                                <option value="">Select team members</option>
+                                <option value="user1" data-icon="https://avatar.iran.liara.run/public/boy?username=alex">Alex Johnson</option>
+                                <option value="user2" data-icon="https://avatar.iran.liara.run/public/girl?username=sophia">Sophia Chen</option>
+                                <option value="user3" data-icon="https://avatar.iran.liara.run/public/boy?username=michael">Michael Smith</option>
+                                <option value="user4" data-icon="https://avatar.iran.liara.run/public/girl?username=emma">Emma Davis</option>
+                                <option value="user5" data-icon="https://avatar.iran.liara.run/public/boy?username=david">David Wilson</option>
+                                <option value="user6" data-icon="https://avatar.iran.liara.run/public/girl?username=olivia">Olivia Taylor</option>
+                            </select>
+                            <pre><code>
 $('#profile-demo-select').asSelect3({
     placeholder: 'Select team members',
     imageWidth: 36,
@@ -192,40 +215,44 @@ $('#profile-demo-select').asSelect3({
     imagePosition: 'left',
     searchable: true
 });
-                </code></pre>
-            </div>
-        </div>
-
-        <!-- HTML Rendering Demo -->
-        <div class="example card shadow-sm my-4">
-            <div class="card-body">
-                <h2 class="card-title">HTML Rendering & Templates <span class="badge bg-success">NEW v1.1</span></h2>
-                <p class="text-muted">Rich HTML content and custom templates for advanced formatting</p>
-                
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="html-demo-select">Team Members (HTML Content):</label>
-                        <select id="html-demo-select" class="form-select">
-                            <option value="">Choose a team member...</option>
-                            <option value="john" data-html="<strong>John Doe</strong><br><small class='text-muted'><i class='bi bi-code-slash'></i> Lead Developer</small>">John Doe</option>
-                            <option value="jane" data-html="<strong>Jane Smith</strong><br><small class='text-muted'><i class='bi bi-palette'></i> UI/UX Designer</small>">Jane Smith</option>
-                            <option value="bob" data-html="<strong>Bob Wilson</strong><br><small class='text-muted'><i class='bi bi-kanban'></i> Project Manager</small>">Bob Wilson</option>
-                            <option value="alice" data-html="<strong>Alice Brown</strong><br><small class='text-muted'><i class='bi bi-bug'></i> QA Engineer</small>">Alice Brown</option>
-                        </select>
-                    </div>
-                    
-                    <div class="col-md-6 mb-3">
-                        <label for="template-demo-select">Products (Custom Templates):</label>
-                        <select id="template-demo-select" class="form-select" multiple>
-                            <option value="laptop">Gaming Laptop</option>
-                            <option value="phone">Smartphone</option>
-                            <option value="tablet">Tablet</option>
-                            <option value="headphones">Wireless Headphones</option>
-                        </select>
+                            </code></pre>
+                        </div>
                     </div>
                 </div>
-                
-                <pre><code>
+            </div>
+
+            <!-- HTML Rendering Demo -->
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="example card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="card-title">HTML Rendering & Templates <span class="badge bg-success">NEW v1.1</span></h2>
+                            <p class="text-muted">Rich HTML content and custom templates for advanced formatting</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="html-demo-select">Team Members (HTML Content):</label>
+                                    <select id="html-demo-select" class="form-select">
+                                        <option value="">Choose a team member...</option>
+                                        <option value="john" data-html="<strong>John Doe</strong><br><small class='text-muted'><i class='bi bi-code-slash'></i> Lead Developer</small>">John Doe</option>
+                                        <option value="jane" data-html="<strong>Jane Smith</strong><br><small class='text-muted'><i class='bi bi-palette'></i> UI/UX Designer</small>">Jane Smith</option>
+                                        <option value="bob" data-html="<strong>Bob Wilson</strong><br><small class='text-muted'><i class='bi bi-kanban'></i> Project Manager</small>">Bob Wilson</option>
+                                        <option value="alice" data-html="<strong>Alice Brown</strong><br><small class='text-muted'><i class='bi bi-bug'></i> QA Engineer</small>">Alice Brown</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="template-demo-select">Products (Custom Templates):</label>
+                                    <select id="template-demo-select" class="form-select" multiple>
+                                        <option value="laptop">Gaming Laptop</option>
+                                        <option value="phone">Smartphone</option>
+                                        <option value="tablet">Tablet</option>
+                                        <option value="headphones">Wireless Headphones</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <pre><code>
 // HTML Content with data-html attribute
 $('#html-demo-select').asSelect3({
     allowHtml: true,
@@ -258,10 +285,13 @@ $('#template-demo-select').asSelect3({
                 &lt;/div&gt;`;
     }
 });
-                </code></pre>
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
