@@ -1,6 +1,6 @@
 /*!
  * As-Select3 - Modern JavaScript Select Library
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Sunil Kumar
  * Repository: https://github.com/sunil4587/As-select3
  * License: MIT
@@ -41,6 +41,11 @@
                 defaultIconClass: 'as-select3-arrow-down',
                 iconPrefix: options.iconPrefix || null,
                 allowHtml: options.allowHtml !== false,
+                fuzzySearch: options.fuzzySearch !== false,
+                highlightMatches: options.highlightMatches !== false,
+                virtualScrolling: options.virtualScrolling === true,
+                itemHeight: options.itemHeight || 32,
+                maxHeight: options.maxHeight || 300,
                 escapeMarkup: options.escapeMarkup || function(markup) {
                     return markup;
                 },
@@ -55,6 +60,12 @@
             this.isLoading = false;
             this.searchTimer = null;
             this.originalOptions = [];
+            this.filteredOptions = [];
+            this.searchCache = new Map();
+            this.performanceMetrics = {
+                searchTime: 0,
+                renderTime: 0
+            };
 
             this.init();
         }
@@ -113,11 +124,84 @@
         createOptionsContainer() {
             this.$optionsContainer = $('<div class="as-select3-options"></div>');
             
-            this.$element.find('option').each((index, option) => {
-                this.$optionsContainer.append(this.createOptionElement(option, index));
-            });
+            const optionCount = this.$element.find('option').length;
+            
+            // Use virtual scrolling for large datasets
+            if (this.options.virtualScrolling && optionCount > 100) {
+                this.setupVirtualScrolling();
+            } else {
+                this.$element.find('option').each((index, option) => {
+                    this.$optionsContainer.append(this.createOptionElement(option, index));
+                });
+            }
 
             this.$dropdown.append(this.$optionsContainer);
+        }
+        
+        setupVirtualScrolling() {
+            const options = this.$element.find('option').toArray();
+            const itemHeight = this.options.itemHeight;
+            const containerHeight = this.options.maxHeight;
+            const visibleCount = Math.ceil(containerHeight / itemHeight);
+            
+            this.$optionsContainer.css({
+                'max-height': containerHeight + 'px',
+                'overflow-y': 'auto'
+            });
+            
+            // Create virtual container
+            this.$virtualContainer = $('<div class="as-select3-virtual-container"></div>');
+            this.$virtualContainer.css({
+                'height': options.length * itemHeight + 'px',
+                'position': 'relative'
+            });
+            
+            this.$optionsContainer.append(this.$virtualContainer);
+            
+            // Initial render
+            this.renderVirtualItems(0, Math.min(visibleCount + 5, options.length));
+            
+            // Handle scroll events
+            this.$optionsContainer.on('scroll', () => {
+                this.handleVirtualScroll();
+            });
+        }
+        
+        renderVirtualItems(startIndex, endIndex) {
+            if (!this.$virtualContainer) return;
+            
+            const options = this.$element.find('option').toArray();
+            const itemHeight = this.options.itemHeight;
+            
+            // Clear existing items
+            this.$virtualContainer.empty();
+            
+            for (let i = startIndex; i < endIndex && i < options.length; i++) {
+                const $item = this.createOptionElement(options[i], i);
+                $item.css({
+                    'position': 'absolute',
+                    'top': i * itemHeight + 'px',
+                    'left': '0',
+                    'right': '0',
+                    'height': itemHeight + 'px'
+                });
+                this.$virtualContainer.append($item);
+            }
+        }
+        
+        handleVirtualScroll() {
+            if (!this.$virtualContainer) return;
+            
+            const scrollTop = this.$optionsContainer.scrollTop();
+            const containerHeight = this.$optionsContainer.height();
+            const itemHeight = this.options.itemHeight;
+            const options = this.$element.find('option').toArray();
+            
+            const startIndex = Math.floor(scrollTop / itemHeight);
+            const visibleCount = Math.ceil(containerHeight / itemHeight);
+            const endIndex = Math.min(startIndex + visibleCount + 10, options.length);
+            
+            this.renderVirtualItems(Math.max(0, startIndex - 5), endIndex);
         }
 
         createOptionElement(optionData, index) {
@@ -344,13 +428,110 @@
                         this.open();
                     }
                     break;
-                case 'Tab':
+                case 'Home':
                     if (this.isOpen) {
-                    e.preventDefault();
-                    this.focusNext();
+                        e.preventDefault();
+                        this.focusFirst();
+                    }
+                    break;
+                case 'End':
+                    if (this.isOpen) {
+                        e.preventDefault();
+                        this.focusLast();
+                    }
+                    break;
+                case 'PageDown':
+                    if (this.isOpen) {
+                        e.preventDefault();
+                        this.focusPageDown();
+                    }
+                    break;
+                case 'PageUp':
+                    if (this.isOpen) {
+                        e.preventDefault();
+                        this.focusPageUp();
+                    }
+                    break;
+                case 'Tab':
+                    if (this.isOpen && !e.shiftKey) {
+                        // Allow tab to close dropdown and move to next element
+                        this.close();
+                    }
+                    break;
+                default:
+                    // Quick search on letter/number keys
+                    if (this.isOpen && e.key.length === 1 && /[a-zA-Z0-9]/.test(e.key)) {
+                        this.quickSearch(e.key);
                     }
                     break;
             }
+        }
+        
+        focusFirst() {
+            const $options = this.$optionsContainer.find('.as-select3-option:visible:not(.disabled)');
+            if ($options.length) {
+                this.$optionsContainer.find('.focused').removeClass('focused');
+                this.focusIndex = 0;
+                this.scrollToOption($options.eq(0).addClass('focused'));
+            }
+        }
+        
+        focusLast() {
+            const $options = this.$optionsContainer.find('.as-select3-option:visible:not(.disabled)');
+            if ($options.length) {
+                this.$optionsContainer.find('.focused').removeClass('focused');
+                this.focusIndex = $options.length - 1;
+                this.scrollToOption($options.eq(this.focusIndex).addClass('focused'));
+            }
+        }
+        
+        focusPageDown() {
+            const $options = this.$optionsContainer.find('.as-select3-option:visible:not(.disabled)');
+            if ($options.length) {
+                this.$optionsContainer.find('.focused').removeClass('focused');
+                this.focusIndex = Math.min(this.focusIndex + 10, $options.length - 1);
+                this.scrollToOption($options.eq(this.focusIndex).addClass('focused'));
+            }
+        }
+        
+        focusPageUp() {
+            const $options = this.$optionsContainer.find('.as-select3-option:visible:not(.disabled)');
+            if ($options.length) {
+                this.$optionsContainer.find('.focused').removeClass('focused');
+                this.focusIndex = Math.max(this.focusIndex - 10, 0);
+                this.scrollToOption($options.eq(this.focusIndex).addClass('focused'));
+            }
+        }
+        
+        quickSearch(char) {
+            if (!this.quickSearchTimer) {
+                this.quickSearchQuery = '';
+            }
+            
+            clearTimeout(this.quickSearchTimer);
+            this.quickSearchQuery += char.toLowerCase();
+            
+            const $options = this.$optionsContainer.find('.as-select3-option:visible:not(.disabled)');
+            let found = false;
+            
+            $options.each((index, option) => {
+                const $option = $(option);
+                const text = ($option.data('text') || $option.text()).toLowerCase();
+                
+                if (text.startsWith(this.quickSearchQuery)) {
+                    this.$optionsContainer.find('.focused').removeClass('focused');
+                    this.focusIndex = index;
+                    this.scrollToOption($option.addClass('focused'));
+                    found = true;
+                    return false; // Break the loop
+                }
+            });
+            
+            // Clear quick search after 1 second
+            this.quickSearchTimer = setTimeout(() => {
+                this.quickSearchQuery = '';
+                this.quickSearchTimer = null;
+            }, 1000);
         }
 
         focusNext() {
@@ -400,6 +581,7 @@
             this.isOpen = true;
             this.$dropdown.addClass('show');
             this.$trigger.addClass('active').attr('aria-expanded', 'true');
+            this.$container.addClass('active'); // Add active class for z-index
             
             if (this.$searchInput) {
                 this.$searchInput.focus();
@@ -414,6 +596,7 @@
             this.isOpen = false;
             this.$dropdown.removeClass('show');
             this.$trigger.removeClass('active').attr('aria-expanded', 'false');
+            this.$container.removeClass('active'); // Remove active class for z-index
             this.$optionsContainer.find('.focused').removeClass('focused');
             this.focusIndex = -1;
             
@@ -421,6 +604,9 @@
                 this.$searchInput.val('');
                 this.search('');
             }
+            
+            // Clear all highlighting when closing
+            this.clearHighlighting();
             
             this.$element.trigger('asSelect3:close');
         }
@@ -476,23 +662,120 @@
         }
 
         search(query) {
+            const startTime = performance.now();
+            
+            // Clear previous highlighting first
+            this.clearHighlighting();
+            
+            // Check cache first
+            if (this.searchCache.has(query)) {
+                this.applySearchResults(this.searchCache.get(query), query);
+                this.performanceMetrics.searchTime = performance.now() - startTime;
+                return;
+            }
+            
             if (this.options.matcher && typeof this.options.matcher === 'function') {
                 this.customSearch(query);
             } else {
                 const $options = this.$optionsContainer.find('.as-select3-option').not('.as-select3-no-results, .as-select3-loading');
                 let hasResults = false;
+                const results = [];
                 
                 $options.each((index, option) => {
                     const $option = $(option);
                     const text = $option.data('text') || $option.text();
                     const matches = this.matchText(text, query);
+                    
+                    if (matches) {
+                        hasResults = true;
+                        results.push({
+                            element: $option,
+                            text: text,
+                            matches: true
+                        });
+                        
+                        // Highlight matches if enabled
+                        if (this.options.highlightMatches && query) {
+                            this.highlightText($option, text, query);
+                        }
+                    }
+                    
                     $option.toggle(matches);
-                    if (matches) hasResults = true;
                 });
+                
+                // Cache results for performance
+                this.searchCache.set(query, results);
+                
+                // Limit cache size
+                if (this.searchCache.size > 50) {
+                    const firstKey = this.searchCache.keys().next().value;
+                    this.searchCache.delete(firstKey);
+                }
                 
                 this.toggleNoResults(!hasResults && query.length > 0);
                 this.focusIndex = -1;
             }
+            
+            this.performanceMetrics.searchTime = performance.now() - startTime;
+        }
+        
+        applySearchResults(results, query) {
+            // Clear previous highlighting first
+            this.clearHighlighting();
+            
+            const $options = this.$optionsContainer.find('.as-select3-option').not('.as-select3-no-results, .as-select3-loading');
+            
+            $options.each((index, option) => {
+                const $option = $(option);
+                const result = results.find(r => r.element.is($option));
+                
+                if (result) {
+                    $option.show();
+                    if (this.options.highlightMatches && query) {
+                        this.highlightText($option, result.text, query);
+                    }
+                } else {
+                    $option.hide();
+                }
+            });
+            
+            this.toggleNoResults(results.length === 0 && query.length > 0);
+            this.focusIndex = -1;
+        }
+        
+        highlightText($option, text, query) {
+            if (!query) return;
+            
+            const $textElement = $option.find('.as-select3-option-text');
+            if (!$textElement.length) return;
+            
+            // Store original text if not already stored
+            if (!$textElement.data('original-text')) {
+                $textElement.data('original-text', $textElement.text());
+            }
+            
+            const originalText = $textElement.data('original-text');
+            const regex = new RegExp(`(${this.escapeRegex(query)})`, 'gi');
+            const highlightedText = originalText.replace(regex, '<mark class="as-select3-highlight">$1</mark>');
+            
+            if (highlightedText !== originalText) {
+                $textElement.html(highlightedText);
+            }
+        }
+        
+        clearHighlighting() {
+            const $textElements = this.$optionsContainer.find('.as-select3-option-text');
+            $textElements.each((index, element) => {
+                const $element = $(element);
+                const originalText = $element.data('original-text');
+                if (originalText) {
+                    $element.text(originalText);
+                }
+            });
+        }
+        
+        escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
 
         customSearch(query) {
@@ -516,7 +799,29 @@
         }
 
         matchText(text, search) {
-            return text.toLowerCase().includes(search.toLowerCase());
+            if (!search) return true;
+            
+            const searchLower = search.toLowerCase();
+            const textLower = text.toLowerCase();
+            
+            // Exact match gets highest priority
+            if (textLower === searchLower) return true;
+            
+            // Starts with match gets second priority
+            if (textLower.startsWith(searchLower)) return true;
+            
+            // Contains match gets third priority
+            if (textLower.includes(searchLower)) return true;
+            
+            // Simple fuzzy matching - check if all characters exist in order
+            let searchIndex = 0;
+            for (let i = 0; i < textLower.length && searchIndex < searchLower.length; i++) {
+                if (textLower[i] === searchLower[searchIndex]) {
+                    searchIndex++;
+                }
+            }
+            
+            return searchIndex === searchLower.length;
         }
 
         async remoteSearch(query) {
@@ -910,16 +1215,61 @@
         }
 
         destroy() {
+            // Clear timers
+            if (this.searchTimer) {
+                clearTimeout(this.searchTimer);
+                this.searchTimer = null;
+            }
+            
+            if (this.quickSearchTimer) {
+                clearTimeout(this.quickSearchTimer);
+                this.quickSearchTimer = null;
+            }
+            
+            // Close dropdown
             this.close();
+            
+            // Remove event listeners
             this.$trigger.off();
             this.$container.off();
             this.$optionsContainer.off();
             $(document).off('click.asSelect3');
             this.$element.off('invalid').closest('form').off('reset.asSelect3');
+            
+            // Clear caches
+            this.searchCache.clear();
+            this.filteredOptions = [];
+            this.originalOptions = [];
+            
+            // Restore original element
             this.$element.removeClass('d-none').insertAfter(this.$container);
             this.$container.remove();
+            
+            // Clean up references
             delete this.element._asSelect3;
+            this.$element = null;
+            this.$container = null;
+            this.$trigger = null;
+            this.$dropdown = null;
+            this.$optionsContainer = null;
+            this.$searchInput = null;
+            
             return this.$element;
+        }
+        
+        // Performance monitoring
+        getPerformanceMetrics() {
+            return {
+                searchTime: this.performanceMetrics.searchTime,
+                renderTime: this.performanceMetrics.renderTime,
+                cacheSize: this.searchCache.size,
+                optionCount: this.$element ? this.$element.find('option').length : 0
+            };
+        }
+        
+        // Clear search cache manually
+        clearSearchCache() {
+            this.searchCache.clear();
         }
     }
 
