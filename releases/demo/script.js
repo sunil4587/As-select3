@@ -145,4 +145,53 @@ $(document).ready(function() {
                     </div>`;
         }
     });
+
+    // Reinitialize Demo
+    window.reinitializeDemoInstance = $('#reinitialize-demo-select').asSelect3({
+        placeholder: 'Select a framework...',
+        searchable: true
+    })[0]._asSelect3;
 });
+
+// Global functions for reinitialize demo
+window.addFrameworkOption = function() {
+    const $select = $('#reinitialize-demo-select');
+    const newFrameworks = [
+        { value: 'nextjs', text: 'Next.js' },
+        { value: 'nuxtjs', text: 'Nuxt.js' },
+        { value: 'gatsby', text: 'Gatsby' },
+        { value: 'remix', text: 'Remix' },
+        { value: 'astro', text: 'Astro' }
+    ];
+    
+    // Find a framework that isn't already in the list
+    const existingValues = $select.find('option').map((i, opt) => opt.value).get();
+    const newFramework = newFrameworks.find(fw => !existingValues.includes(fw.value));
+    
+    if (newFramework) {
+        // Add new option to the original select element
+        $select.append(`<option value="${newFramework.value}">${newFramework.text}</option>`);
+        alert(`Added ${newFramework.text} to DOM! Now click "Reinitialize" to see it in the dropdown.`);
+    } else {
+        alert('All frameworks have been added!');
+    }
+};
+
+window.reinitializeFramework = function() {
+    if (window.reinitializeDemoInstance) {
+        try {
+            // Call the manual reinitialize method
+            const newInstance = window.reinitializeDemoInstance.reinitializeFromDOM();
+            
+            // Update our global reference
+            window.reinitializeDemoInstance = newInstance;
+            
+            alert('Framework dropdown reinitialized! New options are now visible.');
+        } catch (error) {
+            console.error('Error reinitializing:', error);
+            alert('Error reinitializing dropdown');
+        }
+    } else {
+        alert('Demo instance not found');
+    }
+};

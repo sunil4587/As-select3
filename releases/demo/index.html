@@ -289,6 +289,45 @@ $('#template-demo-select').asSelect3({
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="example card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">Manual Reinitialize</h2>
+                            <label for="reinitialize-demo-select">Select a framework:</label>
+                            <select id="reinitialize-demo-select" class="form-select mb-3">
+                                <option value="">Choose a framework...</option>
+                                <option value="react">React</option>
+                                <option value="vue">Vue.js</option>
+                                <option value="angular">Angular</option>
+                                <option value="svelte">Svelte</option>
+                            </select>
+                            
+                            <div class="d-flex gap-2 mb-3">
+                                <button type="button" class="btn btn-warning btn-sm" onclick="addFrameworkOption()">
+                                    <i class="bi bi-plus-circle me-1"></i>Add Option
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm" onclick="reinitializeFramework()">
+                                    <i class="bi bi-arrow-clockwise me-1"></i>Reinitialize
+                                </button>
+                            </div>
+                            
+                            <div class="alert alert-info small">
+                                <i class="bi bi-info-circle me-1"></i>
+                                Click "Add Option" to add a new framework to the DOM, then "Reinitialize" to update the dropdown.
+                            </div>
+                            
+                            <pre><code>
+// Add new option to original select
+$('#my-select').append('&lt;option value="nextjs"&gt;Next.js&lt;/option&gt;');
+
+// Reinitialize to show new options
+const instance = $('#my-select')[0]._asSelect3;
+const newInstance = instance.reinitializeFromDOM();
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

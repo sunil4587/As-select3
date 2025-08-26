@@ -1172,7 +1172,7 @@ $('#max-demo-select').on('asSelect3:maxselection', function(e) {
                         </div>
                     </div>
                 </div>
-                <div class="row g-4 mb-5">
+                <div class="row g-4">
                     <!-- Custom Theme Demo -->
                     <div class="col-lg-12">
                         <div class="demo-card">
@@ -1478,7 +1478,7 @@ $('#max-demo-select').on('asSelect3:maxselection', function(e) {
                     </div>
                 </div>
                 <!-- HTML Rendering Demo -->
-                <div class="row g-4 mb-5">
+                <div class="row g-4">
                     <div class="col-lg-12">
                         <div class="demo-card">
                             <div class="demo-card-header">
@@ -1630,6 +1630,115 @@ $('#html-template-select').asSelect3({
                 &lt;/div&gt;`;
     }
 });</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 mb-5">
+                    <!-- Manual Reinitialize Demo -->
+                    <div class="col-lg-12">
+                        <div class="demo-card">
+                            <div class="demo-card-header">
+                                <div class="demo-icon">
+                                    <i class="bi bi-arrow-clockwise"></i>
+                                </div>
+                                <div class="demo-title">
+                                    <h5 class="mb-0">Manual Reinitialize</h5>
+                                    <p class="text-muted mb-0 small">Reinitialize As-Select3 when DOM options change</p>
+                                </div>
+                            </div>
+                            <div class="demo-card-content">
+                                <ul class="nav nav-tabs demo-tabs" id="reinitializeTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="reinitialize-preview-tab" data-bs-toggle="tab" data-bs-target="#reinitialize-preview" type="button" role="tab" aria-controls="reinitialize-preview" aria-selected="true">
+                                        <i class="bi bi-eye me-1"></i> Preview
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="reinitialize-html-tab" data-bs-toggle="tab" data-bs-target="#reinitialize-html" type="button" role="tab" aria-controls="reinitialize-html" aria-selected="false">
+                                        <i class="bi bi-code-slash me-1"></i> HTML
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="reinitialize-js-tab" data-bs-toggle="tab" data-bs-target="#reinitialize-js" type="button" role="tab" aria-controls="reinitialize-js" aria-selected="false">
+                                        <i class="bi bi-filetype-js me-1"></i> JavaScript
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content demo-tab-content" id="reinitializeTabContent">
+                                    <div class="tab-pane fade show active" id="reinitialize-preview" role="tabpanel" aria-labelledby="reinitialize-preview-tab">
+                                        <div class="demo-preview">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <select id="reinitialize-demo-select" class="form-control">
+                                                        <option value="">Select a framework...</option>
+                                                        <option value="react">React</option>
+                                                        <option value="vue">Vue.js</option>
+                                                        <option value="angular">Angular</option>
+                                                        <option value="svelte">Svelte</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="d-flex gap-2">
+                                                        <button type="button" class="btn btn-warning" onclick="addFrameworkOption()">
+                                                            <i class="bi bi-plus-circle me-1"></i>Add Option
+                                                        </button>
+                                                        <button type="button" class="btn btn-info" onclick="reinitializeFramework()">
+                                                            <i class="bi bi-arrow-clockwise me-1"></i>Reinitialize
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3">
+                                                <div class="alert alert-info">
+                                                    <small><i class="bi bi-info-circle me-1"></i>
+                                                    Click "Add Option" to add a new framework to the DOM, then "Reinitialize" to update the dropdown.
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="reinitialize-html" role="tabpanel" aria-labelledby="reinitialize-html-tab">
+                                        <div class="demo-code">
+<pre><code class="language-html">&lt;select id="my-select" class="form-control"&gt;
+    &lt;option value=""&gt;Select a framework...&lt;/option&gt;
+    &lt;option value="react"&gt;React&lt;/option&gt;
+    &lt;option value="vue"&gt;Vue.js&lt;/option&gt;
+    &lt;option value="angular"&gt;Angular&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;button onclick="addNewOption()"&gt;Add Option&lt;/button&gt;
+&lt;button onclick="reinitialize()"&gt;Reinitialize&lt;/button&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="reinitialize-js" role="tabpanel" aria-labelledby="reinitialize-js-tab">
+                                        <div class="demo-code">
+<pre><code class="language-javascript">// Initialize As-Select3
+const instance = $('#my-select').asSelect3({
+    placeholder: 'Select a framework...',
+    searchable: true
+})[0]._asSelect3;
+
+function addNewOption() {
+    // Add new option to the original select element
+    $('#my-select').append('&lt;option value="nextjs"&gt;Next.js&lt;/option&gt;');
+}
+
+function reinitialize() {
+    // Get the current instance
+    const currentInstance = $('#my-select')[0]._asSelect3;
+    
+    // Reinitialize to pick up new DOM options
+    const newInstance = currentInstance.reinitializeFromDOM();
+    
+    // Update reference (optional)
+    $('#my-select')[0]._asSelect3 = newInstance;
+    
+    console.log('Reinitialized! New options are now visible.');
+}</code></pre>
                                         </div>
                                     </div>
                                 </div>
