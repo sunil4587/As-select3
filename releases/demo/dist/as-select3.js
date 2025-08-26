@@ -1,6 +1,6 @@
 /*!
  * As-Select3 - Modern JavaScript Select Library
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Sunil Kumar
  * Repository: https://github.com/sunil4587/As-select3
  * License: MIT
